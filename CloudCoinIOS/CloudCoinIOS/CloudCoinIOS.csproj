@@ -86,9 +86,11 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="ViewControllers\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -101,10 +103,31 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
+    <Compile Include="ViewControllers\MainViewController.cs" />
+    <Compile Include="ViewControllers\MainViewController.designer.cs">
+      <DependentUpon>MainViewController.cs</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\backicons.png" />
+    <BundleResource Include="Resources\backicons.svg" />
+    <BundleResource Include="Resources\bank cloud.png" />
+    <BundleResource Include="Resources\bank icon.png" />
+    <BundleResource Include="Resources\bankbtn.png" />
+    <BundleResource Include="Resources\cloudcoin87.png" />
+    <BundleResource Include="Resources\cloudcoin360.png" />
+    <BundleResource Include="Resources\CloudCoinLogoRound.png" />
+    <BundleResource Include="Resources\export cloud.png" />
+    <BundleResource Include="Resources\export icon.png" />
+    <BundleResource Include="Resources\exportbtn.png" />
+    <BundleResource Include="Resources\import cloud.png" />
+    <BundleResource Include="Resources\import icon.png" />
+    <BundleResource Include="Resources\importbtn.png" />
+    <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\logo%402x.png" />
+    <BundleResource Include="Resources\logo%403x.png" />
+    <BundleResource Include="Resources\settings.png" />
+    <BundleResource Include="Resources\worldmap.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
