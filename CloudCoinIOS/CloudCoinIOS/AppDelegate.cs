@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using System.Collections.Generic;
+using Foundation;
 using UIKit;
 
 namespace CloudCoinIOS
@@ -9,6 +10,7 @@ namespace CloudCoinIOS
 	public class AppDelegate : UIApplicationDelegate
 	{
 		// class-level declarations
+		public List<string> UrlList{get; set;}
 
 		public override UIWindow Window
 		{
@@ -20,7 +22,7 @@ namespace CloudCoinIOS
 		{
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
-
+			UrlList = new List<string>();
 			return true;
 		}
 
@@ -57,7 +59,17 @@ namespace CloudCoinIOS
 
 		public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 		{
-			return base.OpenUrl(app, url, options);
+			//ApplicationLogic.OpenFileUrl(url.AbsoluteString);
+
+			 NSNotificationCenter.DefaultCenter.PostNotificationName("OpenUrl", url);
+
+			if (!UrlList.Contains(url.Path))
+			{
+				UrlList.Add(url.Path);
+			}
+			return true;
+
+
 		}
 	}
 }

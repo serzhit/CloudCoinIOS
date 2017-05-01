@@ -3,6 +3,7 @@
 using System;
 
 using Foundation;
+using PassKit;
 using UIKit;
 
 namespace CloudCoinIOS
@@ -11,6 +12,39 @@ namespace CloudCoinIOS
 	{
 		public MainViewController (IntPtr handle) : base (handle)
 		{
+			
+		}
+
+		public override void ViewDidAppear(bool animated)
+		{
+			
+			base.ViewDidAppear(animated);
+		}
+
+		public override void ViewDidLayoutSubviews()
+		{
+			makeRoundRectView(importView);
+			makeRoundRectView(bankView);
+			makeRoundRectView(exportView);
+
+			base.ViewDidLayoutSubviews();
+		}
+
+		private void makeRoundRectView(UIView view)
+		{
+			view.Layer.CornerRadius = view.Bounds.Height / 2f;
+			view.Layer.MasksToBounds = true;
+		}
+
+		partial void OnImportTouched(Foundation.NSObject sender)
+		{
+			var modalImportViewController = (ImportViewController)Storyboard.InstantiateViewController("ImportViewController");
+			modalImportViewController.ShowInView(View, true);
+		}
+
+		public override UIStatusBarStyle PreferredStatusBarStyle()
+		{
+			return UIStatusBarStyle.LightContent;
 		}
 	}
 }
