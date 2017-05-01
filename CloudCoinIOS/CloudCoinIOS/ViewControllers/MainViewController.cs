@@ -42,6 +42,16 @@ namespace CloudCoinIOS
 			modalImportViewController.ShowInView(View, true);
 		}
 
+		partial void OnExportTouched(Foundation.NSObject sender)
+		{
+		}
+
+		partial void OnBankTouched(Foundation.NSObject sender)
+		{
+			var modalBankViewController = (BankViewController)Storyboard.InstantiateViewController("BankViewController");
+			modalBankViewController.ShowInView(View, true);
+		}
+
 		public override UIStatusBarStyle PreferredStatusBarStyle()
 		{
 			return UIStatusBarStyle.LightContent;

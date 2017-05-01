@@ -151,6 +151,14 @@
     <Compile Include="Core\Utils.cs" />
     <Compile Include="Core\Events.cs" />
     <Compile Include="Core\CloudCoin.cs" />
+    <Compile Include="ViewControllers\BankViewController.cs" />
+    <Compile Include="ViewControllers\BankViewController.designer.cs">
+      <DependentUpon>BankViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\ExportViewController.cs" />
+    <Compile Include="ViewControllers\ExportViewController.designer.cs">
+      <DependentUpon>ExportViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\backicons.png" />

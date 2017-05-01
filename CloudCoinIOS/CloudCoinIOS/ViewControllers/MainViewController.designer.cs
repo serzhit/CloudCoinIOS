@@ -24,16 +24,17 @@ namespace CloudCoinIOS
 		[Outlet]
 		UIKit.UIView mainView { get; set; }
 
+		[Action ("OnBankTouched:")]
+		partial void OnBankTouched (Foundation.NSObject sender);
+
+		[Action ("OnExportTouched:")]
+		partial void OnExportTouched (Foundation.NSObject sender);
+
 		[Action ("OnImportTouched:")]
 		partial void OnImportTouched (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (mainView != null) {
-				mainView.Dispose ();
-				mainView = null;
-			}
-
 			if (bankView != null) {
 				bankView.Dispose ();
 				bankView = null;
@@ -47,6 +48,11 @@ namespace CloudCoinIOS
 			if (importView != null) {
 				importView.Dispose ();
 				importView = null;
+			}
+
+			if (mainView != null) {
+				mainView.Dispose ();
+				mainView = null;
 			}
 		}
 	}
