@@ -43,6 +43,10 @@
 			<string>CloudCoin stack</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.gitinsky.stack</string>
+			<key>UTTypeSize64IconFile</key>
+			<string>cloudcoin87</string>
+			<key>UTTypeSize320IconFile</key>
+			<string>cloudcoin360</string>
 		</dict>
 	</array>
 	<key>UTImportedTypeDeclarations</key>
@@ -52,6 +56,10 @@
 			<string>CloudCoin Stack</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.gitinsky.stack</string>
+			<key>UTTypeSize64IconFile</key>
+			<string>cloudcoin87</string>
+			<key>UTTypeSize320IconFile</key>
+			<string>cloudcoin360</string>
 		</dict>
 	</array>
 	<key>CFBundleDocumentTypes</key>
