@@ -12,14 +12,16 @@ namespace CloudCoin_SafeScan
            RAIDA.Instance.getEcho();
         }
 
-		public static void ScanSelected(List<string> urlList)
+		public static CloudCoinFile ScanSelected(List<string> urlList)
 		{
 			CloudCoinFile coinFile = null;
 
-			if (urlList != null)
+			if (urlList != null && urlList.Count != 0)
 			{
 				coinFile = new CloudCoinFile(urlList);
 			}
+
+			return coinFile;
 		}
         /*
                 internal static void ScanSelected()

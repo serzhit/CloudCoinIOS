@@ -9,7 +9,7 @@ namespace CloudCoinIOS
 		{
 		}
 
-		public BaseFormSheet(IntPtr handle) : base (handle)
+		public BaseFormSheet(IntPtr handle) : base(handle)
 		{
 		}
 
@@ -17,7 +17,7 @@ namespace CloudCoinIOS
 		{
 			parentView.AddSubview(View);
 			if (animated)
-			ShowAnimate();
+				ShowAnimate();
 		}
 
 		public void ShowAnimate()
@@ -42,6 +42,6 @@ namespace CloudCoinIOS
 			{
 				View.RemoveFromSuperview();
 			});
-				}
-			}
+		}
+	}
 }

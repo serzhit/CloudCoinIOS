@@ -73,8 +73,6 @@ namespace CloudCoin_SafeScan
             {
 				ParseCloudCoinFile(path);
             }
-
-			ParseCloudCoinFile("");
         }
 
         private void ParseCloudCoinFile(string fullPath)

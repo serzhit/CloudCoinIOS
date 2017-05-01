@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using CloudCoin_SafeScan;
 using Foundation;
+using GalaSoft.MvvmLight.Threading;
 using UIKit;
 
 namespace CloudCoinIOS
@@ -35,13 +36,29 @@ namespace CloudCoinIOS
 		{
 			btnImport.TouchUpInside += (sender, e) =>
 			{
-				ApplicationLogic.ScanSelected(urlList);
+				var coinFile = ApplicationLogic.ScanSelected(urlList);
+				if (coinFile != null)
+				{
+					btnCancel.Hidden = true;
+					btnImport.Hidden = true;
+
+				}
+				else
+				{
+					RemoveAnimate();
+				}
 			};
 
 			btnCancel.TouchUpInside += (sender, e) => 
 			{ 
                 RemoveAnimate();
 			};
+
+			RAIDA.Instance.StackScanCompleted += StackScanCompleted;
+		}
+		private void StackScanCompleted(object o, StackScanCompletedEventArgs e)
+		{
+			RemoveAnimate();
 		}
 	}
 }
