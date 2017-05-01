@@ -66,6 +66,7 @@ namespace CloudCoin_SafeScan
         string Filename;
         FileInfo FI;
         public CoinStack Coins = new CoinStack();
+		public bool IsValidFile { get; set; }
 
 		public CloudCoinFile(List<string> urlList)
         {
@@ -77,22 +78,25 @@ namespace CloudCoin_SafeScan
 
         private void ParseCloudCoinFile(string fullPath)
         {
-			fullPath = "file://Volumnes/Local/android sdk/sdk Readme.txt";
-            FI = new FileInfo(fullPath);
+			FI = new FileInfo(fullPath);
             if (FI.Exists)
             {
                 Filename = fullPath;
                 using (Stream fsSource = FI.Open(FileMode.Open))
                 {
                     byte[] signature = new byte[20];
-                    fsSource.Read(signature, 0, 20);
-                    string sig = Encoding.UTF8.GetString(signature);
-                    var reg = new Regex(@"{[.\n\t\s\x09\x0A\x0D]*""cloudcoin""");
+					fsSource.Read(signature, 0, 20);
+					                    string sig = Encoding.UTF8.GetString(signature);
+					var reg = new Regex(@"{[.\n\t\s\x09\x0A\x0D]*""cloudcoin""");
+					IsValidFile = false;
+
                     if (Enumerable.SequenceEqual(signature.Take(3), new byte[] { 255, 216, 255 })) //JPEG
                     {
                         Filetype = Type.jpeg;
                         var coin = ReadJpeg(fsSource);
-                        if (coin != null)
+						IsValidFile = coin.Validate();
+
+                        if (coin != null && IsValidFile)
                         {
                             Coins.Add(new CoinStack(coin));
                         }
@@ -101,21 +105,37 @@ namespace CloudCoin_SafeScan
                     {
                         Filetype = Type.json;
                         var json = ReadJson(fsSource);
+
                         if (json != null)
+                        {
+                            foreach (var coin in json)
+                            {
+                                if (!coin.Validate())
+                                {
+                                    IsValidFile = false;
+                                    break;
+                                }
+                                else
+                                {
+                                    IsValidFile = true;
+                                }
+                            }
+                        }
+                        
+                        if (IsValidFile)
                         {
                             Coins.Add(json);
                         }
                     }
-                    else
-                    {
-                        //MessageBox.Show(MainWindow.Instance, Filename + "\n: does not contain CloudCoins!");
-                    }
                 }
-                //FileSystem.CopyOriginalFileToImported(FI);
+				//***
+                //if (IsValidFile)
+                    //FileSystem.CopyOriginalFileToImported(FI);
             }
             else
             {
-                throw new FileNotFoundException();
+				IsValidFile = false;
+                //throw new FileNotFoundException();
             }
         }
 
@@ -159,7 +179,7 @@ namespace CloudCoin_SafeScan
             sn = Int32.Parse(jpegHexContent.Substring(904, 6), System.Globalization.NumberStyles.AllowHexSpecifier);
 
             CloudCoin coin = new CloudCoin(nn, sn, an, ed, aoid);
-            if (coin.Calibrate())
+			if (coin.isValidated)
             {
                 return coin;
             }

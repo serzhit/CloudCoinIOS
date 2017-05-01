@@ -92,77 +92,77 @@ namespace CloudCoin_SafeScan
                 onEchoStatusChanged(new EchoStatusChangedEventArgs(25));
             });
         }
-        /*
-                        public async Task Detect(CloudCoin coin)
-                        {
-                            Stopwatch sw = new Stopwatch();
-                            Task<DetectResponse>[] tasks = new Task<DetectResponse>[NODEQNTY];
-                            sw.Start();;
-                            foreach(Node node in Instance.NodesArray)
-                            {
-                                tasks[node.Number] = Task.Factory.StartNew(() => node.Detect(coin));
-                                var tmp = await tasks[node.Number];
-                                coin.detectStatus[node.Number] = (tmp.status == "pass") ? CloudCoin.raidaNodeResponse.pass : (tmp.status == "fail") ? CloudCoin.raidaNodeResponse.fail : CloudCoin.raidaNodeResponse.error;
-                            }
+        
+        public async Task Detect(CloudCoin coin)
+        {
+            Stopwatch sw = new Stopwatch();
+            Task<DetectResponse>[] tasks = new Task<DetectResponse>[NODEQNTY];
+            sw.Start();;
+            foreach(Node node in Instance.NodesArray)
+            {
+                tasks[node.Number] = Task.Factory.StartNew(() => node.Detect(coin));
+                var tmp = await tasks[node.Number];
+                coin.detectStatus[node.Number] = (tmp.status == "pass") ? CloudCoin.raidaNodeResponse.pass : (tmp.status == "fail") ? CloudCoin.raidaNodeResponse.fail : CloudCoin.raidaNodeResponse.error;
+            }
 
-                #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                            Task.Factory.ContinueWhenAll(tasks, (ancs) => 
-                            {
-                                sw.Stop();
-                                onDetectCoinCompleted(new DetectCoinCompletedEventArgs(coin, sw));
-                            });
-                #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                        }
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            Task.Factory.ContinueWhenAll(tasks, (ancs) => 
+            {
+                sw.Stop();
+                onDetectCoinCompleted(new DetectCoinCompletedEventArgs(coin, sw));
+            });
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+        }
 
-                        public void onDetectCoinCompleted(DetectCoinCompletedEventArgs e)
-                        {
-                            DetectCoinCompleted?.Invoke(this, e);
-                        }
+        public void onDetectCoinCompleted(DetectCoinCompletedEventArgs e)
+        {
+            DetectCoinCompleted?.Invoke(this, e);
+        }
 
-                        public void onStackScanCompleted(StackScanCompletedEventArgs e)
-                        {
-                            StackScanCompleted?.Invoke(this, e);
-                        }
+        public void onStackScanCompleted(StackScanCompletedEventArgs e)
+        {
+            StackScanCompleted?.Invoke(this, e);
+        }
 
-                        public void Detect(CoinStack stack, bool isCoinToBeImported)
-                        {
-                            Stopwatch total = new Stopwatch();
-                            total.Start();
-                            Task[] checkStackTasks = new Task[stack.cloudcoin.Count()];
-                            Stopwatch[] tw = new Stopwatch[stack.cloudcoin.Count()];
-                            int k = 0;
-                            foreach(CloudCoin coin in stack)    // int k = 0; k < stack.cloudcoin.Count(); k++)
-                            {
-                                //var coin = stack.cloudcoin[k];
-                                if (!isCoinToBeImported)
-                                {
-                                    coin.pans = coin.an;
-                                }
-                                Task<DetectResponse>[] checkCoinTasks = new Task<DetectResponse>[NODEQNTY];
-                                var t = tw[k] = new Stopwatch();
-                                t.Start();
-                                foreach (Node node in Instance.NodesArray)
-                                {
-                                    checkCoinTasks[node.Number] = Task.Factory.StartNew(() => node.Detect(coin));
-                                    checkCoinTasks[node.Number].ContinueWith((anc) =>
-                                    {
-                                        var tmp = anc.Result;
-                                        coin.detectStatus[node.Number] = (tmp.status == "pass") ? CloudCoin.raidaNodeResponse.pass : (tmp.status == "fail") ? CloudCoin.raidaNodeResponse.fail : CloudCoin.raidaNodeResponse.error;
-                                    });
-                                }
-                                checkStackTasks[k] = Task.Factory.ContinueWhenAll(checkCoinTasks, (ancs) => 
-                                {
-                                    t.Stop();
-                                    onDetectCoinCompleted(new DetectCoinCompletedEventArgs(coin, t));
-                                });
-                                k++;
-                            }
-                            Task.Factory.ContinueWhenAll(checkStackTasks, (ancs) =>
-                            {
-                                onStackScanCompleted(new StackScanCompletedEventArgs(stack, total));
-                            });
-                        }
-                */
+        public void Detect(CoinStack stack, bool isCoinToBeImported)
+        {
+            Stopwatch total = new Stopwatch();
+            total.Start();
+            Task[] checkStackTasks = new Task[stack.cloudcoin.Count()];
+            Stopwatch[] tw = new Stopwatch[stack.cloudcoin.Count()];
+            int k = 0;
+            foreach(CloudCoin coin in stack)    // int k = 0; k < stack.cloudcoin.Count(); k++)
+            {
+                //var coin = stack.cloudcoin[k];
+                if (!isCoinToBeImported)
+                {
+                    coin.pans = coin.an;
+                }
+                Task<DetectResponse>[] checkCoinTasks = new Task<DetectResponse>[NODEQNTY];
+                var t = tw[k] = new Stopwatch();
+                t.Start();
+                foreach (Node node in Instance.NodesArray)
+                {
+                    checkCoinTasks[node.Number] = Task.Factory.StartNew(() => node.Detect(coin));
+                    checkCoinTasks[node.Number].ContinueWith((anc) =>
+                    {
+                        var tmp = anc.Result;
+                        coin.detectStatus[node.Number] = (tmp.status == "pass") ? CloudCoin.raidaNodeResponse.pass : (tmp.status == "fail") ? CloudCoin.raidaNodeResponse.fail : CloudCoin.raidaNodeResponse.error;
+                    });
+                }
+                checkStackTasks[k] = Task.Factory.ContinueWhenAll(checkCoinTasks, (ancs) => 
+                {
+                    t.Stop();
+                    onDetectCoinCompleted(new DetectCoinCompletedEventArgs(coin, t));
+                });
+                k++;
+            }
+            Task.Factory.ContinueWhenAll(checkStackTasks, (ancs) =>
+            {
+                onStackScanCompleted(new StackScanCompletedEventArgs(stack, total));
+            });
+        }
+                
         public partial class Node
         {
             public int Number;
@@ -257,58 +257,58 @@ namespace CloudCoin_SafeScan
 
                 return get_Echo;
             }
-            /*
-                                    public DetectResponse Detect (CloudCoin coin)
-                                    {
-                                        var client = new RestClient();
-                                        client.BaseUrl = BaseUri;
-                                        var request = new RestRequest("detect");
-                                        request.AddQueryParameter("nn", coin.nn.ToString());
-                                        request.AddQueryParameter("sn", coin.sn.ToString());
-                                        request.AddQueryParameter("an", coin.an[Number]);
-                                        request.AddQueryParameter("pan", coin.pans[Number]);
-                                        request.AddQueryParameter("denomination", Utils.Denomination2Int(coin.denomination).ToString());
-                                        request.Timeout = 2000;
-                                        DetectResponse getDetectResult = new DetectResponse();
+            
+            public DetectResponse Detect (CloudCoin coin)
+            {
+                var client = new RestClient();
+                client.BaseUrl = BaseUri;
+                var request = new RestRequest("detect");
+                request.AddQueryParameter("nn", coin.nn.ToString());
+                request.AddQueryParameter("sn", coin.sn.ToString());
+                request.AddQueryParameter("an", coin.an[Number]);
+                request.AddQueryParameter("pan", coin.pans[Number]);
+                request.AddQueryParameter("denomination", Utils.Denomination2Int(coin.denomination).ToString());
+                request.Timeout = 2000;
+                DetectResponse getDetectResult = new DetectResponse();
 
-                                        Stopwatch sw = new Stopwatch();
-                                        sw.Start();
-                                        try
-                                        {
-                                            getDetectResult = JsonConvert.DeserializeObject<DetectResponse>(client.Execute(request).Content);
-                                        }
-                                        catch (JsonException e)
-                                        {
-                                            getDetectResult = new DetectResponse(Name, coin.sn.ToString(), "Invalid response", "The server does not respond or returns invalid data", DateTime.Now.ToString());
-                                        }
-                                        getDetectResult = getDetectResult ?? new DetectResponse(Name, coin.sn.ToString(), "Network problem", "Node not found", DateTime.Now.ToString());
-                                        if (getDetectResult.ErrorException != null)
-                                            getDetectResult = new DetectResponse(Name, coin.sn.ToString(), "Network problem", "Problems with network connection", DateTime.Now.ToString());
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+                try
+                {
+                    getDetectResult = JsonConvert.DeserializeObject<DetectResponse>(client.Execute(request).Content);
+                }
+                catch (JsonException e)
+                {
+                    getDetectResult = new DetectResponse(Name, coin.sn.ToString(), "Invalid response", "The server does not respond or returns invalid data", DateTime.Now.ToString());
+                }
+                getDetectResult = getDetectResult ?? new DetectResponse(Name, coin.sn.ToString(), "Network problem", "Node not found", DateTime.Now.ToString());
+                //if (getDetectResult.ErrorException != null)
+                //    getDetectResult = new DetectResponse(Name, coin.sn.ToString(), "Network problem", "Problems with network connection", DateTime.Now.ToString());
 
-                                        sw.Stop();
-                                        getDetectResult.responseTime = sw.Elapsed;
+                sw.Stop();
+                getDetectResult.responseTime = sw.Elapsed;
 
-                                        if (getDetectResult.status == "pass")
-                                        {
-                                            coin.an[Number] = coin.pans[Number];
-                                        }
+                if (getDetectResult.status == "pass")
+                {
+                    coin.an[Number] = coin.pans[Number];
+                }
 
-                                        switch (getDetectResult.status)
-                                        {
-                                            case "pass":
-                                                coin.detectStatus[Number] = CloudCoin.raidaNodeResponse.pass;
-                                                break;
-                                            case "fail":
-                                                coin.detectStatus[Number] = CloudCoin.raidaNodeResponse.fail;
-                                                break;
-                                            default:
-                                                coin.detectStatus[Number] = CloudCoin.raidaNodeResponse.error;
-                                                break;
-                                        }
+                switch (getDetectResult.status)
+                {
+                    case "pass":
+                        coin.detectStatus[Number] = CloudCoin.raidaNodeResponse.pass;
+                        break;
+                    case "fail":
+                        coin.detectStatus[Number] = CloudCoin.raidaNodeResponse.fail;
+                        break;
+                    default:
+                        coin.detectStatus[Number] = CloudCoin.raidaNodeResponse.error;
+                        break;
+                }
 
-                                        return getDetectResult;
-                                    }
-                        */
+                return getDetectResult;
+            }
+                        
             public override string ToString()
             {
                 string result = "Server: " + Name +

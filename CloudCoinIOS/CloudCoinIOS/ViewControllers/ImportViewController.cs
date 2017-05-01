@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using CloudCoin_SafeScan;
 using Foundation;
 using GalaSoft.MvvmLight.Threading;
@@ -12,6 +13,8 @@ namespace CloudCoinIOS
 	public partial class ImportViewController : BaseFormSheet
 	{
 		private List<string> urlList;
+		private const string confirmMsg = "Would you like to change ownership and import money in Safe?\n" +
+					             "Choosing 'No' will simply scan coins without changing passwords.";
 
 		public ImportViewController (IntPtr handle) : base (handle)
 		{
@@ -34,17 +37,30 @@ namespace CloudCoinIOS
 
 		private void InitializeMethods()
 		{
-			btnImport.TouchUpInside += (sender, e) =>
+			btnImport.TouchUpInside += async (sender, e) =>
 			{
 				var coinFile = ApplicationLogic.ScanSelected(urlList);
-				if (coinFile != null)
+				if (coinFile != null && coinFile.IsValidFile)
 				{
-					btnCancel.Hidden = true;
-					btnImport.Hidden = true;
+					int result = await ShowAlert("Confirmation", confirmMsg, new string[] { "Yes", "No" });
+					if (result == 0)
+					{
+						btnCancel.Hidden = true;
+						btnImport.Hidden = true;
+						RAIDA.Instance.Detect(coinFile.Coins, true);
 
+						//will implement the Safe source.
+					}
+					else
+					{
+						btnCancel.Hidden = true;
+						btnImport.Hidden = true;
+						RAIDA.Instance.Detect(coinFile.Coins, false);
+					}
 				}
 				else
 				{
+					await ShowAlert("Message", "There is no CloudCoins!", new string[] { "Ok"});
 					RemoveAnimate();
 				}
 			};
@@ -56,6 +72,7 @@ namespace CloudCoinIOS
 
 			RAIDA.Instance.StackScanCompleted += StackScanCompleted;
 		}
+
 		private void StackScanCompleted(object o, StackScanCompletedEventArgs e)
 		{
 			RemoveAnimate();
