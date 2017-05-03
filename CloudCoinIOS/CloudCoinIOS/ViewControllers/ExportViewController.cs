@@ -7,7 +7,7 @@ using UIKit;
 
 namespace CloudCoinIOS
 {
-	public partial class ExportViewController : UIViewController
+	public partial class ExportViewController : BaseFormSheet
 	{
 		public ExportViewController (IntPtr handle) : base (handle)
 		{

@@ -44,6 +44,8 @@ namespace CloudCoinIOS
 
 		partial void OnExportTouched(Foundation.NSObject sender)
 		{
+			var modalExportViewController = (ExportViewController)Storyboard.InstantiateViewController("ExportViewController");
+			modalExportViewController.ShowInView(View, true);
 		}
 
 		partial void OnBankTouched(Foundation.NSObject sender)
