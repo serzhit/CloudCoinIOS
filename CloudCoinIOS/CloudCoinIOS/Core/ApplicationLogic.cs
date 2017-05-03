@@ -20,7 +20,6 @@ namespace CloudCoin_SafeScan
 			{
 				coinFile = new CloudCoinFile(urlList);
 			}
-
 			return coinFile;
 		}
         /*

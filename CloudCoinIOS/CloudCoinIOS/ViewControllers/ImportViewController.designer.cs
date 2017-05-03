@@ -16,13 +16,24 @@ namespace CloudCoinIOS
 		UIKit.UIButton btnCancel { get; set; }
 
 		[Outlet]
+		UIKit.UIButton btnFinished { get; set; }
+
+		[Outlet]
 		UIKit.UIButton btnImport { get; set; }
+
+		[Outlet]
+		UIKit.UILabel lblImportedFiles { get; set; }
 
 		[Action ("OnCancelTouched:")]
 		partial void OnCancelTouched (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnFinished != null) {
+				btnFinished.Dispose ();
+				btnFinished = null;
+			}
+
 			if (btnCancel != null) {
 				btnCancel.Dispose ();
 				btnCancel = null;
@@ -31,6 +42,11 @@ namespace CloudCoinIOS
 			if (btnImport != null) {
 				btnImport.Dispose ();
 				btnImport = null;
+			}
+
+			if (lblImportedFiles != null) {
+				lblImportedFiles.Dispose ();
+				lblImportedFiles = null;
 			}
 		}
 	}

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using Foundation;
 using UIKit;
 
@@ -23,6 +24,15 @@ namespace CloudCoinIOS
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
 			UrlList = new List<string>();
+			var documentDirectory = NSFileManager.DefaultManager.GetUrls(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomain.User)[0].Path;
+			var pathList = NSFileManager.DefaultManager.Subpaths(documentDirectory);
+			foreach (var path in pathList)
+			{
+				if (!UrlList.Contains(path))
+				{
+					UrlList.Add(documentDirectory + "/" + path);
+				}
+			}
 			return true;
 		}
 
@@ -68,8 +78,6 @@ namespace CloudCoinIOS
 				UrlList.Add(url.Path);
 			}
 			return true;
-
-
 		}
 	}
 }

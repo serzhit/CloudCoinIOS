@@ -33,6 +33,16 @@ namespace CloudCoinIOS
 		{
 			var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
 			urlList = appDelegate.UrlList;
+
+			lblImportedFiles.Text = string.Format("You have {0} files in your import directory", urlList.Count);
+
+			if (urlList.Count == 0)
+				btnImport.Enabled = false;
+			else
+				btnImport.Enabled = true;
+
+			btnFinished.Enabled = false;
+			
 		}
 
 		private void InitializeMethods()
@@ -50,6 +60,7 @@ namespace CloudCoinIOS
 						RAIDA.Instance.Detect(coinFile.Coins, true);
 
 						//will implement the Safe source.
+
 					}
 					else
 					{
@@ -70,12 +81,21 @@ namespace CloudCoinIOS
                 RemoveAnimate();
 			};
 
+			btnFinished.TouchUpInside += (sender, e) =>
+			{
+				RemoveAnimate();
+			};
+
 			RAIDA.Instance.StackScanCompleted += StackScanCompleted;
 		}
 
 		private void StackScanCompleted(object o, StackScanCompletedEventArgs e)
 		{
-			RemoveAnimate();
+			InvokeOnMainThread(() =>
+			{
+				btnFinished.SetTitle("Finished", UIControlState.Normal);
+				btnFinished.Enabled = true;
+			});
 		}
 	}
 }

@@ -36,13 +36,14 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Kristoffer Yap (DD678Z5C33)</CodesignKey>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>iOS Team Provisioning Profile: *</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -66,7 +67,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Kristoffer Yap (7TP4N9RU68)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
@@ -77,6 +78,7 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>iOS Team Provisioning Profile: *</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -112,6 +114,14 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound57.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound114.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound180.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -181,6 +191,7 @@
     <BundleResource Include="Resources\logo%403x.png" />
     <BundleResource Include="Resources\settings.png" />
     <BundleResource Include="Resources\worldmap.png" />
+    <BundleResource Include="Resources\questionmark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -12,5 +12,20 @@ namespace CloudCoinIOS
 		public ExportViewController (IntPtr handle) : base (handle)
 		{
 		}
+
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+
+			InitializeMethods();
+		}
+
+		private void InitializeMethods()
+		{
+			btnCancel.TouchUpInside += (sender, e) =>
+			{
+				RemoveAnimate();
+			};
+		}
 	}
 }

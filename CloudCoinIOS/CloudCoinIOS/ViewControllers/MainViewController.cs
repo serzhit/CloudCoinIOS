@@ -19,6 +19,8 @@ namespace CloudCoinIOS
 		{
 			
 			base.ViewDidAppear(animated);
+
+			//var paths = new NSSearchPath()
 		}
 
 		public override void ViewDidLayoutSubviews()

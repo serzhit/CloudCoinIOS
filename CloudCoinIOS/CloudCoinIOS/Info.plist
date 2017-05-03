@@ -5,7 +5,7 @@
 	<key>CFBundleName</key>
 	<string>CloudCoin SafeScan</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.gitinsky.cloudcoin-scansafe</string>
+	<string>com.example</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -74,6 +74,8 @@
 		</dict>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
+	<key>UIFileSharingEnabled</key>
 	<true/>
 </dict>
 </plist>

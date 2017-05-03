@@ -12,9 +12,15 @@ namespace CloudCoinIOS
 	[Register ("ExportViewController")]
 	partial class ExportViewController
 	{
+		[Outlet]
+		UIKit.UIButton btnCancel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnCancel != null) {
+				btnCancel.Dispose ();
+				btnCancel = null;
+			}
 		}
 	}
 }
