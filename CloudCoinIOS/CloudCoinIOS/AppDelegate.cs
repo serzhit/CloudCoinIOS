@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using Foundation;
 using UIKit;
 
@@ -12,6 +13,12 @@ namespace CloudCoinIOS
 	{
 		// class-level declarations
 		public List<string> UrlList{get; set;}
+		public string SafeDir { get; set; }
+		public string BackupDir { get; set; }
+		public string ExportDir { get; set; }
+		public string ImportDir { get; set; }
+		public string LogDir { get; set; }
+		public string TemplatesDir { get; set; }
 
 		public override UIWindow Window
 		{
@@ -26,14 +33,59 @@ namespace CloudCoinIOS
 			UrlList = new List<string>();
 			var documentDirectory = NSFileManager.DefaultManager.GetUrls(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomain.User)[0].Path;
 			var pathList = NSFileManager.DefaultManager.Subpaths(documentDirectory);
+
+			SafeDir = documentDirectory + "/" + "safe";
+            IsExistDirectory(SafeDir);
+
+			BackupDir = documentDirectory + "/" + "Backup";
+			IsExistDirectory(BackupDir);
+
+			ExportDir = documentDirectory + "/" + "Export";
+			IsExistDirectory(ExportDir);
+
+			ImportDir = documentDirectory + "/" + "Import";
+			IsExistDirectory(ImportDir);
+
+			LogDir = documentDirectory + "/" + "Log";
+			IsExistDirectory(LogDir);
+
+			TemplatesDir = documentDirectory + "/" + "Templates";
+			IsExistDirectory(TemplatesDir);
+
+			bool isDirectory = false;
 			foreach (var path in pathList)
 			{
-				if (!UrlList.Contains(path))
+				NSFileManager.DefaultManager.FileExists(path, ref isDirectory);
+				var fullPath = documentDirectory + "/" + path;
+				if (!UrlList.Contains(path) && !isDirectory && !IsSameWithFolder(fullPath))
 				{
-					UrlList.Add(documentDirectory + "/" + path);
+					UrlList.Add(fullPath);
 				}
 			}
+
 			return true;
+		}
+
+		private bool IsSameWithFolder(string path)
+		{
+			if (path == SafeDir ||
+				path == BackupDir ||
+				path == ExportDir ||
+				path == ImportDir ||
+				path == LogDir ||
+				path == TemplatesDir)
+				return true;
+			else
+				return false;
+		}
+
+		private void IsExistDirectory(string dir)
+		{
+			var dirInfo = new FileInfo(dir);
+			if (!dirInfo.Exists)
+			{
+				NSFileManager.DefaultManager.CreateDirectory(dir, true, null);
+			}
 		}
 
 		public override void OnResignActivation(UIApplication application)

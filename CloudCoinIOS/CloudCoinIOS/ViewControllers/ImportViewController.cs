@@ -15,6 +15,11 @@ namespace CloudCoinIOS
 		private List<string> urlList;
 		private const string confirmMsg = "Would you like to change ownership and import money in Safe?\n" +
 					             "Choosing 'No' will simply scan coins without changing passwords.";
+		private int isPasswordForSafe;
+		private CloudCoinFile coinFile;
+
+		public delegate void SetPasswordEventHandler(CloudCoinFile coinFile);
+		public event SetPasswordEventHandler CompletedWithPassword;
 
 		public ImportViewController (IntPtr handle) : base (handle)
 		{
@@ -49,11 +54,11 @@ namespace CloudCoinIOS
 		{
 			btnImport.TouchUpInside += async (sender, e) =>
 			{
-				var coinFile = ApplicationLogic.ScanSelected(urlList);
+				coinFile = ApplicationLogic.ScanSelected(urlList);
 				if (coinFile != null && coinFile.IsValidFile)
 				{
-					int result = await ShowAlert("Confirmation", confirmMsg, new string[] { "Yes", "No" });
-					if (result == 0)
+					isPasswordForSafe = await ShowAlert("Confirmation", confirmMsg, new string[] { "Yes", "No" });
+					if (isPasswordForSafe == 0)
 					{
 						btnCancel.Hidden = true;
 						btnImport.Hidden = true;
@@ -84,6 +89,8 @@ namespace CloudCoinIOS
 			btnFinished.TouchUpInside += (sender, e) =>
 			{
 				RemoveAnimate();
+				if (isPasswordForSafe == 0)
+					CompletedWithPassword(coinFile);
 			};
 
 			RAIDA.Instance.StackScanCompleted += StackScanCompleted;

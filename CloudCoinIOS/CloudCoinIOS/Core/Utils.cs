@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-//using System.Security.Cryptography;
 using System.Net;
+using System.Security.Cryptography;
 
 namespace CloudCoin_SafeScan
 {
@@ -21,7 +21,7 @@ namespace CloudCoin_SafeScan
             }
             return hash;
         }
-/*
+
         public static bool CheckForInternetConnection()
         {
             try
@@ -39,7 +39,7 @@ namespace CloudCoin_SafeScan
                 return false;
             }
         }
-*/
+
         public static int Denomination2Int(CloudCoin.Denomination d)
         {
             switch (d)
@@ -52,7 +52,7 @@ namespace CloudCoin_SafeScan
                 default: return 0;
             }
         }
-/*
+
         public static byte[] Encrypt(string tobeEncrypted, string password, byte[] salt)
         {
             byte[] cipherText;
@@ -105,6 +105,5 @@ namespace CloudCoin_SafeScan
             }
             return plainText;
         }
-        */
     }
 }
