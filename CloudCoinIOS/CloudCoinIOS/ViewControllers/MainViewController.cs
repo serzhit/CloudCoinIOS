@@ -14,6 +14,7 @@ namespace CloudCoinIOS
 	public partial class MainViewController : UIViewController
 	{
 		private CloudCoinFile coinFile;
+		private bool isFromImported;
 
 		public MainViewController (IntPtr handle) : base (handle)
 		{
@@ -56,6 +57,7 @@ namespace CloudCoinIOS
 			EnterPassViewController enterPassViewController;
 
 			this.coinFile = ccFile;
+			isFromImported = true;
 
 			if (!fileInfo.Exists)
 			{
@@ -77,10 +79,14 @@ namespace CloudCoinIOS
 		private void FinishDoPassword(string password)
 		{
 			UserInteract.Password = password;
-			Safe.Instance?.Add(coinFile.Coins);
+			if (isFromImported)
+				Safe.Instance?.Add(coinFile.Coins);
 
-			var	modalBankViewController = (BankViewController)GetViewController("BankViewController");
-			modalBankViewController.ShowInView(View, true);
+			if (Safe.Instance != null)
+			{
+				var modalBankViewController = (BankViewController)GetViewController("BankViewController");
+				modalBankViewController.ShowInView(View, true);
+			}
 		}
 
 		partial void OnExportTouched(Foundation.NSObject sender)
@@ -91,8 +97,11 @@ namespace CloudCoinIOS
 
 		partial void OnBankTouched(Foundation.NSObject sender)
 		{
-			var modalBankViewController = (BankViewController)GetViewController("BankViewController");
-			modalBankViewController.ShowInView(View, true);
+			var enterPassViewController = (EnterPassViewController)GetViewController("EnterPassViewController");
+			enterPassViewController.ShowInView(View, true);
+			enterPassViewController.FinishEnterPassword += FinishDoPassword;
+
+			isFromImported = false;
 		}
 
 		private BaseFormSheet GetViewController(string regId)

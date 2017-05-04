@@ -594,6 +594,16 @@
                     </view>
                     <connections>
                         <outlet property="btnClose" destination="e7e-zm-khJ" id="E4Z-PW-rs2"/>
+                        <outlet property="lblAuth100" destination="W77-MG-Bzz" id="rml-RS-Qt7"/>
+                        <outlet property="lblAuth25" destination="Wu2-gW-NmB" id="Ssj-Ez-e6W"/>
+                        <outlet property="lblAuth250" destination="XhE-IR-rUo" id="I3W-p2-0GB"/>
+                        <outlet property="lblAuthFive" destination="aRQ-aJ-Jir" id="VCg-zb-PEo"/>
+                        <outlet property="lblAuthOne" destination="2k1-ON-HoO" id="B0X-QD-aPE"/>
+                        <outlet property="lblFracked100" destination="Fez-fJ-GOv" id="c3b-ov-Iqt"/>
+                        <outlet property="lblFracked25" destination="HaD-Jq-uok" id="lS2-oC-urw"/>
+                        <outlet property="lblFracked250" destination="Yxv-fq-wAl" id="hsm-2C-VFT"/>
+                        <outlet property="lblFrackedFive" destination="E67-B0-Skw" id="vxF-3J-CLM"/>
+                        <outlet property="lblFrackedOne" destination="5p4-Vb-afn" id="wEU-yd-sVK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9NY-uQ-eyg" userLabel="First Responder" sceneMemberID="firstResponder"/>
