@@ -8,6 +8,8 @@ namespace CloudCoin_SafeScan
 {
     internal static class UserInteract
     {
+		public static string Password { get; set; }
+
         internal static string SetPassword()
         {
 			//var passwordWindow = new SetPasswordWindow();

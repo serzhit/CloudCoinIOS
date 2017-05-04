@@ -657,13 +657,13 @@
                                                 </constraints>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgQ-Za-Yy6">
-                                                <rect key="frame" x="95" y="5" width="17" height="18"/>
+                                                <rect key="frame" x="94" y="5" width="17" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.21960784310000001" green="0.2470588235" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D4b-DQ-0px">
-                                                <rect key="frame" x="77" y="30" width="54" height="100"/>
+                                                <rect key="frame" x="76" y="30" width="54" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="9qR-Hj-PMg"/>
                                                 </constraints>
@@ -693,13 +693,13 @@
                                                 </constraints>
                                             </pickerView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3k3-vC-lr8">
-                                                <rect key="frame" x="254" y="30" width="54" height="100"/>
+                                                <rect key="frame" x="253" y="30" width="54" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="KOT-gk-Qox"/>
                                                 </constraints>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYU-vp-VM3">
-                                                <rect key="frame" x="263" y="5" width="35" height="18"/>
+                                                <rect key="frame" x="262" y="5" width="35" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.21960784310000001" green="0.2470588235" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -861,10 +861,10 @@
             </objects>
             <point key="canvasLocation" x="2498.4000000000001" y="-95.802098950524751"/>
         </scene>
-        <!--Password View Controller-->
+        <!--Enter Pass View Controller-->
         <scene sceneID="jdW-fB-aY4">
             <objects>
-                <viewController restorationIdentifier="PasswordViewController" storyboardIdentifier="PasswordViewController" id="dLo-gW-DVP" customClass="PasswordViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="EnterPassViewController" storyboardIdentifier="EnterPassViewController" id="dLo-gW-DVP" customClass="EnterPassViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xwn-cw-an6"/>
                         <viewControllerLayoutGuide type="bottom" id="dAd-96-7aP"/>
@@ -939,6 +939,10 @@
                             <constraint firstItem="tgg-z0-C0a" firstAttribute="centerX" secondItem="0ME-qF-eOJ" secondAttribute="centerX" id="z03-o3-wOB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnOk" destination="cVr-9p-3g9" id="XQo-bc-nwg"/>
+                        <outlet property="txtPassword" destination="win-2L-YSz" id="CoP-ts-EoO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1A-Zu-yWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

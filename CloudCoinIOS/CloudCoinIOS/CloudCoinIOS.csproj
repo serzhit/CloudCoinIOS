@@ -170,13 +170,13 @@
     <Compile Include="ViewControllers\ExportViewController.designer.cs">
       <DependentUpon>ExportViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\PasswordViewController.cs" />
-    <Compile Include="ViewControllers\PasswordViewController.designer.cs">
-      <DependentUpon>PasswordViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewControllers\NewPassViewController.cs" />
     <Compile Include="ViewControllers\NewPassViewController.designer.cs">
       <DependentUpon>NewPassViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\EnterPassViewController.cs" />
+    <Compile Include="ViewControllers\EnterPassViewController.designer.cs">
+      <DependentUpon>EnterPassViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

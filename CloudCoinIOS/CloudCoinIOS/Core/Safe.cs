@@ -23,7 +23,6 @@ namespace CloudCoin_SafeScan
             {
                 return theOnlySafeInstance ?? GetInstance();   //Singleton Fabric
             }
-
         }
         private static Safe theOnlySafeInstance = null;
 
@@ -33,12 +32,15 @@ namespace CloudCoin_SafeScan
         private static byte[] encryptedUserEnteredPassword;
         private static byte[] salt = Encoding.UTF8.GetBytes(SLOGAN);
 
+		public static string GetSafeFilePath()
+		{
+			var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
+			return appDelegate.SafeDir + "/" + "CloudCoin.safe" ;
+		}
 
         private static Safe GetInstance()
         {
-			var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
-			string settingsSafeFilePath = appDelegate.SafeDir + "/" + "CloudCoin.safe" ;
-            string filePath = Environment.ExpandEnvironmentVariables(settingsSafeFilePath);
+			string filePath = Environment.ExpandEnvironmentVariables(GetSafeFilePath());
             string bkpFilePath = filePath + ".bkp";
 
             var fileInfo = new FileInfo(filePath);
@@ -52,9 +54,12 @@ namespace CloudCoin_SafeScan
                 }
 
             }
+
+			userEnteredPassword = UserInteract.Password; //get user password for Safe
+											//get user password and check against stored in file
+
             if (!fileInfo.Exists)
             { //Safe does not exist, create one
-                userEnteredPassword = UserInteract.SetPassword(); //get user password for Safe
                 if (userEnteredPassword != "error")
                 {
                     encryptedUserEnteredPassword = Encoding.UTF8.GetBytes(Crypter.Blowfish.Crypt(Encoding.UTF8.GetBytes(userEnteredPassword)));
@@ -72,7 +77,6 @@ namespace CloudCoin_SafeScan
             }
             else //Safe already exists
             {
-                userEnteredPassword = UserInteract.CheckPassword(fileInfo); //get user password and check against stored in file
                 if (userEnteredPassword != "error")
                 {
                     encryptedUserEnteredPassword = Encoding.UTF8.GetBytes(Crypter.Blowfish.Crypt(Encoding.UTF8.GetBytes(userEnteredPassword)));
@@ -485,12 +489,14 @@ namespace CloudCoin_SafeScan
 
         private void RemoveCounterfeitCoins()
         {
-            foreach(CloudCoin coin in Contents)
+			var coinStack = new CoinStack(Contents);
+
+			foreach(CloudCoin coin in coinStack)
             {
                 if(coin.Verdict == CloudCoin.Status.Counterfeit)
                     Contents.cloudcoin.Remove(coin);
             }
-            
+
         }
 
         public void SaveOutStack(int desiredSum)

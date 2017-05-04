@@ -9,12 +9,26 @@ using System.CodeDom.Compiler;
 
 namespace CloudCoinIOS
 {
-	[Register ("PasswordViewController")]
-	partial class PasswordViewController
+	[Register ("EnterPassViewController")]
+	partial class EnterPassViewController
 	{
+		[Outlet]
+		UIKit.UIButton btnOk { get; set; }
+
+		[Outlet]
+		UIKit.UITextField txtPassword { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnOk != null) {
+				btnOk.Dispose ();
+				btnOk = null;
+			}
+
+			if (txtPassword != null) {
+				txtPassword.Dispose ();
+				txtPassword = null;
+			}
 		}
 	}
 }

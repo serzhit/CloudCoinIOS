@@ -35,29 +35,23 @@ namespace CloudCoinIOS
 			var pathList = NSFileManager.DefaultManager.Subpaths(documentDirectory);
 
 			SafeDir = documentDirectory + "/" + "safe";
-            IsExistDirectory(SafeDir);
-
-			BackupDir = documentDirectory + "/" + "Backup";
-			IsExistDirectory(BackupDir);
-
+			IsExistDirectory(SafeDir);
+            BackupDir = documentDirectory + "/" + "Backup";
+            IsExistDirectory(BackupDir);
 			ExportDir = documentDirectory + "/" + "Export";
-			IsExistDirectory(ExportDir);
-
+            IsExistDirectory(ExportDir);
 			ImportDir = documentDirectory + "/" + "Import";
-			IsExistDirectory(ImportDir);
-
+            IsExistDirectory(ImportDir);
 			LogDir = documentDirectory + "/" + "Log";
-			IsExistDirectory(LogDir);
-
+            IsExistDirectory(LogDir);
 			TemplatesDir = documentDirectory + "/" + "Templates";
-			IsExistDirectory(TemplatesDir);
+            IsExistDirectory(TemplatesDir);
 
-			bool isDirectory = false;
 			foreach (var path in pathList)
 			{
-				NSFileManager.DefaultManager.FileExists(path, ref isDirectory);
 				var fullPath = documentDirectory + "/" + path;
-				if (!UrlList.Contains(path) && !isDirectory && !IsSameWithFolder(fullPath))
+
+				if (!UrlList.Contains(path) && !IsSameWithFolder(fullPath) && path.IndexOf('/') <= 0)
 				{
 					UrlList.Add(fullPath);
 				}

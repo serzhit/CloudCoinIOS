@@ -16,11 +16,11 @@ namespace CloudCoinIOS
 		{
 		}
 
-		public override void ViewDidAppear(bool animated)
+		public override void ViewDidLoad()
 		{
-			base.ViewDidAppear(animated);
+			base.ViewDidLoad();
 
-			InitializeMethods();
+            InitializeMethods();
 		}
 
 		private void InitializeMethods()
