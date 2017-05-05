@@ -13,8 +13,15 @@ namespace CloudCoinIOS
 {
 	public partial class MainViewController : UIViewController
 	{
+		public enum ViewType
+		{
+			Imported,
+			Banked,
+			Exported
+		}
+
+		private ViewType subViewType;
 		private CloudCoinFile coinFile;
-		private bool isFromImported;
 
 		public MainViewController (IntPtr handle) : base (handle)
 		{
@@ -52,19 +59,23 @@ namespace CloudCoinIOS
 
 		private void CompletedWithPassword(CloudCoinFile ccFile)
 		{
+			subViewType = ViewType.Imported;
+			ShowPasswordViewController(ccFile);
+		}
+
+		private void ShowPasswordViewController(CloudCoinFile ccFile)
+		{
 			var fileInfo = new FileInfo(Safe.GetSafeFilePath());
 			NewPassViewController newPassViewController;
 			EnterPassViewController enterPassViewController;
 
 			this.coinFile = ccFile;
-			isFromImported = true;
 
 			if (!fileInfo.Exists)
 			{
 				newPassViewController = (NewPassViewController)GetViewController("NewPassViewController");
 				newPassViewController.ShowInView(View, true);
 				newPassViewController.FinishSetPassword += FinishDoPassword;
-					
 			}
 			else
 			{
@@ -72,36 +83,39 @@ namespace CloudCoinIOS
 				enterPassViewController.ShowInView(View, true);
 				enterPassViewController.FinishEnterPassword += FinishDoPassword;
 			}
-
-			//Safe.Instance?.Add(coinFile.Coins);
 		}
 
 		private void FinishDoPassword(string password)
 		{
 			UserInteract.Password = password;
-			if (isFromImported)
+			if (subViewType == ViewType.Imported)
 				Safe.Instance?.Add(coinFile.Coins);
 
 			if (Safe.Instance != null)
 			{
-				var modalBankViewController = (BankViewController)GetViewController("BankViewController");
-				modalBankViewController.ShowInView(View, true);
+				if (subViewType == ViewType.Exported)
+				{
+					var modalExportViewController = (ExportViewController)GetViewController("ExportViewController");
+					modalExportViewController.ShowInView(View, true);
+				}
+				else
+				{
+					var modalBankViewController = (BankViewController)GetViewController("BankViewController");
+					modalBankViewController.ShowInView(View, true);
+				}
 			}
 		}
 
 		partial void OnExportTouched(Foundation.NSObject sender)
 		{
-			var modalExportViewController = (ExportViewController)GetViewController("ExportViewController");
-			modalExportViewController.ShowInView(View, true);
+			subViewType = ViewType.Exported;
+            ShowPasswordViewController(null);
 		}
 
 		partial void OnBankTouched(Foundation.NSObject sender)
 		{
-			var enterPassViewController = (EnterPassViewController)GetViewController("EnterPassViewController");
-			enterPassViewController.ShowInView(View, true);
-			enterPassViewController.FinishEnterPassword += FinishDoPassword;
-
-			isFromImported = false;
+			subViewType = ViewType.Banked;
+			ShowPasswordViewController(null);
 		}
 
 		private BaseFormSheet GetViewController(string regId)

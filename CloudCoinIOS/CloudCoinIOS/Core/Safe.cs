@@ -47,12 +47,10 @@ namespace CloudCoin_SafeScan
             var bkpFileInfo = new FileInfo(bkpFilePath);
             if (!bkpFileInfo.Exists)
             {
-                var coins = new CoinStack();
                 using (var tmp = bkpFileInfo.Create())
                 {
                     tmp.Close();
                 }
-
             }
 
 			userEnteredPassword = UserInteract.Password; //get user password for Safe

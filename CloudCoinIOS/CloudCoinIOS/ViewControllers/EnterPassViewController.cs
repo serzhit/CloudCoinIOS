@@ -24,7 +24,14 @@ namespace CloudCoinIOS
 		{
 			base.ViewDidLoad();
 
+			InitializeProperties();
+
 			InitializeMethods();
+		}
+
+		private void InitializeProperties()
+		{
+			txtPassword.BecomeFirstResponder();
 		}
 
 		private void InitializeMethods()
