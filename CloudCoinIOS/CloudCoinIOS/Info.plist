@@ -40,13 +40,23 @@
 	<array>
 		<dict>
 			<key>UTTypeDescription</key>
-			<string>CloudCoin stack</string>
+			<string>CloudCoin Stack</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.gitinsky.stack</string>
+			<string>com.gitinskyios.stack</string>
 			<key>UTTypeSize64IconFile</key>
 			<string>cloudcoin87</string>
 			<key>UTTypeSize320IconFile</key>
-			<string>cloudcoin360</string>
+			<string>CloudCoinLogoRound</string>
+			<key>UTTypeConformsTo</key>
+			<array/>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>jpg</string>
+					<string>stack</string>
+				</array>
+			</dict>
 		</dict>
 	</array>
 	<key>UTImportedTypeDeclarations</key>
@@ -55,21 +65,24 @@
 			<key>UTTypeDescription</key>
 			<string>CloudCoin Stack</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.gitinsky.stack</string>
+			<string>com.gitinskyios.stack</string>
 			<key>UTTypeSize64IconFile</key>
 			<string>cloudcoin87</string>
 			<key>UTTypeSize320IconFile</key>
-			<string>cloudcoin360</string>
+			<string>CloudCoinLogoRound</string>
+			<key>UTTypeConformsTo</key>
+			<array/>
 		</dict>
+		<dict/>
 	</array>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeName</key>
-			<string>CloudCoin Stack</string>
+			<string>CloudCoin stack</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.gitinsky.stack</string>
+				<string>com.gitinskyios.stack</string>
 			</array>
 		</dict>
 	</array>
