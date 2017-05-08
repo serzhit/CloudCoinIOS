@@ -50,11 +50,22 @@ namespace CloudCoinIOS
 			
 		}
 
+		public static CloudCoinFile ScanSelected(List<string> urlList)
+		{
+			CloudCoinFile coinFile = null;
+
+			if (urlList != null && urlList.Count != 0)
+			{
+				coinFile = new CloudCoinFile(urlList);
+			}
+			return coinFile;
+		}
+
 		private void InitializeMethods()
 		{
 			btnImport.TouchUpInside += async (sender, e) =>
 			{
-				coinFile = ApplicationLogic.ScanSelected(urlList);
+				coinFile = ScanSelected(urlList);
 				if (coinFile != null && coinFile.IsValidFile)
 				{
 					isPasswordForSafe = await ShowAlert("Confirmation", confirmMsg, new string[] { "Yes", "No" });

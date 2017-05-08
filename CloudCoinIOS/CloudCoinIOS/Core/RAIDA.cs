@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 
 namespace CloudCoin_SafeScan
@@ -97,10 +102,10 @@ namespace CloudCoin_SafeScan
         {
             Stopwatch sw = new Stopwatch();
             Task<DetectResponse>[] tasks = new Task<DetectResponse>[NODEQNTY];
-            sw.Start();;
+            sw.Start();
             foreach(Node node in Instance.NodesArray)
             {
-                tasks[node.Number] = Task.Factory.StartNew(() => node.Detect(coin));
+                tasks[node.Number] = node.Detect(coin);
                 var tmp = await tasks[node.Number];
                 coin.detectStatus[node.Number] = (tmp.status == "pass") ? CloudCoin.raidaNodeResponse.pass : (tmp.status == "fail") ? CloudCoin.raidaNodeResponse.fail : CloudCoin.raidaNodeResponse.error;
             }
@@ -143,7 +148,7 @@ namespace CloudCoin_SafeScan
                 t.Start();
                 foreach (Node node in Instance.NodesArray)
                 {
-                    checkCoinTasks[node.Number] = Task.Factory.StartNew(() => node.Detect(coin));
+                    checkCoinTasks[node.Number] = node.Detect(coin);
                     checkCoinTasks[node.Number].ContinueWith((anc) =>
                     {
                         var tmp = anc.Result;
@@ -257,38 +262,69 @@ namespace CloudCoin_SafeScan
 
                 return get_Echo;
             }
-            
-            public DetectResponse Detect (CloudCoin coin)
-            {
-                var client = new RestClient();
-                client.BaseUrl = BaseUri;
-                var request = new RestRequest("detect");
-                request.AddQueryParameter("nn", coin.nn.ToString());
-                request.AddQueryParameter("sn", coin.sn.ToString());
-                request.AddQueryParameter("an", coin.an[Number]);
-                request.AddQueryParameter("pan", coin.pans[Number]);
-                request.AddQueryParameter("denomination", Utils.Denomination2Int(coin.denomination).ToString());
-                request.Timeout = 2000;
-                DetectResponse getDetectResult = new DetectResponse();
 
-                Stopwatch sw = new Stopwatch();
-                sw.Start();
+			public async Task<string> GetJSON(string url, bool isArray = true, int attempt = 0)
+			{
+				var client = new HttpClient();
+				client.MaxResponseContentBufferSize = 256000;
+
+				client.Timeout = TimeSpan.FromSeconds(20);
+				client.DefaultRequestHeaders.Accept.Clear();
+				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+				var cts = new CancellationTokenSource();
+
+				try
+				{
+					//cts.CancelAfter(2 * 1000); //ms
+					var response = await client.GetAsync(url, cts.Token); // must NOT use leading slash in path
+					if (!response.IsSuccessStatusCode)
+						throw new HttpRequestException();
+					string jsonResult = await response.Content.ReadAsStringAsync();
+					return jsonResult;
+				}
+				catch (Exception e)
+				{
+					if (attempt < 4)
+					{
+						System.Diagnostics.Debug.WriteLine("FAILURE, RETRY", attempt + 1);
+						return null;// GetJSONArray(path, isArray, attempt += 1);
+					}
+					else
+					{
+						System.Diagnostics.Debug.WriteLine("MULTIPLE FAIL, QUIT");
+						return null;
+					}
+				}
+			}
+            
+            public async Task<DetectResponse> Detect(CloudCoin coin)
+            {
+				var getDetectResult = new DetectResponse();
+				var sw = new Stopwatch();
+				sw.Start();
+				var query = string.Format("/detect?nn={0}&sn={1}&an={2}&pan={3}&denomination={4}",
+				                          coin.nn.ToString(), coin.sn.ToString(), 
+				                          coin.an[Number], coin.pans[Number],
+										  Utils.Denomination2Int(coin.denomination).ToString());
+				var detectResult = await GetJSON(BaseUri + query);
+
                 try
                 {
-                    getDetectResult = JsonConvert.DeserializeObject<DetectResponse>(client.Execute(request).Content);
+                    getDetectResult = JsonConvert.DeserializeObject<DetectResponse>(detectResult);
                 }
                 catch (JsonException e)
                 {
                     getDetectResult = new DetectResponse(Name, coin.sn.ToString(), "Invalid response", "The server does not respond or returns invalid data", DateTime.Now.ToString());
+					Console.WriteLine(e.Message);
                 }
-                getDetectResult = getDetectResult ?? new DetectResponse(Name, coin.sn.ToString(), "Network problem", "Node not found", DateTime.Now.ToString());
-                //if (getDetectResult.ErrorException != null)
-                //    getDetectResult = new DetectResponse(Name, coin.sn.ToString(), "Network problem", "Problems with network connection", DateTime.Now.ToString());
-
+                
+				getDetectResult = getDetectResult ?? new DetectResponse(Name, coin.sn.ToString(), "Network problem", "Node not found", DateTime.Now.ToString());
+                
                 sw.Stop();
                 getDetectResult.responseTime = sw.Elapsed;
 
-                if (getDetectResult.status == "pass")
+				if (getDetectResult.status == "pass")
                 {
                     coin.an[Number] = coin.pans[Number];
                 }

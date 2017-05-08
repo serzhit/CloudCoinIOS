@@ -254,7 +254,6 @@ namespace CloudCoin_SafeScan
                     int s;
                     switch (denomination)
                     {
-                        
                         case CloudCoin.Denomination.One:
                             s = 0;
                             foreach (CloudCoin coin in current.Contents)
@@ -448,15 +447,15 @@ namespace CloudCoin_SafeScan
                 }
                 catch (JsonException e)
                 {
-                    //MessageBox.Show("Safe.Add() JSON serialize exception: " + e.Message);
+					Console.WriteLine("Safe.Add() JSON serialize exception: " + e.Message);
                 }
                 catch (CryptographicException ex)
                 {
-                    //MessageBox.Show("Safe.Add() decrypting exception: " + ex.Message);
+					Console.WriteLine("Safe.Add() decrypting exception: " + ex.Message);
                 }
                 catch (IOException ex)
                 {
-                    //MessageBox.Show("Safe.Add() IO write exception: " + ex.Message);
+					Console.WriteLine("Safe.Add() IO write exception: " + ex.Message);
                 }
             }
             using (var fs = bkpFileInfo.Open(FileMode.Open))
@@ -472,15 +471,15 @@ namespace CloudCoin_SafeScan
                 }
                 catch (JsonException e)
                 {
-                    //MessageBox.Show("Safe.Add() JSON serialize exception: " + e.Message);
+					Console.WriteLine("Safe.Add() JSON serialize exception: " + e.Message);
                 }
                 catch (CryptographicException ex)
                 {
-                    //MessageBox.Show("Safe.Add() decrypting exception: " + ex.Message);
+					Console.WriteLine("Safe.Add() decrypting exception: " + ex.Message);
                 }
                 catch (IOException ex)
                 {
-                    //MessageBox.Show("Safe.Add() IO write exception: " + ex.Message);
+					Console.WriteLine("Safe.Add() IO write exception: " + ex.Message);
                 }
             }
         }
@@ -497,18 +496,43 @@ namespace CloudCoin_SafeScan
 
         }
 
-        public void SaveOutStack(int desiredSum)
-        {
-            //CoinStack stack = ChooseNearestPossibleStack(desiredSum);
-            //if (stack != null)
-            //{
-            //    onSafeContentChanged(new EventArgs());
-            //    CoinStackOut st = new CoinStackOut(stack);
-            //    string fn = Environment.ExpandEnvironmentVariables(Properties.Settings.Default.UserCloudcoinExportDir) +
-            //        desiredSum +"."+ DateTime.Now.ToString("dd-MM-yy_HH-mm") + ".stack";
-            //    st.SaveInFile(fn);
-            //    //Logger.Write("Exported stack with " + stack.cloudcoin.Count + " coins.", Logger.Level.Normal);
-            //}
+		public bool SaveOutStack(CoinStack stack, int desiredSum, bool isJSON, string note)
+		{
+			if (stack != null && stack.Count<CloudCoin>() != 0)
+			{
+				onSafeContentChanged(new EventArgs());
+				CoinStackOut st = new CoinStackOut(stack);
+				string serialNumbers = "";
+				var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
+
+				foreach (CloudCoin coin in stack)
+				{
+					serialNumbers += coin.sn.ToString() + "\n";
+				}
+
+				if (isJSON)
+				{
+					string fn = Environment.ExpandEnvironmentVariables(appDelegate.ExportDir) +
+					desiredSum + "." + note + "." + DateTime.Now.ToString("dd-MM-yy.HH-mm") + ".stack";
+					st.SaveInFile(fn);
+					//Logger.Write("Exported JSON stack with " + stack.cloudcoin.Count + " coins.\n" +
+					//			 "Serial numbers:\n" + serialNumbers, Logger.Level.Normal);
+				}
+				else
+				{
+					var cloudCoinFile = new CloudCoinFile();
+
+					foreach (var coin in stack)
+					{
+						//cloudCoinFile.WriteJpeg(coin, note);
+					}
+				}
+				return true;
+			}
+			else
+			{
+				return false;
+			}
         }
 
         private CoinStack ChooseNearestPossibleStack(int sum)

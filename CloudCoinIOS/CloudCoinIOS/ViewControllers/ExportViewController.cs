@@ -10,8 +10,10 @@ namespace CloudCoinIOS
 	public partial class ExportViewController : BaseFormSheet
 	{
 		private UIColor borderColor = UIColor.FromRGB(122, 134, 148);
+		private nint desiredSum;
+		Safe safe;
 
-		public ExportViewController (IntPtr handle) : base (handle)
+		public ExportViewController(IntPtr handle) : base(handle)
 		{
 		}
 
@@ -32,12 +34,42 @@ namespace CloudCoinIOS
 			SetBorderColor(picker100);
 			SetBorderColor(picker250);
 
-			var safe = Safe.Instance;
-			pickerOne.Model = new CoinPickerViewModel(safe.Ones.GoodQuantity);
-			pickerFive.Model = new CoinPickerViewModel(safe.Fives.GoodQuantity);
-			picker25.Model = new CoinPickerViewModel(safe.Quarters.GoodQuantity);
-			picker100.Model = new CoinPickerViewModel(safe.Hundreds.GoodQuantity);
-			picker250.Model = new CoinPickerViewModel(safe.KiloQuarters.GoodQuantity);
+			try
+			{
+				safe = Safe.Instance;
+			}
+			catch (Exception ex)
+			{
+				safe = null;
+				Console.WriteLine(ex.Message);
+			}
+
+			pickerOne.Model = new CoinPickerViewModel(this, safe.Ones.GoodQuantity);
+			pickerFive.Model = new CoinPickerViewModel(this, safe.Fives.GoodQuantity);
+			picker25.Model = new CoinPickerViewModel(this, safe.Quarters.GoodQuantity);
+			picker100.Model = new CoinPickerViewModel(this, safe.Hundreds.GoodQuantity);
+			picker250.Model = new CoinPickerViewModel(this, safe.KiloQuarters.GoodQuantity);
+
+			lblOne.Text = "of " + safe.Ones.GoodQuantity.ToString();
+			lblFive.Text = "of " + safe.Fives.GoodQuantity.ToString();
+			lbl25.Text = "of " + safe.Quarters.GoodQuantity.ToString();
+			lbl100.Text = "of " + safe.Hundreds.GoodQuantity.ToString();
+			lbl250.Text = "of " + safe.KiloQuarters.GoodQuantity.ToString();
+
+			lblSumInSafe.Text = Safe.Instance.Contents.SumInStack.ToString();
+			desiredSum = 0;
+			PickerSelectedHandler();
+		}
+
+		public void PickerSelectedHandler()
+		{
+			desiredSum = pickerOne.SelectedRowInComponent(0)
+					  + pickerFive.SelectedRowInComponent(0) * 5
+					  + picker25.SelectedRowInComponent(0) * 25
+					  + picker100.SelectedRowInComponent(0) * 100
+					  + picker250.SelectedRowInComponent(0) * 250;
+
+			btnExport.SetTitle("Export " + desiredSum.ToString(), UIControlState.Normal);
 		}
 
 		private void SetBorderColor(UIView view)
@@ -52,15 +84,52 @@ namespace CloudCoinIOS
 			{
 				RemoveAnimate();
 			};
+
+			btnExport.TouchUpInside += (sender, e) =>
+			{
+				bool isJson = segmentFormat.SelectedSegment == 0 ? true : false;
+				var exportCoins = GetExportCoins();
+				var isExported = safe.SaveOutStack(GetExportCoins(), (int)desiredSum, isJson, lblNote.Text);
+
+				if (isExported)
+				{
+					if (isJson)
+						ShowAlert("Export", "JSON stack of coins saved in Export dir.\n", new string[] { "Ok" });
+					else
+						ShowAlert("Export", "Pictures with coins saved in Export dir.\n", new string[] { "Ok" });
+
+					safe.Contents.Remove(exportCoins);
+					safe.onSafeContentChanged(new EventArgs());
+					safe.Save();
+				}
+				else
+				{
+					ShowAlert("Export", "Nothing to export!\n");
+				}
+			};
+		}
+
+		private CoinStack GetExportCoins()
+		{
+			var coinStack = new CoinStack();
+			coinStack.Add(safe.Contents.CoinOnes, (int)pickerOne.SelectedRowInComponent(0));
+			coinStack.Add(safe.Contents.CoinFives, (int)pickerFive.SelectedRowInComponent(0));
+			coinStack.Add(safe.Contents.CoinQuarters, (int)picker25.SelectedRowInComponent(0));
+			coinStack.Add(safe.Contents.CoinHundreds, (int)picker100.SelectedRowInComponent(0));
+			coinStack.Add(safe.Contents.CoinKiloQuarters, (int)picker250.SelectedRowInComponent(0));
+			return coinStack;
 		}
 	}
 
 	public class CoinPickerViewModel : UIPickerViewModel
 	{
 		private int count;
-		public CoinPickerViewModel(int count)
+		private ExportViewController exportViewController;
+
+		public CoinPickerViewModel(ExportViewController exportViewController, int count)
 		{
 			this.count = count;
+			this.exportViewController = exportViewController;
 		}
 
 		public override nint GetRowsInComponent(UIPickerView pickerView, nint component)
@@ -76,6 +145,11 @@ namespace CloudCoinIOS
 		public override nint GetComponentCount(UIPickerView pickerView)
 		{
 			return 1;
+		}
+
+		public override void Selected(UIPickerView pickerView, nint row, nint component)
+		{
+			exportViewController.PickerSelectedHandler();
 		}
 	}
 }

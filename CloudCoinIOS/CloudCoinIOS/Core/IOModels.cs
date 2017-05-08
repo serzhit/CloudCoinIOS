@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using Foundation;
+using System.Drawing;
 
 namespace CloudCoin_SafeScan
 {
@@ -67,6 +68,11 @@ namespace CloudCoin_SafeScan
         FileInfo FI;
         public CoinStack Coins = new CoinStack();
 		public bool IsValidFile { get; set; }
+
+		public CloudCoinFile()
+		{
+			
+		}
 
 		public CloudCoinFile(List<string> urlList)
         {
@@ -201,6 +207,105 @@ namespace CloudCoin_SafeScan
             }
             return stack;
         }
+
+		/* Writes a JPEG To the Export Folder */
+		//public bool WriteJpeg(CloudCoin cc, string tag)
+		//{
+		//	// Console.Out.WriteLine("Writing jpeg " + cc.sn);
+
+		//	bool fileSavedSuccessfully = true;
+
+		//	/* BUILD THE CLOUDCOIN STRING */
+		//	String cloudCoinStr = "01C34A46494600010101006000601D05"; //THUMBNAIL HEADER BYTES
+		//	for (int i = 0; (i < 25); i++)
+		//	{
+		//		cloudCoinStr = cloudCoinStr + cc.an[i];
+		//	} // end for each an
+
+		//	cloudCoinStr += "204f42455920474f4420262044454645415420545952414e545320";// Hex for " OBEY GOD & DEFEAT TYRANTS "
+		//	cloudCoinStr += "00"; // HC: Has comments. 00 = No
+		//	cloudCoinStr += "00"; // LHC = 100%
+		//						  //Calculate Expiration date 
+		//	DateTime date = DateTime.Today;
+		//	int YEARSTILEXPIRE = 2; //The rule is coins expire in two years. 
+		//	date.AddYears(YEARSTILEXPIRE);
+		//	// this.ed = (date.Month + "-" + date.Year);
+		//	cloudCoinStr += date.Month.ToString("X1");
+		//	cloudCoinStr += date.Year.ToString("X3");// 0x97E2;//Expiration date Sep. 2018
+
+		//	cloudCoinStr += "01";//  cc.nn;//network number
+		//	String hexSN = cc.sn.ToString("X6");
+		//	String fullHexSN = "";
+		//	switch (hexSN.Length)
+		//	{
+		//		case 1: fullHexSN = ("00000" + hexSN); break;
+		//		case 2: fullHexSN = ("0000" + hexSN); break;
+		//		case 3: fullHexSN = ("000" + hexSN); break;
+		//		case 4: fullHexSN = ("00" + hexSN); break;
+		//		case 5: fullHexSN = ("0" + hexSN); break;
+		//		case 6: fullHexSN = hexSN; break;
+		//	}
+		//	cloudCoinStr = (cloudCoinStr + fullHexSN);
+		//	/* BYTES THAT WILL GO FROM 04 to 454 (Inclusive)*/
+		//	byte[] ccArray = this.hexStringToByteArray(cloudCoinStr);
+
+
+		//	/* READ JPEG TEMPLATE*/
+		//	byte[] jpegBytes = null;
+		//	switch (getDenomination(cc.sn))
+		//	{
+		//		case 1: jpegBytes = readBytesFromJpg(Environment.ExpandEnvironmentVariables(Properties.Settings.Default.UserCloudcoinTemplateDir) + "jpeg1.jpg"); break;
+		//		case 5: jpegBytes = readBytesFromJpg(Environment.ExpandEnvironmentVariables(Properties.Settings.Default.UserCloudcoinTemplateDir) + "jpeg5.jpg"); break;
+		//		case 25: jpegBytes = readBytesFromJpg(Environment.ExpandEnvironmentVariables(Properties.Settings.Default.UserCloudcoinTemplateDir) + "jpeg25.jpg"); break;
+		//		case 100: jpegBytes = readBytesFromJpg(Environment.ExpandEnvironmentVariables(Properties.Settings.Default.UserCloudcoinTemplateDir) + "jpeg100.jpg"); break;
+		//		case 250: jpegBytes = readBytesFromJpg(Environment.ExpandEnvironmentVariables(Properties.Settings.Default.UserCloudcoinTemplateDir) + "jpeg250.jpg"); break;
+
+		//	}// end switch
+
+
+		//	/* WRITE THE SERIAL NUMBER ON THE JPEG */
+
+		//	Bitmap bitmapimage;
+		//	using (var ms = new MemoryStream(jpegBytes))
+		//	{
+		//		bitmapimage = new Bitmap(ms);
+		//		// bitmapimage.Save(fileName2, ImageFormat.Jpeg);
+		//	}
+		//	Graphics graphics = Graphics.FromImage(bitmapimage);
+		//	graphics.SmoothingMode = SmoothingMode.AntiAlias;
+		//	graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+		//	PointF drawPointAddress = new PointF(10.0F, 10.0F);
+		//	graphics.DrawString(String.Format("{0:N0}", cc.sn) + " of 16,777,216 on Network: 1", new Font("Arial", 20), System.Drawing.Brushes.White, drawPointAddress);
+
+		//	ImageConverter converter = new ImageConverter();
+		//	byte[] snBytes = (byte[])converter.ConvertTo(bitmapimage, typeof(byte[]));
+
+		//	List<byte> b1 = new List<byte>(snBytes);
+		//	List<byte> b2 = new List<byte>(ccArray);
+		//	b1.InsertRange(4, b2);
+
+		//	if (tag == "random")
+		//	{
+		//		Random r = new Random();
+		//		int rInt = r.Next(100000, 1000000); //for ints
+		//		tag = rInt.ToString();
+		//	}
+
+		//	string folderPath = Environment.ExpandEnvironmentVariables(Properties.Settings.Default.UserCloudcoinExportDir) + tag + "_" + string.Format("{0:ddMMyyyy}", date) + "\\";
+		//	DirectoryInfo DI = new DirectoryInfo(folderPath);
+		//	if (!DI.Exists)
+		//	{
+		//		DI.Create();
+		//	}
+
+		//	string fileName = getDenomination(cc.sn) + ".CloudCoin." + cc.nn + "." + cc.sn + ".";
+		//	string jpgfileName = folderPath + fileName + tag + ".jpg";
+
+		//	File.WriteAllBytes(jpgfileName, b1.ToArray());
+
+		//	return fileSavedSuccessfully;
+		//}
+		//end write JPEG
     }
 
     [JsonObject(MemberSerialization.OptIn)]
@@ -233,39 +338,25 @@ namespace CloudCoin_SafeScan
         public List<CloudCoinOut> cloudcoin { get; set; }
         public void SaveInFile(string filename)
         {
-            //FileInfo fi = new FileInfo(filename);
-            //if (File.Exists(filename))
-            //{
-            //    var FD = new SaveFileDialog();
-            //    FD.InitialDirectory = fi.DirectoryName;
-            //    FD.Title = "File Exists, Choose Another Name";
-            //    FD.OverwritePrompt = true;
-            //    FD.DefaultExt = "ccstack";
-            //    FD.CreatePrompt = false;
-            //    FD.CheckPathExists = true;
-            //    FD.CheckFileExists = true;
-            //    FD.AddExtension = true;
-            //    FD.ShowDialog();
-            //    fi = new FileInfo(FD.FileName);
-            //}
-            //Directory.CreateDirectory(fi.DirectoryName);
-            //using (StreamWriter sw = fi.CreateText())
-            //{
-            //    string json = null;
-            //    try
-            //    {
-            //        json = JsonConvert.SerializeObject(this);
-            //        sw.Write(json);
-            //    }
-            //    catch (JsonException ex)
-            //    {
-            //        MessageBox.Show("CloudStackOut.SaveInFile Serialize exception: " + ex.Message);
-            //    }
-            //    catch (IOException ex)
-            //    {
-            //        MessageBox.Show("CloudStackOut.SaveInFile IO exception: " + ex.Message);
-            //    }
-            //}
+            FileInfo fi = new FileInfo(filename);
+            
+            using (StreamWriter sw = fi.CreateText())
+            {
+                string json = null;
+                try
+                {
+                    json = JsonConvert.SerializeObject(this);
+                    sw.Write(json);
+                }
+                catch (JsonException ex)
+                {
+					Console.WriteLine("CloudStackOut.SaveInFile Serialize exception: " + ex.Message);
+                }
+                catch (IOException ex)
+                {
+					Console.WriteLine("CloudStackOut.SaveInFile IO exception: " + ex.Message);
+                }
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
 
 namespace CloudCoin_SafeScan
 {
@@ -204,6 +205,36 @@ namespace CloudCoin_SafeScan
             }
             return result;
         }
+
+		public string[] generatePans()
+		{
+			string[] result = new string[RAIDA.NODEQNTY];
+			using (var provider = new RNGCryptoServiceProvider())
+			{
+				for (int i = 0; i < RAIDA.NODEQNTY; i++)
+				{
+					var bytes = new byte[16];
+					provider.GetBytes(bytes);
+
+					Guid pan = new Guid(bytes);
+					String rawpan = pan.ToString("N");
+					String fullPan = "";
+					switch (rawpan.Length)//Make sure the pan is 32 characters long. The odds of this happening are slim but it will happen.
+					{
+						case 27: fullPan = ("00000" + rawpan); break;
+						case 28: fullPan = ("0000" + rawpan); break;
+						case 29: fullPan = ("000" + rawpan); break;
+						case 30: fullPan = ("00" + rawpan); break;
+						case 31: fullPan = ("0" + rawpan); break;
+						case 32: fullPan = rawpan; break;
+						case 33: fullPan = rawpan.Substring(0, rawpan.Length - 1); break;//trim one off end
+						case 34: fullPan = rawpan.Substring(0, rawpan.Length - 2); break;//trim one off end
+					}
+					result[i] = fullPan;
+				}
+			}//end for each Pan
+			return result;
+		}
     }
 
     [JsonObject(MemberSerialization.OptIn)]
@@ -246,6 +277,46 @@ namespace CloudCoin_SafeScan
                 return s;
             }
         }
+
+		public List<CloudCoin> CoinOnes
+		{
+			get
+			{
+				return cloudcoin.Where(x => x.denomination == CloudCoin.Denomination.One).ToList();
+			}
+		}
+
+		public List<CloudCoin> CoinFives
+		{
+			get
+			{
+				return cloudcoin.Where(x => x.denomination == CloudCoin.Denomination.Five).ToList();
+			}
+		}
+
+		public List<CloudCoin> CoinQuarters
+		{
+			get
+			{
+				return cloudcoin.Where(x => x.denomination == CloudCoin.Denomination.Quarter).ToList();
+			}
+		}
+
+		public List<CloudCoin> CoinHundreds
+		{
+			get
+			{
+				return cloudcoin.Where(x => x.denomination == CloudCoin.Denomination.Hundred).ToList();
+			}
+		}
+
+		public List<CloudCoin> CoinKiloQuarters
+		{
+			get
+			{
+				return cloudcoin.Where(x => x.denomination == CloudCoin.Denomination.KiloQuarter).ToList();
+			}
+		}
 
         public int Ones
         {
@@ -329,16 +400,19 @@ namespace CloudCoin_SafeScan
         {
             return GetEnumerator();
         }
+
         public IEnumerator<CloudCoin> GetEnumerator()
         {
             return cloudcoin.GetEnumerator();
         }
+
         public void Add(CloudCoin coin)
         {
             cloudcoin.Add(coin);
             var tmp = cloudcoin.Distinct();
             cloudcoin = new HashSet<CloudCoin>(tmp);
         }
+
         public void Add(CoinStack stack2)
         {
             foreach (CloudCoin coin in stack2)
@@ -348,6 +422,16 @@ namespace CloudCoin_SafeScan
             var tmp = cloudcoin.Distinct();
             cloudcoin = new HashSet<CloudCoin>(tmp);
         }
+
+		public void Add(List<CloudCoin> coinList, int count)
+		{
+			for (int index = 0; index < count; index++)
+			{
+				cloudcoin.Add(coinList[index]);
+			}
+			var tmp = cloudcoin.Distinct();
+			cloudcoin = new HashSet<CloudCoin>(tmp);
+		}
 
         public void Remove(CoinStack stack2)
         {
