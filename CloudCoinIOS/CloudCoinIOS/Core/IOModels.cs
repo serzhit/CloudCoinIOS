@@ -84,65 +84,72 @@ namespace CloudCoin_SafeScan
 
         private void ParseCloudCoinFile(string fullPath)
         {
-			FI = new FileInfo(fullPath);
-            if (FI.Exists)
-            {
-                Filename = fullPath;
-                using (Stream fsSource = FI.Open(FileMode.Open))
-                {
-                    byte[] signature = new byte[20];
-					fsSource.Read(signature, 0, 20);
-					                    string sig = Encoding.UTF8.GetString(signature);
-					var reg = new Regex(@"{[.\n\t\s\x09\x0A\x0D]*""cloudcoin""");
+			try
+			{
+				FI = new FileInfo(fullPath);
+				if (FI.Exists)
+				{
+					Filename = fullPath;
+					using (Stream fsSource = FI.Open(FileMode.Open, FileAccess.Read))
+					{
+						byte[] signature = new byte[20];
+						fsSource.Read(signature, 0, 20);
+						string sig = Encoding.UTF8.GetString(signature);
+						var reg = new Regex(@"{[.\n\t\s\x09\x0A\x0D]*""cloudcoin""");
+						IsValidFile = false;
+
+						if (Enumerable.SequenceEqual(signature.Take(3), new byte[] { 255, 216, 255 })) //JPEG
+						{
+							Filetype = Type.jpeg;
+							var coin = ReadJpeg(fsSource);
+							IsValidFile = coin.Validate();
+
+							if (coin != null && IsValidFile)
+							{
+								Coins.Add(new CoinStack(coin));
+							}
+						}
+						else if (reg.IsMatch(sig)) //JSON
+						{
+							Filetype = Type.json;
+							var json = ReadJson(fsSource);
+
+							if (json != null)
+							{
+								foreach (var coin in json)
+								{
+									if (!coin.Validate())
+									{
+										IsValidFile = false;
+										break;
+									}
+									else
+									{
+										IsValidFile = true;
+									}
+								}
+							}
+
+							if (IsValidFile)
+							{
+								Coins.Add(json);
+							}
+						}
+					}
+					//***
+					//if (IsValidFile)
+					//FileSystem.CopyOriginalFileToImported(FI);
+				}
+				else
+				{
 					IsValidFile = false;
-
-                    if (Enumerable.SequenceEqual(signature.Take(3), new byte[] { 255, 216, 255 })) //JPEG
-                    {
-                        Filetype = Type.jpeg;
-                        var coin = ReadJpeg(fsSource);
-						IsValidFile = coin.Validate();
-
-                        if (coin != null && IsValidFile)
-                        {
-                            Coins.Add(new CoinStack(coin));
-                        }
-                    }
-                    else if (reg.IsMatch(sig)) //JSON
-                    {
-                        Filetype = Type.json;
-                        var json = ReadJson(fsSource);
-
-                        if (json != null)
-                        {
-                            foreach (var coin in json)
-                            {
-                                if (!coin.Validate())
-                                {
-                                    IsValidFile = false;
-                                    break;
-                                }
-                                else
-                                {
-                                    IsValidFile = true;
-                                }
-                            }
-                        }
-                        
-                        if (IsValidFile)
-                        {
-                            Coins.Add(json);
-                        }
-                    }
-                }
-				//***
-                //if (IsValidFile)
-                    //FileSystem.CopyOriginalFileToImported(FI);
-            }
-            else
-            {
-				IsValidFile = false;
-                //throw new FileNotFoundException();
-            }
+					//throw new FileNotFoundException();
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
         }
 
         private CloudCoin ReadJpeg(Stream jpegFS)

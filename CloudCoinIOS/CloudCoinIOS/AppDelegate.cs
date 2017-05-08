@@ -19,6 +19,7 @@ namespace CloudCoinIOS
 		public string ImportDir { get; set; }
 		public string LogDir { get; set; }
 		public string TemplatesDir { get; set; }
+		public string InboxDir { get; set; }
 
 		public override UIWindow Window
 		{
@@ -46,14 +47,15 @@ namespace CloudCoinIOS
             IsExistDirectory(LogDir);
 			TemplatesDir = documentDirectory + "/" + "Templates";
             IsExistDirectory(TemplatesDir);
+			InboxDir = documentDirectory + "/" + "Inbox";
 
 			foreach (var path in pathList)
 			{
 				var fullPath = documentDirectory + "/" + path;
 
-				if (!UrlList.Contains(path) && !IsSameWithFolder(fullPath) && path.IndexOf('/') <= 0)
+				if (!UrlList.Contains(path) && !IsSameWithFolder(fullPath))
 				{
-					UrlList.Add(fullPath);
+  					UrlList.Add(fullPath);
 				}
 			}
 
@@ -62,12 +64,13 @@ namespace CloudCoinIOS
 
 		private bool IsSameWithFolder(string path)
 		{
-			if (path == SafeDir ||
-				path == BackupDir ||
-				path == ExportDir ||
-				path == ImportDir ||
-				path == LogDir ||
-				path == TemplatesDir)
+			if (path.Contains(SafeDir) ||
+			    path.Contains(BackupDir) ||
+			    path.Contains(ExportDir) ||
+			    path.Contains(ImportDir) ||
+			    path.Contains(LogDir) ||
+			    path.Contains(TemplatesDir) ||
+			    path == InboxDir)
 				return true;
 			else
 				return false;
