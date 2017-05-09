@@ -527,9 +527,14 @@ namespace CloudCoin_SafeScan
 				{
 					var cloudCoinFile = new CloudCoinFile();
 
+					ExportedPaths = new List<string>();
+
+					string path = "";
 					foreach (var coin in stack)
 					{
-						//cloudCoinFile.WriteJpeg(coin, note);
+						var success = cloudCoinFile.WriteJpeg(coin, note, ref path);
+						if (success)
+							ExportedPaths.Add(path);
 					}
 				}
 				return true;

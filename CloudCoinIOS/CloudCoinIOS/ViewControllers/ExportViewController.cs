@@ -12,6 +12,7 @@ namespace CloudCoinIOS
 		private UIColor borderColor = UIColor.FromRGB(122, 134, 148);
 		private nint desiredSum;
 		Safe safe;
+		CoinStack exportCoins;
 
 		public ExportViewController(IntPtr handle) : base(handle)
 		{
@@ -87,21 +88,12 @@ namespace CloudCoinIOS
 
 			btnExport.TouchUpInside += (sender, e) =>
 			{
-				bool isJson = segmentFormat.SelectedSegment == 0 ? true : false;
-				var exportCoins = GetExportCoins();
+				bool isJson = segmentFormat.SelectedSegment == 1 ? true : false;
+				exportCoins = GetExportCoins();
 				var isExported = safe.SaveOutStack(GetExportCoins(), (int)desiredSum, isJson, lblNote.Text);
 
 				if (isExported)
 				{
-					//if (isJson)
-					//	ShowAlert("Export", "JSON stack of coins saved in Export dir.\n", new string[] { "Ok" });
-					//else
-					//	ShowAlert("Export", "Pictures with coins saved in Export dir.\n", new string[] { "Ok" });
-
-					safe.Contents.Remove(exportCoins);
-					safe.onSafeContentChanged(new EventArgs());
-					safe.Save();
-
 					var fileData = NSUrl.FromFilename(safe.ExportedPaths[0]);
 
 					var activityViewController = new UIActivityViewController(new NSObject[] { fileData }, null);
@@ -111,14 +103,33 @@ namespace CloudCoinIOS
 						activityViewController.PopoverPresentationController.SourceView = this.View;
 					}
 
-					PresentViewController(activityViewController, true, null);
+					activityViewController.CompletionHandler += SetCompletionHandler;
 
+					PresentViewController(activityViewController, true, null);
 				}
 				else
 				{
-					ShowAlert("Export", "Nothing to export!\n");
+					ShowAlert("Export", "Nothing to export!\n", new string[] {"Ok"});
 				}
 			};
+		}
+
+		private void SetCompletionHandler(NSString act, bool success)
+		{
+			if (success)
+			{
+				safe.Contents.Remove(exportCoins);
+				safe.onSafeContentChanged(new EventArgs());
+				safe.Save();
+
+				RemoveAnimate();
+
+				Console.WriteLine("success");
+			}
+			else
+			{
+				Console.WriteLine("cancel");
+			}
 		}
 
 		private CoinStack GetExportCoins()
