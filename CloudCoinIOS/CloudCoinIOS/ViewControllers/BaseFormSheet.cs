@@ -1,13 +1,42 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Foundation;
 using UIKit;
 
 namespace CloudCoinIOS
 {
 	public class BaseFormSheet : UIViewController
 	{
+		
 		public BaseFormSheet()
 		{
+		}
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+
+			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, KeyboardDidHide);
+			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillShowNotification, KeyboardDidShow);
+		}
+
+		private void KeyboardDidShow(NSNotification notification)
+		{
+			var rect = UIKeyboard.FrameEndFromNotification(notification);
+			var diff = (View.Frame.Height - View.Subviews[0].Frame.Height) / 2f;
+
+			if (diff < rect.Height)
+				View.Frame = new CoreGraphics.CGRect(0, diff - rect.Height, View.Frame.Size.Width, View.Frame.Size.Height);
+		}
+
+		private void KeyboardDidHide(NSNotification notification)
+		{
+			View.Frame = new CoreGraphics.CGRect(0, 0, View.Frame.Size.Width, View.Frame.Size.Height);
+		}
+
+		public override void ViewWillDisappear(bool animated)
+		{
+			base.ViewWillDisappear(animated);
 		}
 
 		public BaseFormSheet(IntPtr handle) : base(handle)

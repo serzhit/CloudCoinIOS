@@ -17,6 +17,9 @@ namespace CloudCoin_SafeScan
     {
         private const string SLOGAN = "Не в силе Бог, а в правде!";
         //Singleton instance could be object or null, must check in every call
+
+		private static Safe theOnlySafeInstance = null;
+
         public static Safe Instance
         {
             get
@@ -24,7 +27,8 @@ namespace CloudCoin_SafeScan
                 return theOnlySafeInstance ?? GetInstance();   //Singleton Fabric
             }
         }
-        private static Safe theOnlySafeInstance = null;
+
+		public List<string> ExportedPaths { get; set; }
 
         //Static fields
         private static string cryptPassFromFile = ""; //encrypted string which has been read from Safe file
@@ -512,11 +516,12 @@ namespace CloudCoin_SafeScan
 
 				if (isJSON)
 				{
-					string fn = Environment.ExpandEnvironmentVariables(appDelegate.ExportDir) +
-					desiredSum + "." + note + "." + DateTime.Now.ToString("dd-MM-yy.HH-mm") + ".stack";
+					string fn = appDelegate.ExportDir + desiredSum + "." 
+					       + note + "." + DateTime.Now.ToString("dd-MM-yy.HH-mm") + ".stack";
 					st.SaveInFile(fn);
-					//Logger.Write("Exported JSON stack with " + stack.cloudcoin.Count + " coins.\n" +
-					//			 "Serial numbers:\n" + serialNumbers, Logger.Level.Normal);
+
+					ExportedPaths = new List<string>() { fn };
+
 				}
 				else
 				{

@@ -1072,7 +1072,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="ame-GS-i4w">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="ame-GS-i4w">
                                         <rect key="frame" x="20" y="23" width="227" height="151"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Seems that you did not set up your password yet. Please, enter one and then verify. Write down your password in safe place. If you forget one it will be impossible to restore and you'll loose all of your cloudcoins, unless you haven't written down their serial numbers.</string>

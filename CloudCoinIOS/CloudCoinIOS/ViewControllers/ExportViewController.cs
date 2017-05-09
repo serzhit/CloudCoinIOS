@@ -93,14 +93,26 @@ namespace CloudCoinIOS
 
 				if (isExported)
 				{
-					if (isJson)
-						ShowAlert("Export", "JSON stack of coins saved in Export dir.\n", new string[] { "Ok" });
-					else
-						ShowAlert("Export", "Pictures with coins saved in Export dir.\n", new string[] { "Ok" });
+					//if (isJson)
+					//	ShowAlert("Export", "JSON stack of coins saved in Export dir.\n", new string[] { "Ok" });
+					//else
+					//	ShowAlert("Export", "Pictures with coins saved in Export dir.\n", new string[] { "Ok" });
 
 					safe.Contents.Remove(exportCoins);
 					safe.onSafeContentChanged(new EventArgs());
 					safe.Save();
+
+					var fileData = NSUrl.FromFilename(safe.ExportedPaths[0]);
+
+					var activityViewController = new UIActivityViewController(new NSObject[] { fileData }, null);
+
+					if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+					{
+						activityViewController.PopoverPresentationController.SourceView = this.View;
+					}
+
+					PresentViewController(activityViewController, true, null);
+
 				}
 				else
 				{
