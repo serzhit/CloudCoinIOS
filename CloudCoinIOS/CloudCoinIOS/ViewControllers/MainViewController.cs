@@ -92,7 +92,15 @@ namespace CloudCoinIOS
 			UserInteract.Password = password;
 			appDelegate.Password = password;
 			if (subViewType == ViewType.Imported)
+			{
 				Safe.Instance?.Add(coinFile.Coins);
+				foreach (var path in appDelegate.UrlList)
+				{
+					File.Delete(path);
+				}
+
+				appDelegate.UrlList.Clear();
+			}
 
 			if (Safe.Instance != null)
 			{
