@@ -51,28 +51,6 @@ namespace CloudCoin_SafeScan
                 else return Denomination.Unknown;
             }
         }
-/*        public ImageSource coinImage
-        {
-            get
-            {
-                switch (denomination)
-                {
-                    case Denomination.One:
-                        return new BitmapImage(new Uri(@"pack://application:,,,/Resources/1coin.png", UriKind.Absolute));
-                    case Denomination.Five:
-                        return new BitmapImage(new Uri(@"pack://application:,,,/Resources/5coin.png", UriKind.Absolute));
-                    case Denomination.Quarter:
-                        return new BitmapImage(new Uri(@"pack://application:,,,/Resources/25coin.png", UriKind.Absolute));
-                    case Denomination.Hundred:
-                        return new BitmapImage(new Uri(@"pack://application:,,,/Resources/100coin.png", UriKind.Absolute));
-                    case Denomination.KiloQuarter:
-                        return new BitmapImage(new Uri(@"pack://application:,,,/Resources/250coin.png", UriKind.Absolute));
-                    default:
-                        return new BitmapImage(new Uri(@"pack://application:,,,/Resources/stackcoins.png", UriKind.Absolute));
-                }
-            }
-        }
-*/
         [JsonProperty]
         public int sn { set; get; }
         [JsonProperty]

@@ -22,6 +22,7 @@ namespace CloudCoinIOS
 
 		private ViewType subViewType;
 		private CloudCoinFile coinFile;
+		private AppDelegate appDelegate;
 
 		public MainViewController (IntPtr handle) : base (handle)
 		{
@@ -32,6 +33,7 @@ namespace CloudCoinIOS
 		{
 			base.ViewDidAppear(animated);
 
+			appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
 			//var paths = new NSSearchPath()
 		}
 
@@ -88,6 +90,7 @@ namespace CloudCoinIOS
 		private void FinishDoPassword(string password)
 		{
 			UserInteract.Password = password;
+			appDelegate.Password = password;
 			if (subViewType == ViewType.Imported)
 				Safe.Instance?.Add(coinFile.Coins);
 
@@ -95,27 +98,53 @@ namespace CloudCoinIOS
 			{
 				if (subViewType == ViewType.Exported)
 				{
-					var modalExportViewController = (ExportViewController)GetViewController("ExportViewController");
-					modalExportViewController.ShowInView(View, true);
+					ShowExportViewController();
 				}
 				else
 				{
-					var modalBankViewController = (BankViewController)GetViewController("BankViewController");
-					modalBankViewController.ShowInView(View, true);
+					ShowBankViewController();
 				}
 			}
+		}
+
+		private void ShowExportViewController()
+		{
+			var modalExportViewController = (ExportViewController)GetViewController("ExportViewController");
+			modalExportViewController.ShowInView(View, true);
+		}
+
+		private void ShowBankViewController()
+		{
+			var modalBankViewController = (BankViewController)GetViewController("BankViewController");
+			modalBankViewController.ShowInView(View, true);
 		}
 
 		partial void OnExportTouched(Foundation.NSObject sender)
 		{
 			subViewType = ViewType.Exported;
-            ShowPasswordViewController(null);
+
+			if (appDelegate.Password == "")
+			{
+				ShowPasswordViewController(null);
+			}
+			else
+			{
+				ShowExportViewController();
+			}
 		}
 
 		partial void OnBankTouched(Foundation.NSObject sender)
 		{
 			subViewType = ViewType.Banked;
-			ShowPasswordViewController(null);
+
+			if (appDelegate.Password == "")
+			{
+				ShowPasswordViewController(null);
+			}
+			else
+			{
+				ShowBankViewController();
+			}
 		}
 
 		private BaseFormSheet GetViewController(string regId)

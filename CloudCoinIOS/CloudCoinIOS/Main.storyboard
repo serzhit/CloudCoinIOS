@@ -655,13 +655,13 @@
                                         <rect key="frame" x="15" y="177" width="238" height="160"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aY-xf-8Bc">
-                                                <rect key="frame" x="21.5" y="5" width="15" height="18"/>
+                                                <rect key="frame" x="22.5" y="5" width="15" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.47843137250000001" green="0.52549019610000003" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGJ-oY-YPF">
-                                                <rect key="frame" x="10" y="30" width="39.5" height="100"/>
+                                                <rect key="frame" x="10" y="30" width="40" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="BAG-L2-NE1"/>
                                                 </constraints>
@@ -681,7 +681,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D4b-DQ-0px">
-                                                <rect key="frame" x="54.5" y="30" width="39.5" height="100"/>
+                                                <rect key="frame" x="55" y="30" width="39" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="9qR-Hj-PMg"/>
                                                 </constraints>
@@ -715,13 +715,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yg-qb-EbO">
-                                                <rect key="frame" x="146.5" y="5" width="33" height="18"/>
+                                                <rect key="frame" x="147.5" y="5" width="33" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.47843137250000001" green="0.52549019610000003" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-dR-wy6">
-                                                <rect key="frame" x="144" y="30" width="39.5" height="100"/>
+                                                <rect key="frame" x="144" y="30" width="40" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="AlT-R5-5s1"/>
                                                 </constraints>
@@ -735,7 +735,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </pickerView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3k3-vC-lr8">
-                                                <rect key="frame" x="188.5" y="30" width="39.5" height="100"/>
+                                                <rect key="frame" x="189" y="30" width="39" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="KOT-gk-Qox"/>
                                                 </constraints>
@@ -767,7 +767,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="of 50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkj-Ul-EWc">
-                                                <rect key="frame" x="144.5" y="137" width="37" height="18"/>
+                                                <rect key="frame" x="145.5" y="137" width="37" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.47843137250000001" green="0.52549019610000003" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -958,7 +958,7 @@
                                 <rect key="frame" x="26" y="217" width="268" height="134"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Your Safe Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJQ-fJ-tIZ">
-                                        <rect key="frame" x="39" y="23.5" width="191" height="20"/>
+                                        <rect key="frame" x="39" y="22.5" width="191" height="20"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <color key="textColor" red="0.21960784310000001" green="0.2470588235" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -986,7 +986,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="win-2L-YSz">
-                                        <rect key="frame" x="15" y="51.5" width="238" height="30"/>
+                                        <rect key="frame" x="15" y="50.5" width="238" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>

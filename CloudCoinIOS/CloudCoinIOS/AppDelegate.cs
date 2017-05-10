@@ -21,6 +21,8 @@ namespace CloudCoinIOS
 		public string TemplatesDir { get; set; }
 		public string InboxDir { get; set; }
 
+		public string Password { get; set; }
+
 		public override UIWindow Window
 		{
 			get;
@@ -59,8 +61,11 @@ namespace CloudCoinIOS
 				}
 			}
 
+			Password = "";
 			return true;
 		}
+
+
 
 		private bool IsSameWithFolder(string path)
 		{
@@ -103,6 +108,7 @@ namespace CloudCoinIOS
 		{
 			// Called as part of the transiton from background to active state.
 			// Here you can undo many of the changes made on entering the background.
+
 		}
 
 		public override void OnActivated(UIApplication application)
