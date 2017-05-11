@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Foundation;
 
 namespace CloudCoin_SafeScan
@@ -13,7 +14,7 @@ namespace CloudCoin_SafeScan
         }
 
 
-        /*
+		/*
                 internal static void ScanSelected()
                 {
          //           CloudCoinFile coinFile = null;
@@ -105,18 +106,20 @@ namespace CloudCoin_SafeScan
                     }
                 }
 
-                internal static void FixSelected()
-                {
-                    FixProcessWindow fpw = new FixProcessWindow();
-                    int i = 0;
-                    foreach(CloudCoin coin in Safe.Instance.FrackedCoinsList)
-                    {
-                        RAIDA.Instance.fixCoin(coin, i);
-                        i++;
-                    }
-                    fpw.ShowDialog();
-                    Safe.Instance.onSafeContentChanged(new EventArgs());
-                    Safe.Instance.Save();
-                }  */
+                 */
+
+		internal async static Task FixSelected()
+		{
+			//FixProcessWindow fpw = new FixProcessWindow();
+			int i = 0;
+			foreach (CloudCoin coin in Safe.Instance.FrackedCoinsList)
+			{
+				await RAIDA.Instance.fixCoin(coin, i);
+				i++;
+			}
+			//fpw.ShowDialog();
+			Safe.Instance.onSafeContentChanged(new EventArgs());
+			Safe.Instance.Save(); 
+		}
     }
 }

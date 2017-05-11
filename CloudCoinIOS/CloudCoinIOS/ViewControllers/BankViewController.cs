@@ -9,6 +9,8 @@ namespace CloudCoinIOS
 {
 	public partial class BankViewController : BaseFormSheet
 	{
+		public EventHandler FixFrackedTouched;
+
 		public BankViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -32,6 +34,12 @@ namespace CloudCoinIOS
 			btnClose.TouchUpInside += (sender, e) =>
 			{
 				RemoveAnimate();
+			};
+
+			btnFixFracked.TouchUpInside += (sender, e) =>
+			{
+				FixFrackedTouched.Invoke(this, null);
+				//await ApplicationLogic.FixSelected();
 			};
 
 			Safe.Instance.SafeChanged += SafeContentChanged;

@@ -16,6 +16,9 @@ namespace CloudCoinIOS
 		UIKit.UIButton btnClose { get; set; }
 
 		[Outlet]
+		UIKit.UIButton btnFixFracked { get; set; }
+
+		[Outlet]
 		UIKit.UILabel lblAuth100 { get; set; }
 
 		[Outlet]
@@ -52,14 +55,9 @@ namespace CloudCoinIOS
 				btnClose = null;
 			}
 
-			if (lblAuthOne != null) {
-				lblAuthOne.Dispose ();
-				lblAuthOne = null;
-			}
-
-			if (lblAuthFive != null) {
-				lblAuthFive.Dispose ();
-				lblAuthFive = null;
+			if (lblAuth100 != null) {
+				lblAuth100.Dispose ();
+				lblAuth100 = null;
 			}
 
 			if (lblAuth25 != null) {
@@ -67,29 +65,19 @@ namespace CloudCoinIOS
 				lblAuth25 = null;
 			}
 
-			if (lblAuth100 != null) {
-				lblAuth100.Dispose ();
-				lblAuth100 = null;
-			}
-
 			if (lblAuth250 != null) {
 				lblAuth250.Dispose ();
 				lblAuth250 = null;
 			}
 
-			if (lblFrackedOne != null) {
-				lblFrackedOne.Dispose ();
-				lblFrackedOne = null;
+			if (lblAuthFive != null) {
+				lblAuthFive.Dispose ();
+				lblAuthFive = null;
 			}
 
-			if (lblFrackedFive != null) {
-				lblFrackedFive.Dispose ();
-				lblFrackedFive = null;
-			}
-
-			if (lblFracked25 != null) {
-				lblFracked25.Dispose ();
-				lblFracked25 = null;
+			if (lblAuthOne != null) {
+				lblAuthOne.Dispose ();
+				lblAuthOne = null;
 			}
 
 			if (lblFracked100 != null) {
@@ -97,9 +85,29 @@ namespace CloudCoinIOS
 				lblFracked100 = null;
 			}
 
+			if (lblFracked25 != null) {
+				lblFracked25.Dispose ();
+				lblFracked25 = null;
+			}
+
 			if (lblFracked250 != null) {
 				lblFracked250.Dispose ();
 				lblFracked250 = null;
+			}
+
+			if (lblFrackedFive != null) {
+				lblFrackedFive.Dispose ();
+				lblFrackedFive = null;
+			}
+
+			if (lblFrackedOne != null) {
+				lblFrackedOne.Dispose ();
+				lblFrackedOne = null;
+			}
+
+			if (btnFixFracked != null) {
+				btnFixFracked.Dispose ();
+				btnFixFracked = null;
 			}
 		}
 	}

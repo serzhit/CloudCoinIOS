@@ -127,6 +127,7 @@
     <Folder Include="Resources\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="Core\" />
+    <Folder Include="ViewCells\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -177,6 +178,22 @@
     <Compile Include="ViewControllers\EnterPassViewController.cs" />
     <Compile Include="ViewControllers\EnterPassViewController.designer.cs">
       <DependentUpon>EnterPassViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\FixFrackedViewController.cs" />
+    <Compile Include="ViewControllers\FixFrackedViewController.designer.cs">
+      <DependentUpon>FixFrackedViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\HelpViewController.cs" />
+    <Compile Include="ViewControllers\HelpViewController.designer.cs">
+      <DependentUpon>HelpViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\SettingsViewController.cs" />
+    <Compile Include="ViewControllers\SettingsViewController.designer.cs">
+      <DependentUpon>SettingsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewCells\FrackedTableCell.cs" />
+    <Compile Include="ViewCells\FrackedTableCell.designer.cs">
+      <DependentUpon>FrackedTableCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

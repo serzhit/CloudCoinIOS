@@ -121,10 +121,20 @@ namespace CloudCoinIOS
 			modalExportViewController.ShowInView(View, true);
 		}
 
+		private void ShowFixFrackedViewController()
+		{
+			var fixFrackedViewController = (FixFrackedViewController)GetViewController("FixFrackedViewController");
+			fixFrackedViewController.ShowInView(View, true);
+		}
+
 		private void ShowBankViewController()
 		{
 			var modalBankViewController = (BankViewController)GetViewController("BankViewController");
 			modalBankViewController.ShowInView(View, true);
+			modalBankViewController.FixFrackedTouched += (sender, e) =>
+			{
+				ShowFixFrackedViewController();
+			};
 		}
 
 		partial void OnExportTouched(Foundation.NSObject sender)
