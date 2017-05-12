@@ -15,6 +15,8 @@ namespace CloudCoin_SafeScan
         public enum Status { Authenticated, Counterfeit, Fractioned, Unknown }
         public enum raidaNodeResponse { pass, fail, error, fixing, unknown }
 
+		public string StatusText { get; set; }
+
         public class CoinComparer : IComparer<CloudCoin>
         {
             int IComparer<CloudCoin>.Compare(CloudCoin coin1, CloudCoin coin2)
