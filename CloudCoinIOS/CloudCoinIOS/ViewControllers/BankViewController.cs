@@ -42,11 +42,12 @@ namespace CloudCoinIOS
 
 		private void SetEnableButton(UIButton button, bool isEnabled)
 		{
-			button.Enabled = isEnabled;
-			if (isEnabled)
-				button.BackgroundColor = UIColor.FromRGB(52, 142, 251);
-			else
-				button.BackgroundColor = UIColor.FromRGBA(0, 0, 0, 42);
+            button.Hidden = !isEnabled;
+			//if (isEnabled)
+   //             button.BackgroundColor = UIColor.FromRGB(52, 142, 251);
+			//else
+				//button.BackgroundColor = UIColor.FromRGBA(0, 0, 0, 42);                
+
 		}
 
 		private void InitializeMethods()
