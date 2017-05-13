@@ -7,10 +7,19 @@ using UIKit;
 
 namespace CloudCoinIOS
 {
-	public partial class HelpViewController : UIViewController
+	public partial class HelpViewController : BaseFormSheet
 	{
 		public HelpViewController (IntPtr handle) : base (handle)
 		{
 		}
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+
+            btnClose.TouchUpInside += (sender, e) => {
+                RemoveAnimate();
+            };
+        }
 	}
 }

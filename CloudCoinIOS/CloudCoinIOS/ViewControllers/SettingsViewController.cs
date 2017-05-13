@@ -7,10 +7,19 @@ using UIKit;
 
 namespace CloudCoinIOS
 {
-	public partial class SettingsViewController : UIViewController
+    public partial class SettingsViewController : BaseFormSheet
 	{
 		public SettingsViewController (IntPtr handle) : base (handle)
 		{
 		}
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+
+            btnClose.TouchUpInside += (sender, e) => {
+                RemoveAnimate();                
+            };
+        }
 	}
 }

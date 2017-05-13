@@ -165,6 +165,18 @@ namespace CloudCoinIOS
 			}
 		}
 
+        partial void OnSettingTouched(Foundation.NSObject sender)
+        {
+            var settingViewController = (SettingsViewController)GetViewController("SettingsViewController");
+            settingViewController.ShowInView(View, true);
+        }
+
+		partial void OnHelpTouched(Foundation.NSObject sender)
+		{
+			var helpViewController = (HelpViewController)GetViewController("HelpViewController");
+			helpViewController.ShowInView(View, true);
+		}
+
 		private BaseFormSheet GetViewController(string regId)
 		{
 			return (BaseFormSheet)Storyboard.InstantiateViewController(regId);

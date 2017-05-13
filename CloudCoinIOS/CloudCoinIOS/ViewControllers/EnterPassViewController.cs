@@ -61,6 +61,10 @@ namespace CloudCoinIOS
 					}
 				}
 			};
+
+            btnCancel.TouchUpInside += (sender, e) => {
+                RemoveAnimate();                
+            };
 		}
 
 		private int CheckPassword(FileInfo fi, string password)
