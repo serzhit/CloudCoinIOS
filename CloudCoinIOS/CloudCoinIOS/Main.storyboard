@@ -193,13 +193,13 @@
                                 <rect key="frame" x="30" y="280" width="354" height="177"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Import Coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whp-Z1-kkj">
-                                        <rect key="frame" x="121" y="31" width="113" height="23"/>
+                                        <rect key="frame" x="121" y="33" width="113" height="23"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                         <color key="textColor" red="0.2196078431372549" green="0.24705882352941178" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have 10 files in your import directory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeb-Ah-CPO">
-                                        <rect key="frame" x="51" y="64" width="253" height="16"/>
+                                        <rect key="frame" x="51" y="66" width="253" height="16"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                         <color key="textColor" red="0.47843137254901957" green="0.52549019607843139" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -649,13 +649,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vd9-sI-JCM">
-                                                            <rect key="frame" x="231" y="11" width="24" height="21"/>
+                                                            <rect key="frame" x="262" y="11" width="24" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7oX-QC-Lp0">
-                                                            <rect key="frame" x="265" y="12" width="20" height="20"/>
+                                                            <rect key="frame" x="296" y="12" width="20" height="20"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="BCn-v4-Hh9"/>
@@ -754,27 +754,64 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzV-tS-qG5">
                                 <rect key="frame" x="20" y="52" width="374" height="632"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Help" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sa0-91-fLE">
-                                        <rect key="frame" x="54" y="31" width="180.5" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sa0-91-fLE">
+                                        <rect key="frame" x="167" y="31" width="41" height="23"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                         <color key="textColor" red="0.21960784310000001" green="0.2470588235" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRK-ro-fo8">
-                                        <rect key="frame" x="340" y="31" width="20" height="22"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf1-2n-nUw">
+                                        <rect key="frame" x="15" y="69" width="344" height="498"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">SCAN &amp; SAFE HELP
+Scanning CloudCoins into your Safe:
+
+In traditional monetary systems, the people who "have" the money own it. With CloudCoins, the people that "know" the money own it. 
+
+You are one of the first people in history to use it!
+
+In order to own your coins you must pown (change all the internal authenticity numbers ) so only you have the numbers. CloudCoins use a new technology called RAIDA that does what Bitcoin's Blockchain does, only much better. You must contact the RAIDA to change your CloudCoin's internal numbers and that means you must have an Internet connection that will not block Scan &amp; Safe's request to the RAIDA. 
+
+When you tap the Import icon, this software will look into your documents for a folder called Cloudcoin/Import.  If you have already moved your Cloudcoins into your import folder then Scan and Safe will start powning your CloudCoins automatically. You can use USB to transfer files onto your iPhone and into your Import folder.  
+
+Otherwise you need to tell Scan and Safe to read the Cloudcoin from your email or iCloud. 
+During the pown process, this software will send the 25 embeded authenticty numbers in your CLoudCoins to 25 RAIDA clouds in parallel along with new numbers that only you will know. This pown process takes about 2 seconds per Cloudcoin note. If your CloudCoin is real, it will be yours. Scan and Safe will encrypt it and store it on you iPhone. If your CloudCoin is counterfeit you will be told and the CloudCoin will be moved into the Trash folder.
+
+To give your CloudCoins to someone else, you will need to export them. Your CloudCoins will be decrypted and you can then send them by email or other methods. Email is not secure and your CloudCoins could possibly be stolen in transit. The CloudCoin Consortium recommends that you get a free encrypted Protonmail.com account. Protonmail is the only safe way to send and receive CloudCoins via email.
+
+
+If you accidently destroy or lose your Cloudcoins, they can be recovered in two years.
+Send your serial numbers and the month lost to CloudCoins@protonmail.com Subject: Lost Coin Report.
+ 
+
+Let us know if you have any questions or concerns.
+
+Scan &amp; Safe Support: Gitinsky@Protonmail.com</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urL-rW-TiK">
+                                        <rect key="frame" x="0.0" y="582" width="374" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="BN6-Qr-cHg"/>
-                                            <constraint firstAttribute="height" constant="22" id="edy-Pd-DDL"/>
+                                            <constraint firstAttribute="height" constant="50" id="E3h-Ti-Jvi"/>
                                         </constraints>
-                                        <state key="normal" image="close128.png"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" red="0.21960784310000001" green="0.2470588235" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="yRK-ro-fo8" secondAttribute="trailing" constant="14" id="G0D-cZ-2I8"/>
+                                    <constraint firstAttribute="trailing" secondItem="urL-rW-TiK" secondAttribute="trailing" id="7Pe-VZ-HYn"/>
                                     <constraint firstItem="Sa0-91-fLE" firstAttribute="top" secondItem="bzV-tS-qG5" secondAttribute="top" constant="31" id="HZ0-SE-dQS"/>
+                                    <constraint firstAttribute="bottom" secondItem="urL-rW-TiK" secondAttribute="bottom" id="Iki-98-9Uj"/>
+                                    <constraint firstItem="urL-rW-TiK" firstAttribute="top" secondItem="bf1-2n-nUw" secondAttribute="bottom" constant="15" id="MPA-dg-9cO"/>
+                                    <constraint firstItem="bf1-2n-nUw" firstAttribute="leading" secondItem="bzV-tS-qG5" secondAttribute="leading" constant="15" id="TLX-09-I7z"/>
+                                    <constraint firstItem="bf1-2n-nUw" firstAttribute="top" secondItem="Sa0-91-fLE" secondAttribute="bottom" constant="15" id="bv4-4a-wpN"/>
+                                    <constraint firstItem="urL-rW-TiK" firstAttribute="leading" secondItem="bzV-tS-qG5" secondAttribute="leading" id="f3c-40-85n"/>
+                                    <constraint firstAttribute="trailing" secondItem="bf1-2n-nUw" secondAttribute="trailing" constant="15" id="qEG-gv-4Ap"/>
                                     <constraint firstItem="Sa0-91-fLE" firstAttribute="centerX" secondItem="bzV-tS-qG5" secondAttribute="centerX" id="wDj-bK-NdW"/>
-                                    <constraint firstItem="yRK-ro-fo8" firstAttribute="centerY" secondItem="Sa0-91-fLE" secondAttribute="centerY" id="yhT-v1-9n1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -793,12 +830,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btnClose" destination="yRK-ro-fo8" id="iWI-n2-IBB"/>
+                        <outlet property="btnClose" destination="urL-rW-TiK" id="Eok-gz-Z4n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOD-cH-jgj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2496" y="562"/>
+            <point key="canvasLocation" x="2494.202898550725" y="561.68478260869574"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="xf5-Hd-SDC">
@@ -815,27 +852,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9IW-CP-gsO">
                                 <rect key="frame" x="20" y="52" width="374" height="632"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAD-P0-0jn">
-                                        <rect key="frame" x="54" y="32" width="180.5" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAD-P0-0jn">
+                                        <rect key="frame" x="151" y="32" width="73" height="23"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                         <color key="textColor" red="0.21960784310000001" green="0.2470588235" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOL-HL-NFp">
-                                        <rect key="frame" x="340" y="32" width="20" height="22"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caj-Oj-ZAE">
+                                        <rect key="frame" x="0.0" y="582" width="374" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="pYO-yM-HCA"/>
-                                            <constraint firstAttribute="width" constant="20" id="pnj-Sh-eac"/>
+                                            <constraint firstAttribute="height" constant="50" id="VJK-wV-rYv"/>
                                         </constraints>
-                                        <state key="normal" image="close128.png"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" red="0.21960784310000001" green="0.2470588235" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="cOL-HL-NFp" firstAttribute="centerY" secondItem="rAD-P0-0jn" secondAttribute="centerY" id="BHe-nT-IoY"/>
+                                    <constraint firstAttribute="trailing" secondItem="caj-Oj-ZAE" secondAttribute="trailing" id="HCw-pJ-040"/>
                                     <constraint firstItem="rAD-P0-0jn" firstAttribute="centerX" secondItem="9IW-CP-gsO" secondAttribute="centerX" id="NAK-um-vfb"/>
                                     <constraint firstItem="rAD-P0-0jn" firstAttribute="top" secondItem="9IW-CP-gsO" secondAttribute="top" constant="32" id="Pjf-SY-7EP"/>
-                                    <constraint firstAttribute="trailing" secondItem="cOL-HL-NFp" secondAttribute="trailing" constant="14" id="TxD-Hx-kk5"/>
+                                    <constraint firstAttribute="bottom" secondItem="caj-Oj-ZAE" secondAttribute="bottom" id="d0N-TT-BHW"/>
+                                    <constraint firstItem="caj-Oj-ZAE" firstAttribute="leading" secondItem="9IW-CP-gsO" secondAttribute="leading" id="ohV-Yj-mBd"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -854,7 +894,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btnClose" destination="cOL-HL-NFp" id="0xk-Z4-tDO"/>
+                        <outlet property="btnClose" destination="caj-Oj-ZAE" id="dEJ-5H-Z3q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLv-De-b2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -952,7 +992,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUK-A5-hMr">
-                                                <rect key="frame" x="135" y="30" width="55" height="100"/>
+                                                <rect key="frame" x="135" y="30" width="54" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="eMm-iE-TZ1"/>
                                                 </constraints>
@@ -1012,7 +1052,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="of 5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sn-K1-38a">
-                                                <rect key="frame" x="149" y="137" width="27" height="18"/>
+                                                <rect key="frame" x="148" y="137" width="27" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.47843137250000001" green="0.52549019610000003" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1110,7 +1150,7 @@
                                             <constraint firstItem="g5P-sm-61s" firstAttribute="width" secondItem="Lis-JI-lcn" secondAttribute="width" multiplier="1:2" id="NvW-ys-oRB"/>
                                             <constraint firstAttribute="bottom" secondItem="g5P-sm-61s" secondAttribute="bottom" id="PUM-Rs-W0y"/>
                                             <constraint firstItem="EUG-DJ-Ykj" firstAttribute="width" secondItem="g5P-sm-61s" secondAttribute="width" id="RyA-tl-5ns"/>
-                                            <constraint firstItem="g5P-sm-61s" firstAttribute="top" secondItem="Lis-JI-lcn" secondAttribute="top" constant="0.5" id="SAJ-oc-1LR"/>
+                                            <constraint firstItem="g5P-sm-61s" firstAttribute="top" secondItem="Lis-JI-lcn" secondAttribute="top" constant="1" id="SAJ-oc-1LR"/>
                                             <constraint firstAttribute="height" constant="50" id="V0B-jz-sRS"/>
                                             <constraint firstAttribute="bottom" secondItem="EUG-DJ-Ykj" secondAttribute="bottom" id="rsp-HS-yp4"/>
                                         </constraints>
@@ -1240,7 +1280,7 @@
                                             <constraint firstAttribute="bottom" secondItem="cVr-9p-3g9" secondAttribute="bottom" id="bBg-sd-KUM"/>
                                             <constraint firstItem="WcW-FG-jqa" firstAttribute="width" secondItem="Sms-Vm-Da1" secondAttribute="width" multiplier="1:2" id="boK-Qr-9KK"/>
                                             <constraint firstItem="WcW-FG-jqa" firstAttribute="leading" secondItem="Sms-Vm-Da1" secondAttribute="leading" id="hG1-2i-mUT"/>
-                                            <constraint firstItem="WcW-FG-jqa" firstAttribute="top" secondItem="Sms-Vm-Da1" secondAttribute="top" constant="0.5" id="kkn-al-U6j"/>
+                                            <constraint firstItem="WcW-FG-jqa" firstAttribute="top" secondItem="Sms-Vm-Da1" secondAttribute="top" constant="1" id="kkn-al-U6j"/>
                                             <constraint firstItem="cVr-9p-3g9" firstAttribute="top" secondItem="Sms-Vm-Da1" secondAttribute="top" id="mbK-Aa-4oD"/>
                                             <constraint firstItem="cVr-9p-3g9" firstAttribute="width" secondItem="WcW-FG-jqa" secondAttribute="width" id="yfo-Fd-WXU"/>
                                         </constraints>
@@ -1335,7 +1375,7 @@
                                             <constraint firstAttribute="bottom" secondItem="RON-Rk-k41" secondAttribute="bottom" id="cKS-qj-rwe"/>
                                             <constraint firstAttribute="height" constant="50" id="gWG-7m-zJg"/>
                                             <constraint firstItem="q1i-hJ-vEF" firstAttribute="width" secondItem="S6u-cF-Eux" secondAttribute="width" multiplier="1:2" id="rzB-sT-8i6"/>
-                                            <constraint firstItem="q1i-hJ-vEF" firstAttribute="top" secondItem="S6u-cF-Eux" secondAttribute="top" constant="0.5" id="zhi-7W-wGH"/>
+                                            <constraint firstItem="q1i-hJ-vEF" firstAttribute="top" secondItem="S6u-cF-Eux" secondAttribute="top" constant="1" id="zhi-7W-wGH"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JAu-0A-yk1">
@@ -1411,7 +1451,6 @@
     <resources>
         <image name="backicons.png" width="338" height="546"/>
         <image name="bankbtn.png" width="75" height="145"/>
-        <image name="close128.png" width="128" height="128"/>
         <image name="exportbtn.png" width="70" height="141"/>
         <image name="importbtn.png" width="61" height="145"/>
         <image name="logo.png" width="119" height="18"/>
