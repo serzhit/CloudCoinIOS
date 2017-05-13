@@ -65,8 +65,6 @@ namespace CloudCoinIOS
 			return true;
 		}
 
-
-
 		private bool IsSameWithFolder(string path)
 		{
 			if (path.Contains(SafeDir) ||

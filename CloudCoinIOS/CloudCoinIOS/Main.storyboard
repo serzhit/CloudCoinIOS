@@ -1240,7 +1240,7 @@
                                             <constraint firstAttribute="bottom" secondItem="cVr-9p-3g9" secondAttribute="bottom" id="bBg-sd-KUM"/>
                                             <constraint firstItem="WcW-FG-jqa" firstAttribute="width" secondItem="Sms-Vm-Da1" secondAttribute="width" multiplier="1:2" id="boK-Qr-9KK"/>
                                             <constraint firstItem="WcW-FG-jqa" firstAttribute="leading" secondItem="Sms-Vm-Da1" secondAttribute="leading" id="hG1-2i-mUT"/>
-                                            <constraint firstItem="WcW-FG-jqa" firstAttribute="top" secondItem="Sms-Vm-Da1" secondAttribute="top" constant="1" id="kkn-al-U6j"/>
+                                            <constraint firstItem="WcW-FG-jqa" firstAttribute="top" secondItem="Sms-Vm-Da1" secondAttribute="top" constant="0.5" id="kkn-al-U6j"/>
                                             <constraint firstItem="cVr-9p-3g9" firstAttribute="top" secondItem="Sms-Vm-Da1" secondAttribute="top" id="mbK-Aa-4oD"/>
                                             <constraint firstItem="cVr-9p-3g9" firstAttribute="width" secondItem="WcW-FG-jqa" secondAttribute="width" id="yfo-Fd-WXU"/>
                                         </constraints>
@@ -1335,7 +1335,7 @@
                                             <constraint firstAttribute="bottom" secondItem="RON-Rk-k41" secondAttribute="bottom" id="cKS-qj-rwe"/>
                                             <constraint firstAttribute="height" constant="50" id="gWG-7m-zJg"/>
                                             <constraint firstItem="q1i-hJ-vEF" firstAttribute="width" secondItem="S6u-cF-Eux" secondAttribute="width" multiplier="1:2" id="rzB-sT-8i6"/>
-                                            <constraint firstItem="q1i-hJ-vEF" firstAttribute="top" secondItem="S6u-cF-Eux" secondAttribute="top" constant="1" id="zhi-7W-wGH"/>
+                                            <constraint firstItem="q1i-hJ-vEF" firstAttribute="top" secondItem="S6u-cF-Eux" secondAttribute="top" constant="0.5" id="zhi-7W-wGH"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JAu-0A-yk1">

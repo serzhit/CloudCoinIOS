@@ -98,17 +98,16 @@ namespace CloudCoin_SafeScan
         [JsonConstructor]
         public CloudCoin(int nn, int sn, string[] ans, string expired, string[] aoid)
         {
-            this.sn = sn;
-            this.nn = nn;
-            an = ans;
-            ed = expired;
-            this.aoid = aoid;
-//            filetype = Type.json;
-//            filename = null;
-            pans = generatePans(sn);
-            detectStatus = new raidaNodeResponse[RAIDA.NODEQNTY];
-            for (int i = 0; i < RAIDA.NODEQNTY; i++) detectStatus[i] = raidaNodeResponse.unknown;
+			this.sn = sn;
+			this.nn = nn;
+			an = ans;
+			ed = expired;
+			this.aoid = aoid;
 
+			detectStatus = new raidaNodeResponse[RAIDA.NODEQNTY];
+			for (int i = 0; i < RAIDA.NODEQNTY; i++) detectStatus[i] = raidaNodeResponse.unknown;
+
+			pans = generatePans();
 			isValidated = Validate();
         }
 
