@@ -195,6 +195,18 @@
     <Compile Include="ViewCells\FrackedTableCell.designer.cs">
       <DependentUpon>FrackedTableCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\AuthorizationViewController.cs" />
+    <Compile Include="ViewControllers\AuthorizationViewController.designer.cs">
+      <DependentUpon>AuthorizationViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewCells\AuthHeaderCell.cs" />
+    <Compile Include="ViewCells\AuthHeaderCell.designer.cs">
+      <DependentUpon>AuthHeaderCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewCells\AuthViewCell.cs" />
+    <Compile Include="ViewCells\AuthViewCell.designer.cs">
+      <DependentUpon>AuthViewCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\backicons.png" />

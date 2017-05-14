@@ -80,7 +80,6 @@ namespace CloudCoinIOS
 
 	public class FrackedTableSource : UITableViewSource
 	{
-
 		List<CloudCoin> frackedCoins;
 		NSString CellIdentifier = new NSString("FrackedTableCell");
 
