@@ -12,9 +12,39 @@ namespace CloudCoinIOS
 	[Register ("AuthViewCell")]
 	partial class AuthViewCell
 	{
+		[Outlet]
+		UIKit.UILabel lblAuthenticated { get; set; }
+
+		[Outlet]
+		UIKit.UILabel lblPercent { get; set; }
+
+		[Outlet]
+		UIKit.UILabel lblSerial { get; set; }
+
+		[Outlet]
+		UIKit.UILabel lblValue { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (lblSerial != null) {
+				lblSerial.Dispose ();
+				lblSerial = null;
+			}
+
+			if (lblValue != null) {
+				lblValue.Dispose ();
+				lblValue = null;
+			}
+
+			if (lblAuthenticated != null) {
+				lblAuthenticated.Dispose ();
+				lblAuthenticated = null;
+			}
+
+			if (lblPercent != null) {
+				lblPercent.Dispose ();
+				lblPercent = null;
+			}
 		}
 	}
 }

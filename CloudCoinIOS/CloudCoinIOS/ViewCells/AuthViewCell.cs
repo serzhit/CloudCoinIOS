@@ -12,5 +12,18 @@ namespace CloudCoinIOS
 		public AuthViewCell (IntPtr handle) : base (handle)
 		{
 		}
+
+		public AuthViewCell(NSString cellId) : base(UITableViewCellStyle.Default, cellId)
+        {
+
+		}
+
+        public void UpdateCell(Coin4Display coin)
+        {
+            lblSerial.Text = coin.Serial.ToString();
+            lblValue.Text = coin.Value.ToString();
+            lblAuthenticated.Text = coin.Check ? "True" : "False";
+            lblPercent.Text = coin.Comment;
+        }
 	}
 }

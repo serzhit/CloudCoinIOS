@@ -12,5 +12,10 @@ namespace CloudCoinIOS
 		public AuthHeaderCell (IntPtr handle) : base (handle)
 		{
 		}
+
+		public AuthHeaderCell(NSString cellId) : base(UITableViewCellStyle.Default, cellId)
+        {
+
+		}
 	}
 }

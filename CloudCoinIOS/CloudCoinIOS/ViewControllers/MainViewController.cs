@@ -23,6 +23,7 @@ namespace CloudCoinIOS
 		private ViewType subViewType;
 		private CloudCoinFile coinFile;
 		private AppDelegate appDelegate;
+        private bool owner;
 
 		public MainViewController (IntPtr handle) : base (handle)
 		{
@@ -34,7 +35,8 @@ namespace CloudCoinIOS
 			base.ViewDidAppear(animated);
 
 			appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
-			//var paths = new NSSearchPath()
+
+            owner = false;
 		}
 
 		public override void ViewDidLayoutSubviews()
@@ -56,22 +58,34 @@ namespace CloudCoinIOS
 		{
 			var modalImportViewController = (ImportViewController)GetViewController("ImportViewController");
 			modalImportViewController.ShowInView(View, true);
-			modalImportViewController.CompletedWithPassword += CompletedWithPassword;
+            modalImportViewController.ImportFilesHandler += FinishImporting;
+            modalImportViewController.DetectHandler += (modal, owner) => {
+                this.owner = (bool)owner;
+                var authViewController = (AuthorizationViewController)GetViewController("AuthorizationViewController");
+				authViewController.ShowInView(View, true);
+                authViewController.CompletedWithPassword += CompletedWithPassword;
+            };
 		}
 
-		private void CompletedWithPassword(CloudCoinFile ccFile)
+        private void FinishImporting(object sender, CloudCoinFile ccFile)
+        {
+            this.coinFile = ccFile;
+        }
+
+		private void CompletedWithPassword()
 		{
-			subViewType = ViewType.Imported;
-			ShowPasswordViewController(ccFile);
+            if (owner && coinFile != null)
+            {
+				subViewType = ViewType.Imported;
+				ShowPasswordViewController();
+            }
 		}
 
-		private void ShowPasswordViewController(CloudCoinFile ccFile)
+		private void ShowPasswordViewController()
 		{
 			var fileInfo = new FileInfo(Safe.GetSafeFilePath());
 			NewPassViewController newPassViewController;
 			EnterPassViewController enterPassViewController;
-
-			this.coinFile = ccFile;
 
 			if (!fileInfo.Exists)
 			{
@@ -143,7 +157,7 @@ namespace CloudCoinIOS
 
 			if (appDelegate.Password == "")
 			{
-				ShowPasswordViewController(null);
+				ShowPasswordViewController();
 			}
 			else
 			{
@@ -157,7 +171,7 @@ namespace CloudCoinIOS
 
 			if (appDelegate.Password == "")
 			{
-				ShowPasswordViewController(null);
+				ShowPasswordViewController();
 			}
 			else
 			{

@@ -18,8 +18,8 @@ namespace CloudCoinIOS
 		private int isPasswordForSafe;
 		private CloudCoinFile coinFile;
 
-		public delegate void SetPasswordEventHandler(CloudCoinFile coinFile);
-		public event SetPasswordEventHandler CompletedWithPassword;
+        public EventHandler<bool> DetectHandler;
+        public EventHandler<CloudCoinFile> ImportFilesHandler;
 
 		public ImportViewController (IntPtr handle) : base (handle)
 		{
@@ -75,6 +75,7 @@ namespace CloudCoinIOS
 						btnImport.Hidden = true;
 						RAIDA.Instance.Detect(coinFile.Coins, true);
 
+                        DetectHandler.Invoke(this, true);
 						//will implement the Safe source.
 
 					}
@@ -83,7 +84,12 @@ namespace CloudCoinIOS
 						btnCancel.Hidden = true;
 						btnImport.Hidden = true;
 						RAIDA.Instance.Detect(coinFile.Coins, false);
+
+                        DetectHandler.Invoke(this, false);
 					}
+
+                    ImportFilesHandler.Invoke(this, coinFile);
+                    RemoveAnimate();
 				}
 				else
 				{
@@ -99,21 +105,14 @@ namespace CloudCoinIOS
 
 			btnFinished.TouchUpInside += (sender, e) =>
 			{
-				RemoveAnimate();
-				if (isPasswordForSafe == 0)
-					CompletedWithPassword(coinFile);
+				//RemoveAnimate();
+				//if (isPasswordForSafe == 0)
+					//CompletedWithPassword(coinFile);
 			};
 
-			RAIDA.Instance.StackScanCompleted += StackScanCompleted;
+			
 		}
 
-		private void StackScanCompleted(object o, StackScanCompletedEventArgs e)
-		{
-			InvokeOnMainThread(() =>
-			{
-				btnFinished.SetTitle("Finished", UIControlState.Normal);
-				btnFinished.Enabled = true;
-			});
-		}
+		
 	}
 }

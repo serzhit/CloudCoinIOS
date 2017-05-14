@@ -79,7 +79,7 @@ namespace CloudCoin_SafeScan
                         safe = null;
                     }
                     if (safe != null)
-                    {
+                    {`
                         safe.Show();
                     }
                 }

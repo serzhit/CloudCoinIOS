@@ -14,12 +14,28 @@ namespace CloudCoinIOS
     {
         [Outlet]
         UIKit.UITableView authTableView { get; set; }
+
+        [Outlet]
+        UIKit.UIButton btnCancel { get; set; }
+
+        [Outlet]
+        UIKit.UITextView textStatus { get; set; }
         
         void ReleaseDesignerOutlets ()
         {
             if (authTableView != null) {
                 authTableView.Dispose ();
                 authTableView = null;
+            }
+
+            if (btnCancel != null) {
+                btnCancel.Dispose ();
+                btnCancel = null;
+            }
+
+            if (textStatus != null) {
+                textStatus.Dispose ();
+                textStatus = null;
             }
         }
     }
