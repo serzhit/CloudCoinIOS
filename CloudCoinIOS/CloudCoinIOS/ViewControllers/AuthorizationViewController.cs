@@ -37,7 +37,7 @@ namespace CloudCoinIOS
             btnCancel.SetTitle("Processing...", UIControlState.Normal);
             btnCancel.Enabled = false;
 
-            authTableView.Layer.CornerRadius = 2f;
+            authTableView.Layer.CornerRadius = 5f;
             authTableView.Layer.BorderColor = UIColor.LightGray.CGColor;
             authTableView.Layer.MasksToBounds = true;
         }
@@ -121,7 +121,7 @@ namespace CloudCoinIOS
                 cell = new AuthViewCell(CellIdentifier);
             }
 
-            cell.ContentView.BackgroundColor = UIColor.LightGray;
+            cell.ContentView.BackgroundColor = UIColor.FromRGB(210, 210, 210);
 
             return cell;
         }
@@ -147,6 +147,8 @@ namespace CloudCoinIOS
             {
                 cell = new AuthViewCell(CellIdentifier);
             }
+
+            cell.ContentView.BackgroundColor = UIColor.White;
             cell.UpdateCell(coin);
 
             return cell;
