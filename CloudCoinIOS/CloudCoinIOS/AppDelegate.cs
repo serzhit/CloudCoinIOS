@@ -124,12 +124,15 @@ namespace CloudCoinIOS
 		{
 			//ApplicationLogic.OpenFileUrl(url.AbsoluteString);
 
-			 NSNotificationCenter.DefaultCenter.PostNotificationName("OpenUrl", url);
+			NSNotificationCenter.DefaultCenter.PostNotificationName("OpenUrl", url);
 
 			if (!UrlList.Contains(url.Path))
 			{
 				UrlList.Add(url.Path);
 			}
+
+            Debug.WriteLine("imported url = " + url.ToString());
+
 			return true;
 		}
 	}

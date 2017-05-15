@@ -14,12 +14,28 @@ namespace CloudCoinIOS
 	{
 		[Outlet]
 		UIKit.UIButton btnClose { get; set; }
+
+		[Outlet]
+		UIKit.UISwitch switchFracked { get; set; }
+
+		[Outlet]
+		UIKit.UISwitch switchZip { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (btnClose != null) {
 				btnClose.Dispose ();
 				btnClose = null;
+			}
+
+			if (switchFracked != null) {
+				switchFracked.Dispose ();
+				switchFracked = null;
+			}
+
+			if (switchZip != null) {
+				switchZip.Dispose ();
+				switchZip = null;
 			}
 		}
 	}

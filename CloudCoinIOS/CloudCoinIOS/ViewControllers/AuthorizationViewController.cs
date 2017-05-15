@@ -70,7 +70,6 @@ namespace CloudCoinIOS
             {
                 var status = "Checking Result:\n";
                 status += e.stack.cloudcoin.Count.ToString() + " coins scanned.\n";
-                status += e.stack.cloudcoin.Count.ToString() + " coins scanned.\n";
 
                 if (e.stack.AuthenticatedQuantity > 0)
                     status += "Authenticated: " + e.stack.AuthenticatedQuantity + " units\n";

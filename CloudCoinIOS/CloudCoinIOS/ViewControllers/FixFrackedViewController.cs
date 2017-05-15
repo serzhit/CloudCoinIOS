@@ -31,6 +31,10 @@ namespace CloudCoinIOS
 			frackedList = Safe.Instance.FrackedCoinsList.ToList();
 			frackedTableView.Source = new FrackedTableSource(frackedList);
 
+			frackedTableView.Layer.CornerRadius = 5f;
+			frackedTableView.Layer.BorderColor = UIColor.LightGray.CGColor;
+			frackedTableView.Layer.MasksToBounds = true;
+
 			RAIDA.Instance.CoinFixStarted += CoinFixStarted;
 			RAIDA.Instance.CoinFixProcessing += CoinFixProcessing;
 			RAIDA.Instance.CoinFixFinished += CoinFixFinished;

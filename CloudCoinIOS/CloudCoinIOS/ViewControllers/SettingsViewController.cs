@@ -17,9 +17,23 @@ namespace CloudCoinIOS
         {
             base.ViewDidLoad();
 
-            btnClose.TouchUpInside += (sender, e) => {
-                RemoveAnimate();                
-            };
+            InitProperties();
+            InitMethods();
+        }
+
+        private void InitProperties()
+        {
+            switchFracked.OnTintColor = UIColor.Blue;
+            switchFracked.TintColor = UIColor.Red;
+            switchFracked.BackgroundColor = UIColor.Red;
+        }
+
+        private void InitMethods()
+        {
+			btnClose.TouchUpInside += (sender, e) =>
+			{
+				RemoveAnimate();
+			};
         }
 	}
 }
