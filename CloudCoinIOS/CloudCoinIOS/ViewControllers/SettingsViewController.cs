@@ -23,9 +23,21 @@ namespace CloudCoinIOS
 
         private void InitProperties()
         {
-            switchFracked.OnTintColor = UIColor.Blue;
-            switchFracked.TintColor = UIColor.Red;
-            switchFracked.BackgroundColor = UIColor.Red;
+            var defaults = NSUserDefaults.StandardUserDefaults;
+
+            switchFracked.On = defaults.BoolForKey("Fracked");
+            switchZip.On = defaults.BoolForKey("Zip");
+
+            switchFracked.OnTintColor = UIColor.FromRGB(52,142,251);
+            switchZip.OnTintColor = UIColor.FromRGB(52, 142, 251);
+
+            switchFracked.ValueChanged += (sender, e) => {
+                defaults.SetBool(switchFracked.On, "Fracked");    
+            };
+
+            switchZip.ValueChanged += (sender, e) => {
+                defaults.SetBool(switchZip.On, "Zip");
+            };
         }
 
         private void InitMethods()
