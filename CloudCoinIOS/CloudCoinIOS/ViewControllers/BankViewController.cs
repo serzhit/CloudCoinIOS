@@ -10,9 +10,11 @@ namespace CloudCoinIOS
 {
 	public partial class BankViewController : BaseFormSheet
 	{
-		public EventHandler FixFrackedTouched;
 		private List<CloudCoin> frackedList;
+        private AppDelegate appDelegate;
 
+        public EventHandler FixFrackedTouched;
+		
 		public BankViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -28,6 +30,8 @@ namespace CloudCoinIOS
 
 		private void InitializeProperties()
 		{
+            appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
+
 			frackedList = new List<CloudCoin>(Safe.Instance.FrackedCoinsList);
 
 			if (frackedList.Count == 0)
@@ -43,11 +47,6 @@ namespace CloudCoinIOS
 		private void SetEnableButton(UIButton button, bool isEnabled)
 		{
             button.Hidden = !isEnabled;
-			//if (isEnabled)
-   //             button.BackgroundColor = UIColor.FromRGB(52, 142, 251);
-			//else
-				//button.BackgroundColor = UIColor.FromRGBA(0, 0, 0, 42);                
-
 		}
 
 		private void InitializeMethods()
@@ -59,7 +58,8 @@ namespace CloudCoinIOS
 
 			btnFixFracked.TouchUpInside += async (sender, e) =>
 			{
-				FixFrackedTouched.Invoke(this, null);
+                if (!appDelegate.IsFrackedBackground())
+				    FixFrackedTouched.Invoke(this, null);
 				await ApplicationLogic.FixSelected();
 			};
 

@@ -9,6 +9,8 @@ namespace CloudCoinIOS
 {
     public partial class SettingsViewController : BaseFormSheet
 	{
+        private UIColor tintColor = UIColor.FromRGB(52, 142, 251);
+
 		public SettingsViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -23,20 +25,20 @@ namespace CloudCoinIOS
 
         private void InitProperties()
         {
-            var defaults = NSUserDefaults.StandardUserDefaults;
+            var appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
 
-            switchFracked.On = defaults.BoolForKey("Fracked");
-            switchZip.On = defaults.BoolForKey("Zip");
+            switchFracked.On = appDelegate.IsFrackedBackground();
+            switchZip.On = appDelegate.IsSupportZip();
 
-            switchFracked.OnTintColor = UIColor.FromRGB(52,142,251);
-            switchZip.OnTintColor = UIColor.FromRGB(52, 142, 251);
+            switchFracked.OnTintColor = tintColor;
+            switchZip.OnTintColor = tintColor;
 
             switchFracked.ValueChanged += (sender, e) => {
-                defaults.SetBool(switchFracked.On, "Fracked");    
+                appDelegate.SetFrackedBackground(switchFracked.On);
             };
 
             switchZip.ValueChanged += (sender, e) => {
-                defaults.SetBool(switchZip.On, "Zip");
+                appDelegate.SetZip(switchZip.On);
             };
         }
 

@@ -20,8 +20,12 @@ namespace CloudCoinIOS
 		public string LogDir { get; set; }
 		public string TemplatesDir { get; set; }
 		public string InboxDir { get; set; }
-
 		public string Password { get; set; }
+
+        private NSUserDefaults userDefaults;
+
+        public const string frackedBackground = "FrackedBackground";
+        public const string supportZip = "SupportZip";
 
 		public override UIWindow Window
 		{
@@ -62,8 +66,28 @@ namespace CloudCoinIOS
 			}
 
 			Password = "";
+            userDefaults = NSUserDefaults.StandardUserDefaults;
+
 			return true;
 		}
+
+        public void SetFrackedBackground(bool isBack)
+        {
+            userDefaults.SetBool(isBack, frackedBackground);
+        }
+
+        public bool IsFrackedBackground() {
+            return userDefaults.BoolForKey(frackedBackground);
+        }
+
+        public void SetZip(bool isZip)
+        {
+            userDefaults.SetBool(isZip, supportZip);
+        }
+
+        public bool IsSupportZip() {
+            return userDefaults.BoolForKey(supportZip);
+        }
 
 		private bool IsSameWithFolder(string path)
 		{
