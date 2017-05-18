@@ -52,6 +52,7 @@
 				<array>
 					<string>jpg</string>
 					<string>stack</string>
+					<string>zip</string>
 				</array>
 			</dict>
 		</dict>

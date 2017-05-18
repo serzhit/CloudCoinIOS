@@ -12,6 +12,7 @@ using UIKit;
 using CoreGraphics;
 using CloudCoinIOS;
 using CoreText;
+using MiniZip.ZipArchive;
 
 namespace CloudCoin_SafeScan
 {
@@ -138,7 +139,25 @@ namespace CloudCoin_SafeScan
 								Coins.Add(json);
 							}
 						}
+                        else if(Path.GetExtension(fullPath).Equals((".zip")))
+                        {
+
+                            //var zip = new ZipArchive();
+                            //var documentDirectory = NSFileManager.DefaultManager.GetUrls(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomain.User)[0].Path;
+
+                            //zip.UnzipOpenFile(fullPath, "1");
+
+                            //zip.UnzipFileTo(documentDirectory + "/unzip", true);
+
+                            //zip.OnError += (sender, e) => {
+                            //    Console.WriteLine("Error while unzipping: {0}", e);
+                            //};
+
+                            //Console.WriteLine(zip.UnzippedFiles.Count());
+                            //zip.UnzipCloseFile();
+                        }
 					}
+
 					//***
 					//if (IsValidFile)
 					//FileSystem.CopyOriginalFileToImported(FI);
