@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Foundation;
 using CloudCoinIOS;
 using UIKit;
+using MiniZip.ZipArchive;
 
 namespace CloudCoin_SafeScan
 {
@@ -520,21 +521,22 @@ namespace CloudCoin_SafeScan
 					       + note + "." + DateTime.Now.ToString("dd-MM-yy.HH-mm") + ".stack";
 					st.SaveInFile(fn);
 
-					ExportedPaths = new List<string>() { fn };
-
+                    ExportedPaths = new List<string>() { fn };
 				}
 				else
 				{
 					var cloudCoinFile = new CloudCoinFile();
-
 					ExportedPaths = new List<string>();
-
 					string path = "";
+
 					foreach (var coin in stack)
 					{
 						var success = cloudCoinFile.WriteJpeg(coin, note, ref path);
 						if (success)
-							ExportedPaths.Add(path);
+                        {
+                            ExportedPaths.Add(path);
+                        }
+							
 					}
 				}
 				return true;

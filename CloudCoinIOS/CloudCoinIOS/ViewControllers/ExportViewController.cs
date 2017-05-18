@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using CloudCoin_SafeScan;
 using Foundation;
+using MiniZip.ZipArchive;
 using UIKit;
 
 namespace CloudCoinIOS
@@ -12,8 +13,9 @@ namespace CloudCoinIOS
 	{
 		private UIColor borderColor = UIColor.FromRGB(122, 134, 148);
 		private nint desiredSum;
-		Safe safe;
-		CoinStack exportCoins;
+		private Safe safe;
+		private CoinStack exportCoins;
+        private AppDelegate appDelegate;
 
 		public ExportViewController(IntPtr handle) : base(handle)
 		{
@@ -87,19 +89,41 @@ namespace CloudCoinIOS
 				RemoveAnimate();
 			};
 
-			btnExport.TouchUpInside += (sender, e) =>
+			btnExport.TouchUpInside += async (sender, e) =>
 			{
 				bool isJson = segmentFormat.SelectedSegment == 1 ? true : false;
 				exportCoins = GetExportCoins();
+
+                appDelegate = (AppDelegate)UIApplication.SharedApplication.Delegate;
+
+                int isUnZip = 1;
+                if (appDelegate.IsSupportZip())
+                    isUnZip = await ShowAlert("Export", "Would you like to export as zip file?", new string[]{ "Yes", "No" });
+
 				var isExported = safe.SaveOutStack(GetExportCoins(), (int)desiredSum, isJson, lblNote.Text);
 
 				if (isExported)
 				{
                     var fileDataList = new List<NSObject>();
 
-                    foreach (var path in safe.ExportedPaths)
+                    if (isUnZip == 0)
                     {
-                        fileDataList.Add(NSUrl.FromFilename(path));
+                        var zip = new ZipArchive();
+                        var zipPath = appDelegate.ExportDir + "/cloudcoin.zip";
+                        zip.CreateZipFile(zipPath, "pass1");
+						foreach (var path in safe.ExportedPaths)
+						{
+                            zip.AddFile(path, "newname");
+						}
+                        fileDataList.Add(NSUrl.FromFilename(zipPath));
+                        zip.CloseZipFile();
+					} 
+                    else 
+                    {
+						foreach (var path in safe.ExportedPaths)
+						{
+							fileDataList.Add(NSUrl.FromFilename(path));
+						}
                     }
 
                     var activityViewController = new UIActivityViewController(fileDataList.ToArray(), null);

@@ -109,6 +109,9 @@
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.105.2.3\lib\Xamarin.iOS10\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="ZipArchive">
+      <HintPath>..\Components\ZipArchive-1.4.0.2\lib\ios-unified\ZipArchive.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -235,6 +238,12 @@
     <BundleResource Include="Resources\jpeg100.jpg" />
     <BundleResource Include="Resources\jpeg250.jpg" />
     <BundleResource Include="Resources\close128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="ZipArchive">
+      <Version>1.4.0.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
