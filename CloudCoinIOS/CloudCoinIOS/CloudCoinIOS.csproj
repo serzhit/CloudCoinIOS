@@ -210,6 +210,10 @@
     <Compile Include="ViewCells\AuthViewCell.designer.cs">
       <DependentUpon>AuthViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\ZipPasswordViewController.cs" />
+    <Compile Include="ViewControllers\ZipPasswordViewController.designer.cs">
+      <DependentUpon>ZipPasswordViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\backicons.png" />

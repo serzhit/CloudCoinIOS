@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using CloudCoin_SafeScan;
 using Foundation;
 using MiniZip.ZipArchive;
@@ -108,12 +109,16 @@ namespace CloudCoinIOS
 
                     if (isUnZip == 0)
                     {
+                        var zipViewController = (ZipPasswordViewController)Storyboard.InstantiateViewController("ZipPasswordViewController");
+						zipViewController.ShowInView(View, true);
+                        var enterPassword = await zipViewController.GetEnterPassword();
+
                         var zip = new ZipArchive();
                         var zipPath = appDelegate.ExportDir + "/cloudcoin.zip";
-                        zip.CreateZipFile(zipPath, "pass1");
+                        zip.CreateZipFile(zipPath, enterPassword);
 						foreach (var path in safe.ExportedPaths)
 						{
-                            zip.AddFile(path, "newname");
+                            zip.AddFile(path, Path.GetFileName(path));
 						}
                         fileDataList.Add(NSUrl.FromFilename(zipPath));
                         zip.CloseZipFile();
@@ -139,7 +144,7 @@ namespace CloudCoinIOS
 				}
 				else
 				{
-					ShowAlert("Export", "Nothing to export!\n", new string[] {"Ok"});
+					await ShowAlert("Export", "Nothing to export!\n", new string[] {"Ok"});
 				}
 			};
 		}
