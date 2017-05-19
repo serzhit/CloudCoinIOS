@@ -73,6 +73,7 @@ namespace CloudCoinIOS
 
 			if (safe != null)
 			{
+                lblSumInBank.Text = safe.Contents.SumInStack.ToString();
 				lblAuthOne.Text = safe.Ones.GoodQuantity.ToString();
 				lblAuthFive.Text = safe.Fives.GoodQuantity.ToString();
 				lblAuth25.Text = safe.Quarters.GoodQuantity.ToString();

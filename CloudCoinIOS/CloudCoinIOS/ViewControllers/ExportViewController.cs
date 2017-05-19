@@ -112,6 +112,7 @@ namespace CloudCoinIOS
                         var zipViewController = (ZipPasswordViewController)Storyboard.InstantiateViewController("ZipPasswordViewController");
 						zipViewController.ShowInView(View, true);
                         var enterPassword = await zipViewController.GetEnterPassword();
+                        zipViewController.RemoveAnimate();
 
                         var zip = new ZipArchive();
                         var zipPath = appDelegate.ExportDir + "/cloudcoin.zip";

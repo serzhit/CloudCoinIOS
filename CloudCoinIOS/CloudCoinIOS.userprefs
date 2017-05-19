@@ -1,25 +1,22 @@
 ﻿<Properties StartupConfiguration="{B6987EF8-3EEE-4D5A-A6CF-64CEF3458A74}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS/ViewControllers/FixFrackedViewController.cs">
     <Files>
-      <File FileName="CloudCoinIOS/ViewControllers/FixFrackedViewController.cs" Line="28" Column="9" />
-      <File FileName="CloudCoinIOS/ViewControllers/AuthorizationViewController.cs" Line="99" Column="25" />
-      <File FileName="CloudCoinIOS/ViewControllers/ExportViewController.cs" Line="120" Column="8" />
-      <File FileName="CloudCoinIOS/ViewControllers/ZipPasswordViewController.cs" Line="35" Column="33" />
-      <File FileName="CloudCoinIOS/ViewControllers/EnterPassViewController.designer.cs" Line="7" Column="18" />
-      <File FileName="CloudCoinIOS/AppDelegate.cs" Line="68" Column="1" />
-      <File FileName="CloudCoinIOS/ViewControllers/HelpViewController.cs" Line="1" Column="1" />
-      <File FileName="CloudCoinIOS/ViewControllers/ImportViewController.cs" Line="59" Column="33" />
-      <File FileName="Components/ZipArchive-1.4.0.2/samples/ZipArchiveSample/ZipArchiveSample/TestAppViewController.cs" Line="55" Column="35" />
+      <File FileName="CloudCoinIOS/ViewControllers/ExportViewController.cs" Line="114" Column="42" />
+      <File FileName="CloudCoinIOS/ViewControllers/ZipPasswordViewController.cs" Line="63" Column="45" />
+      <File FileName="CloudCoinIOS/Core/IOModels.cs" Line="335" Column="24" />
+      <File FileName="CloudCoinIOS/ViewControllers/BankViewController.cs" Line="92" Column="1" />
+      <File FileName="CloudCoinIOS/ViewControllers/FixFrackedViewController.cs" Line="110" Column="20" />
+      <File FileName="CloudCoinIOS/ViewCells/FrackedTableCell.cs" Line="30" Column="29" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="CloudCoinIOS" expanded="True">
-            <Node name="CloudCoinIOS" expanded="True" selected="True">
+            <Node name="CloudCoinIOS" expanded="True">
               <Node name="ComponentReferenceFolder" expanded="True" />
-              <Node name="Core" expanded="True" />
+              <Node name="ViewCells" expanded="True" />
               <Node name="ViewControllers" expanded="True">
-                <Node name="EnterPassViewController.cs" expanded="True" />
+                <Node name="FixFrackedViewController.cs" expanded="True" selected="True" />
               </Node>
             </Node>
           </Node>

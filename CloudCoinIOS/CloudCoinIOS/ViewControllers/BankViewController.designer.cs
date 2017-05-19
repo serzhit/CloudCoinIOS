@@ -1,6 +1,6 @@
 // WARNING
 //
-// This file has been generated automatically by Xamarin Studio to store outlets and
+// This file has been generated automatically by Visual Studio to store outlets and
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
@@ -47,12 +47,25 @@ namespace CloudCoinIOS
 
 		[Outlet]
 		UIKit.UILabel lblFrackedOne { get; set; }
+
+		[Outlet]
+		UIKit.UILabel lblSumInBank { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (lblSumInBank != null) {
+				lblSumInBank.Dispose ();
+				lblSumInBank = null;
+			}
+
 			if (btnClose != null) {
 				btnClose.Dispose ();
 				btnClose = null;
+			}
+
+			if (btnFixFracked != null) {
+				btnFixFracked.Dispose ();
+				btnFixFracked = null;
 			}
 
 			if (lblAuth100 != null) {
@@ -103,11 +116,6 @@ namespace CloudCoinIOS
 			if (lblFrackedOne != null) {
 				lblFrackedOne.Dispose ();
 				lblFrackedOne = null;
-			}
-
-			if (btnFixFracked != null) {
-				btnFixFracked.Dispose ();
-				btnFixFracked = null;
 			}
 		}
 	}

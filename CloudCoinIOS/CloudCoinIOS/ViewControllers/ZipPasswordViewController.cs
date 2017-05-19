@@ -51,6 +51,8 @@ namespace CloudCoinIOS
                     
                 }
                 tcs.TrySetResult((string)txtPassword.Text);
+
+                RemoveAnimate();
             };
 
             btnCancel.TouchUpInside += (sender, e) => {

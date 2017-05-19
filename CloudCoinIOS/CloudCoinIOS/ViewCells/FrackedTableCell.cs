@@ -36,15 +36,15 @@ namespace CloudCoinIOS
 			switch (denomination)
 			{
 				case CloudCoin.Denomination.One:
-					return "1s";
+					return "1";
 				case CloudCoin.Denomination.Five:
-					return "5s";
+					return "5";
 				case CloudCoin.Denomination.Quarter:
-					return "25s";
+					return "25";
 				case CloudCoin.Denomination.Hundred:
-					return "100s";
+					return "100";
 				case CloudCoin.Denomination.KiloQuarter:
-					return "250s";
+					return "250";
 			}
 
 			return "";

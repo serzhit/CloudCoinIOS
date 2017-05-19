@@ -319,7 +319,7 @@ namespace CloudCoin_SafeScan
 				case 250: jpgImage = UIImage.FromFile("jpeg250.jpg"); break;
 			}
 
-			var newImage = DrawFont(jpgImage, String.Format("{0:N0}", cc.sn) + " of 16,777,216 on Network: 1", new CGPoint(10f, 10f));
+			var newImage = DrawFont(jpgImage, String.Format("{0:N0}", cc.sn) + " of 16,777,216 on Network: 1", new CGPoint(30f, 25f));
 
 			Byte[] snBytes;
 			using (NSData imageData = newImage.AsJPEG())
@@ -359,7 +359,7 @@ namespace CloudCoin_SafeScan
 
 		private UIImage DrawFont(UIImage image, string text, CGPoint point)
 		{
-			var font = UIFont.FromName("Arial", 20f);
+			var font = UIFont.FromName("Arial", 10f);
 			UIGraphics.BeginImageContext(image.Size);
 			image.Draw(new CGRect(0, 0, image.Size.Width, image.Size.Height));
 
