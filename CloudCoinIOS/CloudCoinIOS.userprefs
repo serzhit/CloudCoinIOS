@@ -3,7 +3,8 @@
     <Files>
       <File FileName="CloudCoinIOS/Core/RAIDAFix.cs" Line="1" Column="1" />
       <File FileName="CloudCoinIOS/ViewCells/FrackedTableCell.cs" Line="1" Column="1" />
-      <File FileName="CloudCoinIOS/ViewControllers/FixFrackedViewController.cs" Line="68" Column="75" />
+      <File FileName="CloudCoinIOS/ViewControllers/SettingsViewController.cs" Line="1" Column="1" />
+      <File FileName="CloudCoinIOS/Main.storyboard" />
       <File FileName="CloudCoinIOS Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
