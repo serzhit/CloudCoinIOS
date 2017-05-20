@@ -1,11 +1,23 @@
 ﻿<Properties StartupConfiguration="{B6987EF8-3EEE-4D5A-A6CF-64CEF3458A74}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS/Core/IOModels.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="CloudCoinIOS/ViewControllers/ZipPasswordViewController.cs" Line="35" Column="37" />
       <File FileName="CloudCoinIOS/ViewControllers/FixFrackedViewController.cs" Line="65" Column="74" />
-      <File FileName="CloudCoinIOS/Core/IOModels.cs" Line="103" Column="27" />
+      <File FileName="CloudCoinIOS/Core/IOModels.cs" Line="15" Column="7" />
       <File FileName="CloudCoinIOS/ViewControllers/AuthorizationViewController.cs" Line="77" Column="28" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CloudCoinIOS" expanded="True">
+            <Node name="CloudCoinIOS" expanded="True">
+              <Node name="ComponentReferenceFolder" expanded="True" selected="True" />
+              <Node name="Core" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
