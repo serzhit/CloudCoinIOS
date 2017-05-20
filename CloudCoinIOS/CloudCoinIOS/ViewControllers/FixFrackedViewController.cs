@@ -9,107 +9,107 @@ using System.Linq;
 
 namespace CloudCoinIOS
 {
-	public partial class FixFrackedViewController : BaseFormSheet
-	{
-		private List<CloudCoin> frackedList;
+    public partial class FixFrackedViewController : BaseFormSheet
+    {
+        private List<CloudCoin> frackedList;
 
-		public FixFrackedViewController (IntPtr handle) : base (handle)
-		{
-		}
+        public FixFrackedViewController(IntPtr handle) : base(handle)
+        {
+        }
 
-		public override void ViewDidLoad()
-		{
-			base.ViewDidLoad();
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
 
-			InitializeProperties();
+            InitializeProperties();
 
-			IntializeMethods();
-		}
+            IntializeMethods();
+        }
 
-		private void InitializeProperties()
-		{
-			frackedList = Safe.Instance.FrackedCoinsList.ToList();
-			frackedTableView.Source = new FrackedTableSource(frackedList);
+        private void InitializeProperties()
+        {
+            frackedList = Safe.Instance.FrackedCoinsList.ToList();
+            frackedTableView.Source = new FrackedTableSource(frackedList);
 
-			frackedTableView.Layer.CornerRadius = 5f;
-			frackedTableView.Layer.BorderColor = UIColor.LightGray.CGColor;
-			frackedTableView.Layer.MasksToBounds = true;
+            frackedTableView.Layer.CornerRadius = 5f;
+            frackedTableView.Layer.BorderColor = UIColor.LightGray.CGColor;
+            frackedTableView.Layer.MasksToBounds = true;
 
-			RAIDA.Instance.CoinFixStarted += CoinFixStarted;
-			RAIDA.Instance.CoinFixProcessing += CoinFixProcessing;
-			RAIDA.Instance.CoinFixFinished += CoinFixFinished;
-		}
+            RAIDA.Instance.CoinFixStarted += CoinFixStarted;
+            RAIDA.Instance.CoinFixProcessing += CoinFixProcessing;
+            RAIDA.Instance.CoinFixFinished += CoinFixFinished;
+        }
 
-		private void CoinFixStarted(object sender, CoinFixStartedEventArgs e)
-		{
-			var coinBeingFixed = frackedList[e.coinindex];
-			coinBeingFixed.StatusText = "Fixing key on node " + e.NodeNumber + "...";
-			var indexPath = NSIndexPath.FromRowSection((nint)e.coinindex, 0);
-			InvokeOnMainThread(() =>
-			{
-				frackedTableView.ReloadRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.None);
-			});
-		}
-
-		private void CoinFixProcessing(object sender, CoinFixProcessingEventArgs e)
-		{
-			var coinBeingFixed = frackedList[e.coinindex];
-            coinBeingFixed.StatusText = "Processing key on node " + e.NodeNumber;// + ", corner" + e.corner;
-			var indexPath = NSIndexPath.FromRowSection((nint)e.coinindex, 0);
+        private void CoinFixStarted(object sender, CoinFixStartedEventArgs e)
+        {
+            var coinBeingFixed = frackedList[e.coinindex];
+            coinBeingFixed.StatusText = "Waiting node " + e.NodeNumber + "...";
+            var indexPath = NSIndexPath.FromRowSection((nint)e.coinindex, 0);
             InvokeOnMainThread(() =>
-			{
-				frackedTableView.ReloadRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.None);
-			});
-		}
+            {
+                frackedTableView.ReloadRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.None);
+            });
+        }
 
-		private void CoinFixFinished(object sender, CoinFixFinishedEventArgs e)
-		{
-			var coinBeingFixed = frackedList[e.coinindex];
-			coinBeingFixed.StatusText = "Key on node " + e.NodeNumber + " was " + (e.result == CloudCoin.raidaNodeResponse.pass ? "" : "not") + " fixed!";
-			var indexPath = NSIndexPath.FromRowSection((nint)e.coinindex, 0);
+        private void CoinFixProcessing(object sender, CoinFixProcessingEventArgs e)
+        {
+            var coinBeingFixed = frackedList[e.coinindex];
+            coinBeingFixed.StatusText = "Fixing node " + e.NodeNumber;// + ", corner" + e.corner;
+            var indexPath = NSIndexPath.FromRowSection((nint)e.coinindex, 0);
             InvokeOnMainThread(() =>
-			{
-				frackedTableView.ReloadRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.None);
-			});
-		}
+            {
+                frackedTableView.ReloadRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.None);
+            });
+        }
 
-		private void IntializeMethods()
-		{
-			btnClose.TouchUpInside += (sender, e) =>
-			{
-				RemoveAnimate();
-			};
-		}
-	}
+        private void CoinFixFinished(object sender, CoinFixFinishedEventArgs e)
+        {
+            var coinBeingFixed = frackedList[e.coinindex];
+            coinBeingFixed.StatusText = "Node " + e.NodeNumber + " was " + (e.result == CloudCoin.raidaNodeResponse.pass ? "" : "not") + " fixed!";
+            var indexPath = NSIndexPath.FromRowSection((nint)e.coinindex, 0);
+            InvokeOnMainThread(() =>
+            {
+                frackedTableView.ReloadRows(new NSIndexPath[] { indexPath }, UITableViewRowAnimation.None);
+            });
+        }
 
-	public class FrackedTableSource : UITableViewSource
-	{
-		List<CloudCoin> frackedCoins;
-		NSString CellIdentifier = new NSString("FrackedTableCell");
+        private void IntializeMethods()
+        {
+            btnClose.TouchUpInside += (sender, e) =>
+            {
+                RemoveAnimate();
+            };
+        }
+    }
 
-		public FrackedTableSource(List<CloudCoin> frackedCoins)
-		{
-			this.frackedCoins = frackedCoins;
-		}
+    public class FrackedTableSource : UITableViewSource
+    {
+        List<CloudCoin> frackedCoins;
+        NSString CellIdentifier = new NSString("FrackedTableCell");
 
-		public override nint RowsInSection(UITableView tableview, nint section)
-		{
-			return frackedCoins.Count;
-		}
+        public FrackedTableSource(List<CloudCoin> frackedCoins)
+        {
+            this.frackedCoins = frackedCoins;
+        }
 
-		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
-		{
-			var cell = (FrackedTableCell)tableView.DequeueReusableCell(CellIdentifier);
-			var coin = frackedCoins[indexPath.Row];
+        public override nint RowsInSection(UITableView tableview, nint section)
+        {
+            return frackedCoins.Count;
+        }
 
-			//---- if there are no cells to reuse, create a new one
-			if (cell == null)
-			{
-				cell = new FrackedTableCell(CellIdentifier);
-			}
-			cell.SetProgress(coin);
+        public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+        {
+            var cell = (FrackedTableCell)tableView.DequeueReusableCell(CellIdentifier);
+            var coin = frackedCoins[indexPath.Row];
 
-			return cell;
-		}
-	}
+            //---- if there are no cells to reuse, create a new one
+            if (cell == null)
+            {
+                cell = new FrackedTableCell(CellIdentifier);
+            }
+            cell.SetProgress(coin);
+
+            return cell;
+        }
+    }
 }

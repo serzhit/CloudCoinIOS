@@ -5,7 +5,7 @@
 	<key>CFBundleName</key>
 	<string>CloudCoin SafeScan</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.example</string>
+	<string>com.gitinsky.scansafe.ios</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -39,7 +39,7 @@
 			<key>UTTypeDescription</key>
 			<string>CloudCoin Stack</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.gitinskyios.stack</string>
+			<string>com.gitinsky.scansafe.ios.stack</string>
 			<key>UTTypeSize64IconFile</key>
 			<string>cloudcoin87</string>
 			<key>UTTypeSize320IconFile</key>
@@ -50,9 +50,26 @@
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
-					<string>jpg</string>
 					<string>stack</string>
 					<string>zip</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeDescription</key>
+			<string>Single CloudCoin</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.gitinsky.scansafe.ios.coin</string>
+			<key>UTTypeSize64IconFile</key>
+			<string>Assets.xcassets/AppIcon.appiconset/CloudCoinLogoRound58</string>
+			<key>UTTypeSize320IconFile</key>
+			<string>Assets.xcassets/AppIcon.appiconset/CloudCoinLogoRound114</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>jpg</string>
+					<string>jpeg</string>
 				</array>
 			</dict>
 		</dict>
@@ -63,15 +80,40 @@
 			<key>UTTypeDescription</key>
 			<string>CloudCoin Stack</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.gitinskyios.stack</string>
+			<string>com.gitinsky.scansafe.ios.stack</string>
 			<key>UTTypeSize64IconFile</key>
 			<string>cloudcoin87</string>
 			<key>UTTypeSize320IconFile</key>
 			<string>CloudCoinLogoRound</string>
 			<key>UTTypeConformsTo</key>
 			<array/>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>stack</string>
+					<string>zip</string>
+				</array>
+			</dict>
 		</dict>
-		<dict/>
+		<dict>
+			<key>UTTypeDescription</key>
+			<string>Single CloudCoin</string>
+			<key>UTTypeSize64IconFile</key>
+			<string>Assets.xcassets/AppIcon.appiconset/CloudCoinLogoRound87</string>
+			<key>UTTypeSize320IconFile</key>
+			<string>Assets.xcassets/AppIcon.appiconset/CloudCoinLogoRound180</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.gitinsky.scansafe.ios.coin</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>jpg</string>
+					<string>jpeg</string>
+				</array>
+			</dict>
+		</dict>
 	</array>
 	<key>CFBundleDocumentTypes</key>
 	<array>
@@ -80,7 +122,23 @@
 			<string>CloudCoin stack</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.gitinskyios.stack</string>
+				<string>com.gitinsky.scansafe.ios.stack</string>
+			</array>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>CloudCoinLogoRound — 96</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Single CloudCoin</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.gitinsky.scansafe.ios.coin</string>
+			</array>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>CloudCoinLogoRound80</string>
 			</array>
 		</dict>
 	</array>

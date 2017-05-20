@@ -1,36 +1,19 @@
 ﻿<Properties StartupConfiguration="{B6987EF8-3EEE-4D5A-A6CF-64CEF3458A74}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS/ViewControllers/FixFrackedViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS Status">
     <Files>
-      <File FileName="CloudCoinIOS/ViewControllers/ExportViewController.cs" Line="114" Column="42" />
-      <File FileName="CloudCoinIOS/ViewControllers/ZipPasswordViewController.cs" Line="63" Column="45" />
-      <File FileName="CloudCoinIOS/Core/IOModels.cs" Line="335" Column="24" />
-      <File FileName="CloudCoinIOS/ViewControllers/BankViewController.cs" Line="92" Column="1" />
-      <File FileName="CloudCoinIOS/ViewControllers/FixFrackedViewController.cs" Line="110" Column="20" />
-      <File FileName="CloudCoinIOS/ViewCells/FrackedTableCell.cs" Line="30" Column="29" />
+      <File FileName="CloudCoinIOS/Core/RAIDAFix.cs" Line="1" Column="1" />
+      <File FileName="CloudCoinIOS/ViewCells/FrackedTableCell.cs" Line="1" Column="1" />
+      <File FileName="CloudCoinIOS/ViewControllers/FixFrackedViewController.cs" Line="68" Column="75" />
+      <File FileName="CloudCoinIOS Status" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="CloudCoinIOS" expanded="True">
-            <Node name="CloudCoinIOS" expanded="True">
-              <Node name="ComponentReferenceFolder" expanded="True" />
-              <Node name="ViewCells" expanded="True" />
-              <Node name="ViewControllers" expanded="True">
-                <Node name="FixFrackedViewController.cs" expanded="True" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Volumes/Local/CloudCoin/CloudCoinIOS/CloudCoinIOS/CloudCoinIOS/AppDelegate.cs" relfile="CloudCoinIOS/AppDelegate.cs" line="151" column="1" />
+      <Breakpoint file="/Users/gitinsky/Projects/CloudCoinIOS/CloudCoinIOS/CloudCoinIOS/ViewControllers/ExportViewController.cs" relfile="CloudCoinIOS/ViewControllers/ExportViewController.cs" line="116" column="39" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CloudCoinIOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.2c49895aa78f681e1144903ccf3c43f4718e7334" />
+  <MonoDevelop.Ide.ItemProperties.CloudCoinIOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.05f6b4b2fcb1783afd25c323eacf983c3b6e3fc4" />
   <MultiItemStartupConfigurations />
 </Properties>
