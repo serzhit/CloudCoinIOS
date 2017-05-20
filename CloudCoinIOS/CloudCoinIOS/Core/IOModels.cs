@@ -142,19 +142,19 @@ namespace CloudCoin_SafeScan
                         else if(Path.GetExtension(fullPath).Equals((".zip")))
                         {
 
-                            //var zip = new ZipArchive();
-                            //var documentDirectory = NSFileManager.DefaultManager.GetUrls(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomain.User)[0].Path;
+                            var zip = new ZipArchive();
+                            var documentDirectory = NSFileManager.DefaultManager.GetUrls(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomain.User)[0].Path;
 
-                            //zip.UnzipOpenFile(fullPath, "1");
+                            zip.UnzipOpenFile(fullPath, "1");
 
-                            //zip.UnzipFileTo(documentDirectory + "/unzip", true);
+                            zip.UnzipFileTo(documentDirectory + "/unzip", true);
 
-                            //zip.OnError += (sender, e) => {
-                            //    Console.WriteLine("Error while unzipping: {0}", e);
-                            //};
+                            zip.OnError += (sender, e) => {
+                                Console.WriteLine("Error while unzipping: {0}", e);
+                            };
 
-                            //Console.WriteLine(zip.UnzippedFiles.Count());
-                            //zip.UnzipCloseFile();
+                            Console.WriteLine(zip.UnzippedFiles.Count());
+                            zip.UnzipCloseFile();
                         }
 					}
 

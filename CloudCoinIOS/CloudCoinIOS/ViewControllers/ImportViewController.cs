@@ -109,10 +109,6 @@ namespace CloudCoinIOS
 				//if (isPasswordForSafe == 0)
 					//CompletedWithPassword(coinFile);
 			};
-
-			
 		}
-
-		
 	}
 }
