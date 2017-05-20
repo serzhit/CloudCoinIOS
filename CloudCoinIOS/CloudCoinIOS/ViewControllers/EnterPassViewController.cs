@@ -11,90 +11,92 @@ using UIKit;
 
 namespace CloudCoinIOS
 {
-	public partial class EnterPassViewController : BaseFormSheet
-	{
-		public delegate void FinishEnterPasswordDelegate(string password);
-		public event FinishEnterPasswordDelegate FinishEnterPassword;
+    public partial class EnterPassViewController : BaseFormSheet
+    {
+        public delegate void FinishEnterPasswordDelegate(string password);
+        public event FinishEnterPasswordDelegate FinishEnterPassword;
 
-		public EnterPassViewController (IntPtr handle) : base (handle)
-		{
-		}
+        public EnterPassViewController(IntPtr handle) : base(handle)
+        {
+        }
 
-		public override void ViewDidLoad()
-		{
-			base.ViewDidLoad();
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
 
-			InitializeProperties();
+            InitializeProperties();
 
-			InitializeMethods();
-		}
+            InitializeMethods();
+        }
 
-		private void InitializeProperties()
-		{
-			txtPassword.BecomeFirstResponder();
-		}
+        private void InitializeProperties()
+        {
+            txtPassword.BecomeFirstResponder();
+        }
 
-		private void InitializeMethods()
-		{
-			btnOk.TouchUpInside += (sender, e) => {
-				if (txtPassword.Text.Length < 5)
-				{
-					ShowAlert("Password", "Password cannot be less than 5 characters", new string[] { "Ok" });
-				}
-				else
-				{
-					var fi = new FileInfo(Safe.GetSafeFilePath());
-					var result = CheckPassword(fi, txtPassword.Text);
-					if (result == 0)
-					{
-						ShowAlert("Password", "Worng password from safe.\nTry again.", new string[] { "Ok" });
-					}
-					else if (result == 2)
-					{
-						FinishEnterPassword("error");
+        private void InitializeMethods()
+        {
+            btnOk.TouchUpInside += (sender, e) =>
+            {
+                if (txtPassword.Text.Length < 5)
+                {
+                    ShowAlert("Password", "Password cannot be less than 5 characters", new string[] { "Ok" });
+                }
+                else
+                {
+                    var fi = new FileInfo(Safe.GetSafeFilePath());
+                    var result = CheckPassword(fi, txtPassword.Text);
+                    if (result == 0)
+                    {
+                        ShowAlert("Password", "Wrong password to access the Safe.\nPlease, enter a correct password.", new string[] { "Ok" });
+                    }
+                    else if (result == 2)
+                    {
+                        FinishEnterPassword("error");
                         RemoveAnimate();
-					}
-					else
-					{
+                    }
+                    else
+                    {
                         FinishEnterPassword(txtPassword.Text);
                         RemoveAnimate();
-					}
-				}
-			};
-
-            btnCancel.TouchUpInside += (sender, e) => {
-                RemoveAnimate();                
+                    }
+                }
             };
-		}
 
-		private int CheckPassword(FileInfo fi, string password)
-		{
-			try
-			{
-				using (var fs = fi.Open(FileMode.Open))
-				{
-					byte[] buffer = new byte[60];
-					byte[] passbytes = { 1, 2, 3, 4 }; //bogus data just to initialize
-					fs.Read(buffer, 0, 60);
-					string cryptPassFromFile = new string(Encoding.UTF8.GetChars(buffer));
+            btnCancel.TouchUpInside += (sender, e) =>
+            {
+                RemoveAnimate();
+            };
+        }
 
-					passbytes = Encoding.UTF8.GetBytes(password);
-					if (Crypter.CheckPassword(passbytes, cryptPassFromFile))
-					{
-						fs.Close();
-						return 1;
-					}
-					else
-					{
-						return 0;
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				Debug.WriteLine(ex.Message);
-				return 2;
-			}
-		}
-	}
+        private int CheckPassword(FileInfo fi, string password)
+        {
+            try
+            {
+                using (var fs = fi.Open(FileMode.Open))
+                {
+                    byte[] buffer = new byte[60];
+                    byte[] passbytes = { 1, 2, 3, 4 }; //bogus data just to initialize
+                    fs.Read(buffer, 0, 60);
+                    string cryptPassFromFile = new string(Encoding.UTF8.GetChars(buffer));
+
+                    passbytes = Encoding.UTF8.GetBytes(password);
+                    if (Crypter.CheckPassword(passbytes, cryptPassFromFile))
+                    {
+                        fs.Close();
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return 2;
+            }
+        }
+    }
 }
