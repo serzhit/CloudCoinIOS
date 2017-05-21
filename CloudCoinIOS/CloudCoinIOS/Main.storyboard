@@ -68,7 +68,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6PZ-GP-UN4">
                                                 <rect key="frame" x="0.0" y="-24" width="188" height="125"/>
-                                                <state key="normal" image="bankbtn.png"/>
+                                                <state key="normal" image="safebtn.png"/>
                                                 <connections>
                                                     <action selector="OnBankTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UeH-2L-Jer"/>
                                                 </connections>
@@ -124,8 +124,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.1.43" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdg-vz-apu">
-                                <rect key="frame" x="144" y="537" width="33" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdg-vz-apu">
+                                <rect key="frame" x="147.5" y="537" width="26.5" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -919,26 +919,13 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf1-2n-nUw">
                                         <rect key="frame" x="15" y="69" width="258" height="330"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">SCAN &amp; SAFE HELP
-Scanning CloudCoins into your Safe:
- 1. To IMPORT CloudCoins you need to put them in Scan&amp;Safe local filesystem. Scan&amp;Safe recognizes files with extensions .stack &amp; .jpg and .jpeg. If you have received coins by email you have to press on attached file and choose "import with app" icon. It is square with uparrow from it. Then you have to choose CloudCoin Scan&amp;Safe icon and the file will be put in Scan&amp;Safe filesystem. The app will start and you have to tap "Import" button to start detecting input coins in files for authenticity. In popping up messagebox you could choose either to import coins in Safe with changing all the coin's passwords or just to check them for authenticity without changing passwords. After check will be completed and if import to SAfe was choosen app will save input coins to the Safe.  2. SAFE is an encrypted file with information about all your coins on this device. When you try to open the Safe for the first time it will ask you to set up the Password for it. Choose password and write it down somewhere. If you'll loose your password it will be impossible to restore your coins. Due to network lags and collisions some of passwords may become corrupted on your device. If such situation happens then you will see some coins in "fracked shelf" of your Safe. The "Fix Fracked" button appears. When you press it coins begin to fix corrupted passwords. If there are only 2-4 corrupted passwords this operation usually succeeds.  3. PAY function lets you export coins from your safe either in .jpg images or in .stack files which are simply JSON formatted files. When you save them you have immediately choose the program which will handle exported files. Usually you want to send them somewhere by email or through messenger. In order to encrypt files with coins you could use .zip with password functonality. DO NOT write the password in the same email you send coins! Say or write it to your correspondance by another communication channel.  The usage of Scan&amp;Safe is pretty obvious and clear. If you have questions, ask them on our official sites: http://cloudcoinconsortium.com http://cloudcoin.ru  SOME MORE INFO ABOUT CLOUDCOIN:
-In traditional monetary systems, the people who "have" the money own it. With CloudCoins, the people that "know" the money own it. 
-
-You are one of the first people in history to use it!
-
-In order to own your coins you must pown (change all the internal authenticity numbers ) so only you have the numbers. CloudCoins use a new technology called RAIDA that does what Bitcoin's Blockchain does, only much better. You must contact the RAIDA to change your CloudCoin's internal numbers and that means you must have an Internet connection that will not block Scan &amp; Safe's request to the RAIDA. 
-
-When you receive cloudcoins from email or Airdrop you have to choose CloudCoin Scan&amp;Safe appicon to store them in internal app space. Then you tap the Import icon, and this software will look into this area. and will offer you either to pown cloudcoins or to just scan them (without changing authenticity numbers).  
-During the pown process, this software will send the 25 embedded authenticity numbers in your CLoudCoins to 25 RAIDA clouds in parallel along with new numbers that only you will know. This pown process takes about 2-5 seconds per Cloudcoin note. In case you have stack it will be faster for every particular note. If your CloudCoin is real, it will be yours. Scan and Safe will encrypt it and store it on you iPhone. If your CloudCoin is counterfeit you will be told and the CloudCoin will be moved into the Trash.
-
-To give your CloudCoins to someone else, you will need to export them. Your CloudCoins will be decrypted and you can then send them by email or other methods. Email is not secure and your CloudCoins could possibly be stolen in transit. So it is better to store them in password-protected archive.
-
-If you accidently destroy or lose your Cloudcoins, they can be recovered in two years.
-Send your serial numbers and the month lost to CloudCoins@protonmail.com Subject: Lost Coin Report.
-
-Let us know if you have any questions or concerns.
-
-Scan &amp; Safe Support: Gitinsky@Protonmail.com</string>
+                                        <mutableString key="text">In traditional monetary systems, the people who "have" the money own it. With CloudCoins, the people that "know" the money own it.
+To own your CloudCoins you must pawn them by changing all internal authenticity numbers so that only you have those numbers. CloudCoins use a new technology called RAIDA that does what Bitcoin's Blockchain does, only better. In order to change your CloudCoin’s internal numbers, the app must communicate with the RAIDA servers. A stable internet connection is required and the Scan &amp; Safe app must not be blocked by your anti-virus software.
+When you receive the CloudCoins via e-mail or Airdrop, choose the Scan &amp; Safe app icon to store them within the app. Next, tap on the Import icon, and the software will search for any CloudCoins you have imported. The app will give you an option to either pawn the CloudCoins or simply scan them without changing the authenticity numbers. During the pawing process, the app will send 25 embedded authenticity numbers corresponding to each CloudCoin directly to 25 RAIDA cloud servers simultaneously. This process takes about 2 to 5 seconds per CloudCoin note. In the event that you verify a CloudCoin stack file, the verification process will be much faster for every particular note. If your CloudCoin is authentic, it will be yours to use and keep. The Scan &amp; Safe app will encrypt and store it on your iPhone. If your CloudCoin is counterfeit, you will be notified, and it will be moved into the Trash folder.
+To give a CloudCoin to someone else, you will need to export it. The CloudCoin will be decrypted and you will be able to send it by e-mail or any other method. Note that sending a CloudCoin by e-mail is not safe and it could possibly be stolen in transit, therefore, it is better to store it in a password-protected archive.
+If you accidentally destroy or lose your CloudCoins, they can be recovered within 2 years. Send your CloudCoin’s serial number and the month it was lost to CloudCoins@protonmail.com with Subject: Lost Coin Report.
+Please, let us know if you have any questions or concerns.
+Scan&amp;Safe Support: gitinsky@protonmail.com</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -1747,11 +1734,11 @@ Scan &amp; Safe Support: Gitinsky@Protonmail.com</string>
     </scenes>
     <resources>
         <image name="backicons.png" width="338" height="546"/>
-        <image name="bankbtn.png" width="75" height="145"/>
         <image name="exportbtn.png" width="70" height="141"/>
         <image name="importbtn.png" width="61" height="145"/>
         <image name="logo.png" width="119" height="18"/>
         <image name="questionmark.png" width="64" height="64"/>
+        <image name="safebtn.png" width="75" height="146"/>
         <image name="settings.png" width="254" height="253"/>
     </resources>
 </document>
