@@ -1,19 +1,18 @@
 ﻿<Properties StartupConfiguration="{B6987EF8-3EEE-4D5A-A6CF-64CEF3458A74}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS/Core/IOModels.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS Status">
     <Files>
-      <File FileName="CloudCoinIOS/ViewControllers/ZipPasswordViewController.cs" Line="35" Column="37" />
-      <File FileName="CloudCoinIOS/ViewControllers/FixFrackedViewController.cs" Line="65" Column="74" />
-      <File FileName="CloudCoinIOS/Core/IOModels.cs" Line="129" Column="11" />
-      <File FileName="CloudCoinIOS/ViewControllers/AuthorizationViewController.cs" Line="77" Column="28" />
+      <File FileName="CloudCoinIOS/Main.storyboard" />
+      <File FileName="CloudCoinIOS/ViewControllers/AuthorizationViewController.cs" Line="1" Column="1" />
+      <File FileName="CloudCoinIOS Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Volumes/Local/CloudCoin/CloudCoinIOS/CloudCoinIOS/CloudCoinIOS/AppDelegate.cs" relfile="CloudCoinIOS/AppDelegate.cs" line="151" column="1" />
+      <Breakpoint file="/Users/gitinsky/Projects/CloudCoinIOS/CloudCoinIOS/CloudCoinIOS/ViewControllers/ExportViewController.cs" relfile="CloudCoinIOS/ViewControllers/ExportViewController.cs" line="116" column="39" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CloudCoinIOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B6417C3B-95CA-4096-A0E7-6213355B7F6B" />
+  <MonoDevelop.Ide.ItemProperties.CloudCoinIOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3922EBCD-27F2-45BF-8E5B-8D767667AE4B" />
   <MultiItemStartupConfigurations />
 </Properties>
