@@ -43,7 +43,7 @@ namespace CloudCoinIOS
         private void CoinFixStarted(object sender, CoinFixStartedEventArgs e)
         {
             var coinBeingFixed = frackedList[e.coinindex];
-            coinBeingFixed.StatusText = "Waiting node " + e.NodeNumber + "...";
+            coinBeingFixed.StatusText = "Waiting node";// + e.NodeNumber + "...";
             var indexPath = NSIndexPath.FromRowSection((nint)e.coinindex, 0);
             InvokeOnMainThread(() =>
             {
@@ -54,7 +54,7 @@ namespace CloudCoinIOS
         private void CoinFixProcessing(object sender, CoinFixProcessingEventArgs e)
         {
             var coinBeingFixed = frackedList[e.coinindex];
-            coinBeingFixed.StatusText = "Fixing node " + e.NodeNumber;// + ", corner" + e.corner;
+            coinBeingFixed.StatusText = "Fixing node";// + e.NodeNumber;// + ", corner" + e.corner;
             var indexPath = NSIndexPath.FromRowSection((nint)e.coinindex, 0);
             InvokeOnMainThread(() =>
             {
@@ -65,7 +65,7 @@ namespace CloudCoinIOS
         private void CoinFixFinished(object sender, CoinFixFinishedEventArgs e)
         {
             var coinBeingFixed = frackedList[e.coinindex];
-            coinBeingFixed.StatusText = "Node " + e.NodeNumber + " was " + (e.result == CloudCoin.raidaNodeResponse.pass ? "" : "not") + " fixed!";
+            coinBeingFixed.StatusText = /*"Node " + e.NodeNumber + " was " + */(e.result == CloudCoin.raidaNodeResponse.pass ? "" : "not") + " fixed!";
             var indexPath = NSIndexPath.FromRowSection((nint)e.coinindex, 0);
             InvokeOnMainThread(() =>
             {

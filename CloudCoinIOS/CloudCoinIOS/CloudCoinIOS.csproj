@@ -245,7 +245,7 @@
     <BundleResource Include="Resources\jpeg100.jpg" />
     <BundleResource Include="Resources\jpeg250.jpg" />
     <BundleResource Include="Resources\close128.png" />
-    <BundleResource Include="Resources\CloudCoinLogoRound — 96.png" />
+    <BundleResource Include="Resources\CloudCoinLogoRound96.png" />
     <BundleResource Include="Resources\CloudCoinLogoRound80.png" />
   </ItemGroup>
   <ItemGroup>
