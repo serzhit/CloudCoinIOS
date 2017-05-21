@@ -49,17 +49,23 @@ namespace CloudCoinIOS
 				Console.WriteLine(ex.Message);
 			}
 
-			pickerOne.Model = new CoinPickerViewModel(this, safe.Ones.GoodQuantity);
-			pickerFive.Model = new CoinPickerViewModel(this, safe.Fives.GoodQuantity);
-			picker25.Model = new CoinPickerViewModel(this, safe.Quarters.GoodQuantity);
-			picker100.Model = new CoinPickerViewModel(this, safe.Hundreds.GoodQuantity);
-			picker250.Model = new CoinPickerViewModel(this, safe.KiloQuarters.GoodQuantity);
+            var oneQuantity = safe.Ones.FractionedQuantity + safe.Ones.GoodQuantity;
+            var fiveQuantity = safe.Fives.FractionedQuantity + safe.Fives.GoodQuantity;
+            var quartersQuantity = safe.Quarters.FractionedQuantity + safe.Quarters.GoodQuantity;
+            var hundredsQuantity = safe.Hundreds.FractionedQuantity + safe.Hundreds.GoodQuantity;
+            var kiloQuantity = safe.KiloQuarters.FractionedQuantity + safe.KiloQuarters.GoodQuantity;
 
-			lblOne.Text = "of " + safe.Ones.GoodQuantity.ToString();
-			lblFive.Text = "of " + safe.Fives.GoodQuantity.ToString();
-			lbl25.Text = "of " + safe.Quarters.GoodQuantity.ToString();
-			lbl100.Text = "of " + safe.Hundreds.GoodQuantity.ToString();
-			lbl250.Text = "of " + safe.KiloQuarters.GoodQuantity.ToString();
+            pickerOne.Model = new CoinPickerViewModel(this, oneQuantity);
+            pickerFive.Model = new CoinPickerViewModel(this, fiveQuantity);
+            picker25.Model = new CoinPickerViewModel(this, quartersQuantity);
+            picker100.Model = new CoinPickerViewModel(this, hundredsQuantity);
+            picker250.Model = new CoinPickerViewModel(this, kiloQuantity);
+
+            lblOne.Text = "of " + oneQuantity.ToString();
+            lblFive.Text = "of " + fiveQuantity.ToString();
+            lbl25.Text = "of " + quartersQuantity.ToString();
+            lbl100.Text = "of " + hundredsQuantity.ToString();
+            lbl250.Text = "of " + kiloQuantity.ToString();
 
 			lblSumInSafe.Text = Safe.Instance.Contents.SumInStack.ToString();
 			desiredSum = 0;
@@ -171,11 +177,11 @@ namespace CloudCoinIOS
 		private CoinStack GetExportCoins()
 		{
 			var coinStack = new CoinStack();
-			coinStack.Add(safe.Contents.CoinOnes, (int)pickerOne.SelectedRowInComponent(0));
-			coinStack.Add(safe.Contents.CoinFives, (int)pickerFive.SelectedRowInComponent(0));
-			coinStack.Add(safe.Contents.CoinQuarters, (int)picker25.SelectedRowInComponent(0));
-			coinStack.Add(safe.Contents.CoinHundreds, (int)picker100.SelectedRowInComponent(0));
-			coinStack.Add(safe.Contents.CoinKiloQuarters, (int)picker250.SelectedRowInComponent(0));
+            coinStack.Add(safe.Contents.AuthCoinOnes, safe.Contents.AuthCoinOnes.Count);
+            coinStack.Add(safe.Contents.AuthCoinFives, safe.Contents.AuthCoinFives.Count);
+            coinStack.Add(safe.Contents.AuthCoinQuarters, safe.Contents.AuthCoinQuarters.Count);
+            coinStack.Add(safe.Contents.AuthCoinHundreds, safe.Contents.AuthCoinHundreds.Count);
+            coinStack.Add(safe.Contents.AuthCoinKiloQuarters, safe.Contents.AuthCoinKiloQuarters.Count);
 			return coinStack;
 		}
 	}

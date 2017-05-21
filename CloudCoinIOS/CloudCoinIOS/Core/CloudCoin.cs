@@ -265,11 +265,29 @@ namespace CloudCoin_SafeScan
 			}
 		}
 
+        public List<CloudCoin> AuthCoinOnes
+        {
+			get
+			{
+                return cloudcoin.Where(x => x.denomination == CloudCoin.Denomination.One &&
+                                       (x.Verdict == CloudCoin.Status.Authenticated || x.Verdict == CloudCoin.Status.Fractioned)).ToList();
+			}
+        }
+
 		public List<CloudCoin> CoinFives
 		{
 			get
 			{
 				return cloudcoin.Where(x => x.denomination == CloudCoin.Denomination.Five).ToList();
+			}
+		}
+
+		public List<CloudCoin> AuthCoinFives
+		{
+			get
+			{
+				return cloudcoin.Where(x => x.denomination == CloudCoin.Denomination.Five &&
+									   (x.Verdict == CloudCoin.Status.Authenticated || x.Verdict == CloudCoin.Status.Fractioned)).ToList();
 			}
 		}
 
@@ -281,6 +299,15 @@ namespace CloudCoin_SafeScan
 			}
 		}
 
+		public List<CloudCoin> AuthCoinQuarters
+		{
+			get
+			{
+				return cloudcoin.Where(x => x.denomination == CloudCoin.Denomination.Quarter &&
+									   (x.Verdict == CloudCoin.Status.Authenticated || x.Verdict == CloudCoin.Status.Fractioned)).ToList();
+			}
+		}
+
 		public List<CloudCoin> CoinHundreds
 		{
 			get
@@ -289,11 +316,29 @@ namespace CloudCoin_SafeScan
 			}
 		}
 
+		public List<CloudCoin> AuthCoinHundreds
+		{
+			get
+			{
+                return cloudcoin.Where(x => x.denomination == CloudCoin.Denomination.Hundred &&
+									   (x.Verdict == CloudCoin.Status.Authenticated || x.Verdict == CloudCoin.Status.Fractioned)).ToList();
+			}
+		}
+
 		public List<CloudCoin> CoinKiloQuarters
 		{
 			get
 			{
 				return cloudcoin.Where(x => x.denomination == CloudCoin.Denomination.KiloQuarter).ToList();
+			}
+		}
+
+		public List<CloudCoin> AuthCoinKiloQuarters
+		{
+			get
+			{
+                return cloudcoin.Where(x => x.denomination == CloudCoin.Denomination.KiloQuarter &&
+									   (x.Verdict == CloudCoin.Status.Authenticated || x.Verdict == CloudCoin.Status.Fractioned)).ToList();
 			}
 		}
 

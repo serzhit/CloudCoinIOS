@@ -276,7 +276,7 @@ namespace CloudCoin_SafeScan
 
 				try
 				{
-					//cts.CancelAfter(2 * 1000); //ms
+					//cts.CancelAfter(2 * 1000  ); //ms
 					var response = await client.GetAsync(url, cts.Token); // must NOT use leading slash in path
 					if (!response.IsSuccessStatusCode)
 						throw new HttpRequestException();

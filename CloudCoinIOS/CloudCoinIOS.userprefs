@@ -1,16 +1,23 @@
 ﻿<Properties StartupConfiguration="{B6987EF8-3EEE-4D5A-A6CF-64CEF3458A74}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS/Core/IOModels.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS/Core/CloudCoin.cs">
     <Files>
-      <File FileName="CloudCoinIOS/ViewControllers/ZipPasswordViewController.cs" Line="35" Column="37" />
-      <File FileName="CloudCoinIOS/ViewControllers/FixFrackedViewController.cs" Line="65" Column="74" />
-      <File FileName="CloudCoinIOS/Core/IOModels.cs" Line="129" Column="11" />
-      <File FileName="CloudCoinIOS/ViewControllers/AuthorizationViewController.cs" Line="77" Column="28" />
+      <File FileName="CloudCoinIOS/ViewControllers/FixFrackedViewController.cs" Line="47" Column="23" />
+      <File FileName="CloudCoinIOS/Core/IOModels.cs" Line="476" Column="16" />
+      <File FileName="CloudCoinIOS/AppDelegate.cs" Line="102" Column="8" />
+      <File FileName="CloudCoinIOS/ViewControllers/EnterPassViewController.cs" Line="62" Column="22" />
+      <File FileName="CloudCoinIOS/ViewControllers/NewPassViewController.cs" Line="25" Column="26" />
+      <File FileName="CloudCoinIOS/ViewControllers/AuthorizationViewController.cs" Line="127" Column="9" />
+      <File FileName="CloudCoinIOS/Core/RAIDA.cs" Line="279" Column="34" />
+      <File FileName="CloudCoinIOS/Core/Utils.cs" Line="43" Column="27" />
+      <File FileName="CloudCoinIOS/ViewControllers/ExportViewController.cs" Line="180" Column="40" />
+      <File FileName="CloudCoinIOS/Core/Safe.cs" Line="504" Column="15" />
+      <File FileName="CloudCoinIOS/Core/CloudCoin.cs" Line="260" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Volumes/Local/CloudCoin/CloudCoinIOS/CloudCoinIOS/CloudCoinIOS/AppDelegate.cs" relfile="CloudCoinIOS/AppDelegate.cs" line="151" column="1" />
+      <Breakpoint file="/Volumes/Local/CloudCoin/CloudCoinIOS/CloudCoinIOS/CloudCoinIOS/ViewControllers/ExportViewController.cs" relfile="CloudCoinIOS/ViewControllers/ExportViewController.cs" line="104" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
