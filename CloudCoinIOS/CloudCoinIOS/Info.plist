@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleName</key>
-	<string>CloudCoin SafeScan</string>
+	<string>CloudCoin Scan &amp; Safe</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.gitinsky.scansafe.ios</string>
 	<key>CFBundleShortVersionString</key>
