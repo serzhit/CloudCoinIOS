@@ -54,7 +54,7 @@ namespace CloudCoinIOS
         private void CoinFixProcessing(object sender, CoinFixProcessingEventArgs e)
         {
             var coinBeingFixed = frackedList[e.coinindex];
-            coinBeingFixed.StatusText = "Fixing node";// + e.NodeNumber;// + ", corner" + e.corner;
+            coinBeingFixed.StatusText = "Fixing node" + e.NodeNumber; // + ", corner" + e.corner;
             var indexPath = NSIndexPath.FromRowSection((nint)e.coinindex, 0);
             InvokeOnMainThread(() =>
             {

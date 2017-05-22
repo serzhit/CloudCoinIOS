@@ -1,7 +1,6 @@
 ﻿<Properties StartupConfiguration="{B6987EF8-3EEE-4D5A-A6CF-64CEF3458A74}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS Status">
     <Files>
-      <File FileName="CloudCoinIOS/Main.storyboard" />
       <File FileName="CloudCoinIOS Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
