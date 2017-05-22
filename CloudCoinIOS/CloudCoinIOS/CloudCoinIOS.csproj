@@ -120,14 +120,22 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound29.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound58.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound87.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound80.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound120.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound57.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound114.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound50.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound100.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound72.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound144.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound152.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound167.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound58ipad.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\CloudCoinLogoRound29ipad.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
