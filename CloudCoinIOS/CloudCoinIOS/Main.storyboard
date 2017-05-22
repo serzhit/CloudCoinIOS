@@ -1679,7 +1679,7 @@ Scan&amp;Safe Support: gitinsky@protonmail.com</mutableString>
                                         <rect key="frame" x="15" y="102" width="238" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Zip Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDc-d8-IRZ" misplaced="YES">
                                         <rect key="frame" x="39" y="26" width="191" height="20"/>
