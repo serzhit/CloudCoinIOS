@@ -1,17 +1,17 @@
 ﻿<Properties StartupConfiguration="{B6987EF8-3EEE-4D5A-A6CF-64CEF3458A74}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS Status">
     <Files>
-      <File FileName="CloudCoinIOS/Main.storyboard" />
+      <File FileName="CloudCoinIOS/Info.plist" />
       <File FileName="CloudCoinIOS Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/gitinsky/Projects/CloudCoinIOS/CloudCoinIOS/CloudCoinIOS/ViewControllers/ExportViewController.cs" relfile="CloudCoinIOS/ViewControllers/ExportViewController.cs" line="116" column="39" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CloudCoinIOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.05f6b4b2fcb1783afd25c323eacf983c3b6e3fc4" />
+  <MonoDevelop.Ide.ItemProperties.CloudCoinIOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3922EBCD-27F2-45BF-8E5B-8D767667AE4B" />
   <MultiItemStartupConfigurations />
 </Properties>
