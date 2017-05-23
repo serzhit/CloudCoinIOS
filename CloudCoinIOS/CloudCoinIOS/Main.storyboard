@@ -640,8 +640,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIj-B3-bCF" misplaced="YES">
                                 <rect key="frame" x="16" y="52" width="288" height="464"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authorization" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyk-95-QCI" misplaced="YES">
-                                        <rect key="frame" x="86" y="32" width="117" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authentication" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyk-95-QCI" misplaced="YES">
+                                        <rect key="frame" x="66" y="32" width="156" height="23"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                         <color key="textColor" red="0.21960784310000001" green="0.2470588235" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
