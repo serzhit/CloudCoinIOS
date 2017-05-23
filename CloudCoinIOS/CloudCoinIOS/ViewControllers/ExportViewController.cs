@@ -177,11 +177,12 @@ namespace CloudCoinIOS
 		private CoinStack GetExportCoins()
 		{
 			var coinStack = new CoinStack();
-            coinStack.Add(safe.Contents.AuthCoinOnes, safe.Contents.AuthCoinOnes.Count);
-            coinStack.Add(safe.Contents.AuthCoinFives, safe.Contents.AuthCoinFives.Count);
-            coinStack.Add(safe.Contents.AuthCoinQuarters, safe.Contents.AuthCoinQuarters.Count);
-            coinStack.Add(safe.Contents.AuthCoinHundreds, safe.Contents.AuthCoinHundreds.Count);
-            coinStack.Add(safe.Contents.AuthCoinKiloQuarters, safe.Contents.AuthCoinKiloQuarters.Count);
+
+            coinStack.Add(safe.Contents.AuthCoinOnes, (int)pickerOne.SelectedRowInComponent(0));
+            coinStack.Add(safe.Contents.AuthCoinFives, (int)pickerFive.SelectedRowInComponent(0));
+            coinStack.Add(safe.Contents.AuthCoinQuarters, (int)picker25.SelectedRowInComponent(0));
+            coinStack.Add(safe.Contents.AuthCoinHundreds, (int)picker100.SelectedRowInComponent(0));
+            coinStack.Add(safe.Contents.AuthCoinKiloQuarters, (int)picker250.SelectedRowInComponent(0));
 			return coinStack;
 		}
 	}
