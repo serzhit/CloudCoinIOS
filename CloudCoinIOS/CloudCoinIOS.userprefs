@@ -1,36 +1,17 @@
 ﻿<Properties StartupConfiguration="{B6987EF8-3EEE-4D5A-A6CF-64CEF3458A74}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS/ViewControllers/ImportViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS Status">
     <Files>
-      <File FileName="CloudCoinIOS/Core/CloudCoin.cs" Line="433" Column="21" />
-      <File FileName="CloudCoinIOS/Core/Safe.cs" Line="532" Column="1" />
-      <File FileName="CloudCoinIOS/ViewControllers/MainViewController.cs" Line="88" Column="52" />
-      <File FileName="CloudCoinIOS/ViewControllers/NewPassViewController.cs" Line="63" Column="6" />
-      <File FileName="CloudCoinIOS/ViewControllers/ExportViewController.cs" Line="120" Column="21" />
-      <File FileName="CloudCoinIOS/Core/FixitHelper.cs" Line="16" Column="30" />
       <File FileName="CloudCoinIOS/Info.plist" />
-      <File FileName="CloudCoinIOS/Core/ApplicationLogic.cs" Line="18" Column="39" />
-      <File FileName="CloudCoinIOS/ViewControllers/ImportViewController.cs" Line="1" Column="1" />
+      <File FileName="CloudCoinIOS Status" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="CloudCoinIOS" expanded="True">
-            <Node name="CloudCoinIOS" expanded="True">
-              <Node name="Core" expanded="True" />
-              <Node name="ViewControllers" expanded="True">
-                <Node name="ImportViewController.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/gitinsky/Projects/CloudCoinIOS/CloudCoinIOS/CloudCoinIOS/ViewControllers/ExportViewController.cs" relfile="CloudCoinIOS/ViewControllers/ExportViewController.cs" line="116" column="39" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CloudCoinIOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.2c49895aa78f681e1144903ccf3c43f4718e7334" />
+  <MonoDevelop.Ide.ItemProperties.CloudCoinIOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0E55ACDE-2BED-4FBE-984A-6FB134C973B2" />
   <MultiItemStartupConfigurations />
 </Properties>
