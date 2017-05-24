@@ -1,18 +1,32 @@
 ﻿<Properties StartupConfiguration="{B6987EF8-3EEE-4D5A-A6CF-64CEF3458A74}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CloudCoinIOS/ViewControllers/NewPassViewController.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="CloudCoinIOS/Core/CloudCoin.cs" Line="433" Column="21" />
       <File FileName="CloudCoinIOS/Core/Safe.cs" Line="532" Column="1" />
       <File FileName="CloudCoinIOS/ViewControllers/MainViewController.cs" Line="88" Column="52" />
-      <File FileName="CloudCoinIOS/ViewControllers/NewPassViewController.cs" Line="47" Column="32" />
+      <File FileName="CloudCoinIOS/ViewControllers/NewPassViewController.cs" Line="63" Column="6" />
       <File FileName="CloudCoinIOS/ViewControllers/ExportViewController.cs" Line="120" Column="21" />
+      <File FileName="CloudCoinIOS/Info.plist" />
+      <File FileName="CloudCoinIOS/Core/FixitHelper.cs" Line="16" Column="30" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CloudCoinIOS" expanded="True">
+            <Node name="CloudCoinIOS" expanded="True">
+              <Node name="Assets.xcassets" selected="True" />
+              <Node name="Core" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CloudCoinIOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.B6417C3B-95CA-4096-A0E7-6213355B7F6B" />
+  <MonoDevelop.Ide.ItemProperties.CloudCoinIOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.2c49895aa78f681e1144903ccf3c43f4718e7334" />
   <MultiItemStartupConfigurations />
 </Properties>
