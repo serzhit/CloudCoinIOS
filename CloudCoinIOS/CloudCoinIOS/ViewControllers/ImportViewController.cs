@@ -93,7 +93,10 @@ namespace CloudCoinIOS
 				}
 				else
 				{
-					await ShowAlert("Message", "There is no CloudCoins!", new string[] { "Ok"});
+					await ShowAlert("Message", "There are no coins to import. " +
+                                    "You have to get coins in form of .stack or " +
+                                    ".jpg/.jpeg files from email or AirDrop. Choose" +
+                                    " CloudCoin Scan&Safe icon to get files.", new string[] { "Ok"});
 					RemoveAnimate();
 				}
 			};

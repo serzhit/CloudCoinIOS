@@ -29,7 +29,7 @@ namespace CloudCoinIOS
 		{
 			txtPassword.BecomeFirstResponder();
 
-            textConstraintHeight.Constant = GetHeightFromText(txtExplain.Text);
+            //textConstraintHeight.Constant = GetHeightFromText(txtExplain.Text);
 		}
 
         private nfloat GetHeightFromText(string text)
