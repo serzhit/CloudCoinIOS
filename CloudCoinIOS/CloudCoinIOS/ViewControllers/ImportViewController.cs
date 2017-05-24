@@ -41,10 +41,10 @@ namespace CloudCoinIOS
 
 			lblImportedFiles.Text = string.Format("You have {0} files in your import directory", urlList.Count);
 
-			if (urlList.Count == 0)
-				btnImport.Enabled = false;
-			else
-				btnImport.Enabled = true;
+			//if (urlList.Count == 0)
+			//	btnImport.Enabled = false;
+			//else
+				//btnImport.Enabled = true;
 
 			btnFinished.Enabled = false;
 			
